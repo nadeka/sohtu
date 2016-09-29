@@ -12,7 +12,7 @@ import { AppState } from './app.service';
  *
  */
 import 'jquery';
-import 'bootstrap/js/tooltip';
+import 'bootstrap';
 
 /*
  * App Component
@@ -39,19 +39,42 @@ import 'bootstrap/js/tooltip';
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
             <li router-active>
-              <a [routerLink]=" ['./'] ">Index</a>
+              <a [routerLink]=" ['./'] ">Dashboard</a>
             </li>
             |
             <li router-active>
-              <a [routerLink]=" ['./home'] ">Home</a>
+              <a [routerLink]=" ['./contacts'] ">Contacts</a>
+            </li>
+            |
+            <li class="dropdown">
+              <a class="dropdown-toggle" data-toggle="dropdown" href="#">Marketing
+                <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <li router-active>
+                  <a [routerLink]=" ['./marketing/dashboard'] ">Dashboard</a>
+                </li>
+                
+                <li router-active>
+                  <a [routerLink]=" ['./marketing/templates'] ">Templates</a>
+                </li>
+                
+                <li router-active>
+                  <a [routerLink]=" ['./marketing/mailing-lists'] ">Mailing lists</a>
+                </li>
+                
+                <li router-active>
+                  <a [routerLink]=" ['./marketing/campaigns'] ">Campaigns</a>
+                </li>
+              </ul>
             </li>
             |
             <li router-active>
-              <a [routerLink]=" ['./detail'] ">Detail</a>
+              <a [routerLink]=" ['./social-media'] ">Social Media</a>
             </li>
             |
             <li router-active>
-              <a [routerLink]=" ['./about'] ">About</a>
+              <a [routerLink]=" ['./reports'] ">Reports</a>
             </li>
           </ul>
         </div><!--/.nav-collapse -->
@@ -72,17 +95,12 @@ import 'bootstrap/js/tooltip';
     </div><!-- /.container -->
 
     <footer class="footer">
-      <div class="container text-center">
-        <img [src]="angularclassLogo" width="10%">
-        WebPack Angular 2 Starter by <a [href]="url">@AngularClass</a>
-      </div>
+    
     </footer>
   `
 })
 export class App {
-  angularclassLogo = 'assets/img/angularclass-avatar.png';
-  name = 'Angular 2 Webpack Starter';
-  url = 'https://twitter.com/AngularClass';
+  name = 'Sohtu';
 
   constructor(
     public appState: AppState) {

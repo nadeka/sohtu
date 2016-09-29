@@ -18,7 +18,7 @@ const HtmlElementsPlugin = require('./html-elements-plugin');
  * Webpack Constants
  */
 const METADATA = {
-  title: 'Angular2 Webpack Starter by @gdi2290 from @AngularClass',
+  title: 'Sohtu',
   baseUrl: '/',
   isDevServer: helpers.isWebpackDevServer()
 };
@@ -221,7 +221,7 @@ module.exports = {
      * See: https://webpack.github.io/docs/list-of-plugins.html#occurrenceorderplugin
      * See: https://github.com/webpack/docs/wiki/optimization#minimize
      */
-    new webpack.optimize.OccurenceOrderPlugin(true),
+    new webpack.optimize.OccurrenceOrderPlugin(true),
 
     /*
      * Plugin: CommonsChunkPlugin

@@ -1,46 +1,28 @@
-import { WebpackAsyncRoute } from '@angularclass/webpack-toolkit';
 import { RouterConfig } from '@angular/router';
-import { Home } from './home';
+import { Dashboard } from './dashboard';
+import { Contacts } from './contacts';
+import { Marketing } from './marketing';
+import { Campaigns } from './campaigns';
+import { MailingLists } from './mailing-lists';
+import { Templates } from './templates';
+import { SocialMedia } from './social-media';
+import { Reports } from './reports';
+
 import { NoContent } from './no-content';
 
-import { DataResolver } from './app.resolver';
-
 export const routes: RouterConfig = [
-  { path: '',      component: Home },
-  { path: 'home',  component: Home },
-  // make sure you match the component type string to the require in asyncRoutes
-  { path: 'about', component: 'About',
-    resolve: {
-      'yourData': DataResolver
-    }},
-  // async components with children routes must use WebpackAsyncRoute
-  { path: 'detail', component: 'Detail',
-    canActivate: [ WebpackAsyncRoute ],
+  { path: '',      component: Dashboard },
+  { path: 'dashboard',  component: Dashboard },
+  { path: 'contacts', component: Contacts },
+  { path: 'marketing', component: Marketing,
     children: [
-      { path: '', component: 'Index' }  // must be included
+      { path: '', component: Dashboard },
+      { path: 'dashboard', component: Dashboard },
+      { path: 'campaigns', component: Campaigns },
+      { path: 'mailing-lists', component: MailingLists },
+      { path: 'templates', component: Templates }
     ]},
-  { path: '**',    component: NoContent },
+  { path: 'social-media',  component: SocialMedia },
+  { path: 'reports',  component: Reports },
+  { path: '**',    component: NoContent }
 ];
-
-// Async load a component using Webpack's require with es6-promise-loader and webpack `require`
-// asyncRoutes is needed for our @angularclass/webpack-toolkit that will allow us to resolve
-// the component correctly
-
-export const asyncRoutes: AsyncRoutes = {
-  // we have to use the alternative syntax for es6-promise-loader to grab the routes
-  'About': require('es6-promise-loader!./about'),
-  'Detail': require('es6-promise-loader!./+detail'),
-  'Index': require('es6-promise-loader!./+detail'), // must be exported with detail/index.ts
-};
-
-
-// Optimizations for initial loads
-// An array of callbacks to be invoked after bootstrap to prefetch async routes
-export const prefetchRouteCallbacks: Array<IdleCallbacks> = [
-  asyncRoutes['About'],
-  asyncRoutes['Detail'],
-   // es6-promise-loader returns a function
-];
-
-
-// Es6PromiseLoader and AsyncRoutes interfaces are defined in custom-typings
