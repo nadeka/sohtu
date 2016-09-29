@@ -3,9 +3,9 @@
  */
 
 module.exports = function(config) {
-  var testWebpackConfig = require('./webpack.test.js')({env: 'test'});
+  var testWebpackConfig = require('./webpack.test.js');
 
-  var configuration = {
+  config.set({
 
     // base path that will be used to resolve all patterns (e.g. files, exclude)
     basePath: '',
@@ -41,8 +41,7 @@ module.exports = function(config) {
       reporters: [
         { type: 'text-summary' },
         { type: 'json' },
-        { type: 'html' },
-        { type: 'lcov' }
+        { type: 'html' }
       ]
     },
 
@@ -80,23 +79,11 @@ module.exports = function(config) {
       'Chrome'
     ],
 
-    customLaunchers: {
-      ChromeTravisCi: {
-        base: 'Chrome',
-        flags: ['--no-sandbox']
-      }
-    },
-
     /*
      * Continuous Integration mode
      * if true, Karma captures browsers, runs the tests and exits
      */
     singleRun: true
-  };
+  });
 
-  if (process.env.TRAVIS){
-    configuration.browsers = ['ChromeTravisCi'];
-  }
-
-  config.set(configuration);
 };

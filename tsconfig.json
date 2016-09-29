@@ -5,18 +5,15 @@
     "moduleResolution": "node",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "allowSyntheticDefaultImports": true,
     "sourceMap": true,
     "noEmitHelpers": true,
+    "lib": ["es6", "dom"],
     "strictNullChecks": false,
     "baseUrl": "./src",
     "paths": [
     ],
-    "lib": [
-      "dom",
-      "es6"
-    ],
     "types": [
+      "core-js",
       "hammerjs",
       "jasmine",
       "node",
@@ -28,8 +25,7 @@
     ]
   },
   "exclude": [
-    "node_modules",
-    "dist"
+    "node_modules"
   ],
   "awesomeTypescriptLoaderOptions": {
     "forkChecker": true,

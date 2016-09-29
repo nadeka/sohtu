@@ -1,37 +1,36 @@
 import {
+  beforeEachProviders,
   inject,
-  TestBed
+  it
 } from '@angular/core/testing';
+import { TestComponentBuilder } from '@angular/compiler/testing';
 import { Component } from '@angular/core';
-import {
-  BaseRequestOptions,
-  ConnectionBackend,
-  Http
-} from '@angular/http';
+import { BaseRequestOptions, Http } from '@angular/http';
 import { MockBackend } from '@angular/http/testing';
 
 import { Title } from './title.service';
 
 describe('Title', () => {
-  beforeEach(() => TestBed.configureTestingModule({
-    providers: [
-      BaseRequestOptions,
-      MockBackend,
-      {
-        provide: Http,
-        useFactory: function(backend: ConnectionBackend, defaultOptions: BaseRequestOptions) {
-          return new Http(backend, defaultOptions);
-        },
-        deps: [MockBackend, BaseRequestOptions]
+  beforeEachProviders(() => [
+    BaseRequestOptions,
+    MockBackend,
+    {
+      provide: Http,
+      useFactory: function(backend, defaultOptions) {
+        return new Http(backend, defaultOptions);
       },
-      Title
-    ]}));
+      deps: [MockBackend, BaseRequestOptions]
+    },
 
-  it('should have http', inject([ Title ], (title: Title) => {
+    Title
+  ]);
+
+
+  it('should have http', inject([ Title ], (title) => {
     expect(!!title.http).toEqual(true);
   }));
 
-  it('should get data from the server', inject([ Title ], (title: Title) => {
+  it('should get data from the server', inject([ Title ], (title) => {
     spyOn(console, 'log');
     expect(console.log).not.toHaveBeenCalled();
 

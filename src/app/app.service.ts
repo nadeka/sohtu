@@ -1,12 +1,10 @@
 import { Injectable } from '@angular/core';
-
-export type InteralStateType = {
-  [key: string]: any
-};
+import { HmrState } from 'angular2-hmr';
 
 @Injectable()
 export class AppState {
-  _state: InteralStateType = { };
+  // @HmrState() is used by HMR to track the state of any object during HMR (hot module replacement)
+  @HmrState() _state = { };
 
   constructor() {
 
@@ -34,7 +32,7 @@ export class AppState {
   }
 
 
-  private _clone(object: InteralStateType) {
+  _clone(object) {
     // simple object clone
     return JSON.parse(JSON.stringify( object ));
   }

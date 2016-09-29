@@ -58,5 +58,4 @@ npm-debug.log
 
 # IDE #
 .idea/
-*.iml
 *.swp
