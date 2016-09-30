@@ -10,7 +10,7 @@ import {
 } from '@angular/core/testing';
 
 // Load the implementations that should be tested
-import { MailingLists } from './mailing-lists.component.ts';
+import { MailingLists } from './mailingLists.component.ts';
 
 describe('MailingLists', () => {
   // provide our implementations or mocks to the dependency injector

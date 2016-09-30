@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { AppState } from '../app.service';
 
 @Component({
-  selector: 'mailing-lists',
+  selector: 'mailingLists',
   styles: [`
   `],
   templateUrl: './mailingLists.template.html'
