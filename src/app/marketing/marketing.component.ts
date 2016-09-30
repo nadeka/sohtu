@@ -6,21 +6,14 @@ import { AppState } from '../app.service';
   selector: 'marketing',
   styles: [`
   `],
-  template: '<router-outlet></router-outlet>'
+  templateUrl: './marketing.template.html'
 })
 export class Marketing {
-  localState = { value: '' };
-  constructor(public appState: AppState, public route: ActivatedRoute) {
+  constructor() {
 
   }
 
   ngOnInit() {
     console.log('hello `Marketing` component');
-    // this.title.getData().subscribe(data => this.data = data);
-  }
-  submitState(value) {
-    console.log('submitState', value);
-    this.appState.set('value', value);
-    this.localState.value = '';
   }
 }

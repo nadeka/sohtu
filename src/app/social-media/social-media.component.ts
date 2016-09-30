@@ -8,19 +8,14 @@ import { AppState } from '../app.service';
   `],
   templateUrl: './social-media.template.html'
 })
+
 export class SocialMedia {
-  localState = { value: '' };
-  constructor(public appState: AppState, public route: ActivatedRoute) {
+  constructor() {
 
   }
 
   ngOnInit() {
     console.log('hello `SocialMedia` component');
-    // this.title.getData().subscribe(data => this.data = data);
   }
-  submitState(value) {
-    console.log('submitState', value);
-    this.appState.set('value', value);
-    this.localState.value = '';
-  }
+
 }

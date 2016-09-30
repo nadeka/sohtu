@@ -1,33 +1,6 @@
 <h1>Dashboard</h1>
 
-<!--
-    <input type="text" [value]="localState.value" (input)="localState.value = $event.target.value" autofocus>
-    Rather than wiring up two-way data-binding ourselves with [value] and (input)
-    we can use Angular's [(ngModel)] syntax
-    <input type="text" name="textInput" [(ngModel)]="localState.value" autofocus>
-  -->
-
 <div class="row">
-  <div class="col-md-12">
-    <form class="form-horizontal" (ngSubmit)="submitState(localState.value)" autocomplete="off">
-      <div class="form-group">
-        <label class="col-sm-2 control-label" for="local-state">Local State</label>
-        <div class="col-sm-6">
-          <input id="local-state" class="form-control" type="text" placeholder="Submit Local State to App State"
-                 [value]="localState.value"
-                 (input)="localState.value = $event.target.value"
-                 autofocus>
-        </div>
-        <div class="col-sm-4">
-          <button type="submit" class="btn btn-success"
-                  data-toggle="tooltip" data-placement="right" title="Please press me :-)">
-            <span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Submit Button</button>
-        </div>
-      </div>
-    </form>
-  </div>
-</div>
-
-<div class="row">
-  <div class="col-md-12"><pre>this.localState = {{ localState | json }}</pre></div>
+<img src="http://chart.finance.yahoo.com/z?s=DB&t=6m&q=l&l=on&z=s&p=m50,m200"/>
+<img src="http://chart.finance.yahoo.com/z?s=AAPL&t=6m&q=l&l=on&z=s&p=m50,m200"/>
 </div>

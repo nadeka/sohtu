@@ -1,26 +1,5 @@
 <h1>Contacts</h1>
 
-<div class="row">
-  <div class="col-md-12">
-    <form class="form-horizontal" (ngSubmit)="submitState(localState.value)" autocomplete="off">
-      <div class="form-group">
-        <label class="col-sm-2 control-label" for="local-state">Local State</label>
-        <div class="col-sm-6">
-          <input id="local-state" class="form-control" type="text" placeholder="Submit Local State to App State"
-                 [value]="localState.value"
-                 (input)="localState.value = $event.target.value"
-                 autofocus>
-        </div>
-        <div class="col-sm-4">
-          <button type="submit" class="btn btn-success"
-                  data-toggle="tooltip" data-placement="right" title="Please press me :-)">
-            <span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Submit Button</button>
-        </div>
-      </div>
-    </form>
-  </div>
-</div>
-
-<div class="row">
-  <div class="col-md-12"><pre>this.localState = {{ localState | json }}</pre></div>
+<div class="container">
+    <p>Tyhjää on :(<p>
 </div>

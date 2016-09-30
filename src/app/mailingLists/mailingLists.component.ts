@@ -3,17 +3,17 @@ import { ActivatedRoute } from '@angular/router';
 import { AppState } from '../app.service';
 
 @Component({
-  selector: 'campaigns',
-  templateUrl: './campaigns.template.html'
+  selector: 'mailing-lists',
+  styles: [`
+  `],
+  templateUrl: './mailingLists.template.html'
 })
-export class Campaigns {
-
+export class MailingLists {
   constructor() {
 
   }
 
   ngOnInit() {
-    console.log('Capaigns component created');
+    console.log('hello `MailingLists` component');
   }
-
 }

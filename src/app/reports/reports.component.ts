@@ -8,19 +8,12 @@ import { AppState } from '../app.service';
   `],
   templateUrl: './reports.template.html'
 })
-export class Reports {
-  localState = { value: '' };
-  constructor(public appState: AppState, public route: ActivatedRoute) {
 
+export class Reports {
+  constructor() {
   }
 
   ngOnInit() {
     console.log('hello `Reports` component');
-    // this.title.getData().subscribe(data => this.data = data);
-  }
-  submitState(value) {
-    console.log('submitState', value);
-    this.appState.set('value', value);
-    this.localState.value = '';
   }
 }
