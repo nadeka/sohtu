@@ -11,7 +11,6 @@ import { MockBackend } from '@angular/http/testing';
 // Load the implementations that should be tested
 import { AppState } from '../app.service';
 import { Dashboard } from './dashboard.component.ts';
-import { Title } from './title';
 
 describe('Dashboard', () => {
   // provide our implementations or mocks to the dependency injector
@@ -27,17 +26,8 @@ describe('Dashboard', () => {
     },
 
     AppState,
-    Title,
     Dashboard
   ]);
-
-  it('should have default data', inject([ Dashboard ], (dashboard) => {
-    expect(dashboard.localState).toEqual({ value: '' });
-  }));
-
-  it('should have a title', inject([ Dashboard ], (dashboard) => {
-    expect(!!dashboard.title).toEqual(true);
-  }));
 
   it('should log ngOnInit', inject([ Dashboard ], (dashboard) => {
     spyOn(console, 'log');
