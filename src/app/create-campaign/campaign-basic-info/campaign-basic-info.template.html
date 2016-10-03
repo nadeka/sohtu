@@ -13,16 +13,16 @@
 
 <!-- Form for campaign name and subject -->
 <div>
-  <label for="new-campaign-name">Campaign Name</label>
 
+  <label for="new-campaign-name">Campaign Name</label>
   <div class="form-group">
-    <input type="text" class="form-control" id="new-campaign-name">
+    <input type="text" class="form-control" id="new-campaign-name" [(ngModel)]=campaignName>
   </div>
 
   <br>
 
   <label for="new-campaign-subject">Subject</label>
   <div class="form-group">
-    <input type="text" class="form-control" id="new-campaign-subject">
+    <input type="text" class="form-control" id="new-campaign-subject" [(ngModel)]=campaignSubject>
   </div>
 </div>

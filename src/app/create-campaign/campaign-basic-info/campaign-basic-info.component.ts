@@ -6,5 +6,8 @@ import { Component } from '@angular/core';
 })
 
 export class CampaignBasicInfo {
+  public campaignName;
+  public campaignSubject;
+
   constructor() {}
 }
