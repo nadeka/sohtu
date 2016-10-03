@@ -1,11 +1,12 @@
-import { Component} from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { AppState } from '../app.service';
+import { Component } from '@angular/core';
+//import { ActivatedRoute } from '@angular/router';
+import { CampaignBasicInfo } from './campaign-basic-info';
 
 
 @Component({
   selector: 'create-campaign',
-  templateUrl: './create-campaign.template.html'
+  templateUrl: './create-campaign.template.html',
+  directives: [CampaignBasicInfo]
 })
 
 export class CreateCampaign {
