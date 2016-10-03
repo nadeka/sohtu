@@ -3,10 +3,11 @@ import { Dashboard } from './dashboard';
 import { Contacts } from './contacts';
 import { Marketing } from './marketing';
 import { Campaigns } from './campaigns';
-import { MailingLists } from './mailingLists';
+import { MailingLists } from './mailing-lists';
 import { Templates } from './templates';
 import { SocialMedia } from './social-media';
 import { Reports } from './reports';
+import { CreateCampaign } from './create-campaign';
 
 import { NoContent } from './no-content';
 
@@ -19,6 +20,7 @@ export const routes: RouterConfig = [
       { path: '', component: Marketing },
       { path: 'campaigns', component: Campaigns },
       { path: 'mailing-lists', component: MailingLists },
+      { path: 'create-campaign', component: CreateCampaign },
       { path: 'templates', component: Templates }
     ]
   },
