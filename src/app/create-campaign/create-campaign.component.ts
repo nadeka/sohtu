@@ -1,12 +1,13 @@
 import { Component } from '@angular/core';
 //import { ActivatedRoute } from '@angular/router';
 import { CampaignBasicInfo } from './campaign-basic-info';
+import { CampaignMailingLists } from './campaign-mailing-lists';
 
 
 @Component({
   selector: 'create-campaign',
   templateUrl: './create-campaign.template.html',
-  directives: [CampaignBasicInfo]
+  directives: [CampaignBasicInfo, CampaignMailingLists]
 })
 
 export class CreateCampaign {

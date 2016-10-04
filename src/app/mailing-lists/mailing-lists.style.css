@@ -1,0 +1,21 @@
+.mailing-list {
+    text-align: left;
+    margin-bottom: 0.5em;
+    word-wrap: break-word;
+    white-space: inherit;
+}
+
+.mailing-list:hover, .mailing-list:active {
+    color: white;
+    border-color: #ff6193;
+    background-color: #ff6193;
+}
+
+.create-mailing-list {
+    display: inline-block;
+    color: white;
+    margin-left: 1em;
+    cursor: pointer;
+    background-color: #ff6193;
+    border-color: #ff6193;
+}

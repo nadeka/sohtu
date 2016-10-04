@@ -1,1 +1,13 @@
-<h1>Mailing lists</h1>
+<h1>Mailing lists
+    <div class="create-mailing-list btn btn-sm">
+        Create
+    </div>
+</h1>
+<br>
+
+<div class="mailingLists listGroup">
+    <div *ngFor="let mailingList of mailingLists"
+         class="mailing-list list-group-item btn btn-default">
+        {{mailingList.name}}
+    </div>
+</div>

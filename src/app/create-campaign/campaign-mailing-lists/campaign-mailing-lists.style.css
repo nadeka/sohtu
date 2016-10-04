@@ -1,0 +1,22 @@
+.campaign-mailing-list {
+    text-align: left;
+    max-width: 500px;
+    width: 100%;
+    margin-bottom: 0.5em;
+    word-wrap: break-word;
+    white-space: inherit;
+}
+
+.campaign-mailing-list:hover, .active, .campaign-mailing-list:visited {
+    color: white;
+    border-color: #ff6193;
+    background-color: #ff6193;
+}
+
+.select-button {
+
+}
+
+.select-buttons {
+    margin-bottom: 0.5em;
+}

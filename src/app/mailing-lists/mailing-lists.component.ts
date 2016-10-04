@@ -1,19 +1,25 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { AppState } from '../app.service';
+import { MailingList } from '../models/mailing-list';
+import { MailingListsService } from '../services/mailing-lists.service';
 
 @Component({
   selector: 'mailing-lists',
-  styles: [`
-  `],
+  styleUrls: [ './mailing-lists.style.css' ],
+  providers: [MailingListsService],
   templateUrl: './mailing-lists.template.html'
 })
 export class MailingLists {
-  constructor() {
+  mailingLists: MailingList[];
 
-  }
+  constructor(private mailingListsService: MailingListsService) {}
 
   ngOnInit() {
-    console.log('hello `Mailing-lists` component');
+    this.getMailingLists();
+  }
+
+  getMailingLists(): void {
+    this.mailingListsService.getMailingLists().then(lists => this.mailingLists = lists);
   }
 }
