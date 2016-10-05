@@ -1,6 +1,4 @@
-import { Component, OnInit} from '@angular/core';
-
-import { AppState } from '../app.service';
+import { Component} from '@angular/core';
 
 @Component({
   selector: 'dashboard',  // <dashboard></dashboard>

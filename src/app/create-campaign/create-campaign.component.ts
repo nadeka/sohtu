@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-//import { ActivatedRoute } from '@angular/router';
 import { CampaignBasicInfo } from './campaign-basic-info';
 import { CampaignMailingLists } from './campaign-mailing-lists';
 

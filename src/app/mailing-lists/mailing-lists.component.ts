@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { AppState } from '../app.service';
 import { MailingList } from '../models/mailing-list';
 import { MailingListsService } from '../services/mailing-lists.service';
 
