@@ -1,5 +1,4 @@
 import { Component, ViewEncapsulation } from '@angular/core';
-import { AppState } from './app.service';
 
 
 import 'jquery';

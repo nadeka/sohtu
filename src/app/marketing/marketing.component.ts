@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { AppState } from '../app.service';
 
 @Component({
   selector: 'marketing',
