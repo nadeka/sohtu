@@ -1,18 +1,29 @@
 language: node_js
 node_js:
-  - "6.0.0"
-
-services:
-  - docker
-before_install:
-  - export CHROME_BIN=chromium-browser
-  - export DISPLAY=:99.0
-  - sh -e /etc/init.d/xvfb start
-  - sleep 3
-  # Updating NPM to relevant version >= 3 on Node.JS LTS
-  - npm i -g npm@^3
-script:
-  - npm test
-after_script:
-  - cat ./coverage/*/lcov.info | ./node_modules/coveralls/bin/coveralls.js
+- 6.0.0
 sudo: required
+before_install:
+- export CHROME_BIN=chromium-browser
+- export DISPLAY=:99.0
+- sh -e /etc/init.d/xvfb start
+- sleep 3
+- npm i -g npm@^3
+script:
+- npm run test
+after_success:
+- npm run build
+deploy:
+  provider: s3
+  access_key_id:
+    secure: mheGrzt5Ss+b5XKtfGRhfTYIf+c6BB1rXkbhc3kCRdo4aQYJm1OUux9GhaakdvIPThJ/hEWcav8J6zuAx4Y06yChy5oAA5e3nIRC8/o4ObYGM92CwKZ424DwzY22X1LVb3XSWNKdnS3eMcYIc2FIZG4ABkJD2ZPqnR552XF1LIWLzqr7yFOLgjTQjhJQYBwVTls8+zUzVpjhuUvDttGrqcbiAFeg2QQePG5vXYnG0icQvEGpBKsPMoSf1oRd8XcNFq85GUdugs8CAUNxeW8BL/JRCc5PSr6bMov8MllOdQRkLjvspiyVMh5Qtj39xB8sSER6ZkM7xj8QvY+NjID9gaeymyprXhw4VMeCVTN0HPHkT/e+LCP5IYMqnnrVYLxvXMHSQvSs3zbBb1NFpHdOT0+BE6ZKE3VxZZ8e9tNmssiafh2NkCaMn94T8iVNJWJOoCmVRlKe9Kr3sPr7umcAp9OGmCvTodnN0HXGdWp84bqMKK9RkgDx6eceM7RDi1YBSDRvu7EQd+ETGDXNWIn+Ky4yKP3rfaPhqs7KlgJyhABaBZFx5ITy4gePZ+ckpSUF5HACFIc8dWxV4+W+OsJE8ZdJIpHHNJxVO4Yv6SC2Ha1paRREjr7FYMOPRcJLCJPMZJrn3UnVQx/HdiwHh8CtAPQRa/MEOkR46ZaOB33gkC4=
+  secret_access_key:
+    secure: WJX0AhNnCd9875Av800H4vqKop2ydF46YpbUW7gSB5MVpOcnpug69WKSylPyvW+1DpS7Nl46DY+eSBUUHRXSTi7qeEq6jzp+IoQI8e8nA0X7l2qcHaZJmdl3xVoSniFERWbWjyTwM1g/0a4v5ztxUQwfaNLThnubOk2/XIEDpoDN+ZjPG+B6s7IaRkRssKKQcE/Ne/o8jwjdyxdeFydBhpsyZsDSx/7tMXGsDsaueb8niL3SuA/Nbb+tiqM1B7F1k1L4mzE2qTjtjDG8fjD2QeZk4KaOnNvlbjadJTHO+zy+EY1YQOdCEyuQq/k2UiPGpxd84jTEAoWexF/skTxEAtkfujJqpkyw2k1qP9fbQPWnX3LsnBssSsifyDCFtx6/Ls3PMEV1jWeSorqFw1W8W60GvZtNrLqrFDbT623LIYG5BbRAU1mB84Du4ZiglHKxngO7tdxAwcfQLiiph1Ng9LkTsw70H+pjaSkGv+MeS/SxkkTgvEq234mtOEX91Iq4m+Sc4a6ya2kAH0J3wBtBLjyNOCIaWjfu9r01tXF+OcXPhG9G11PcQxI9VHyvRS9AVID9525HQERTqozqs7a9ZEdgBB+RePTK9ElfE7l7f24oAE99epbqYljzRTP9fBYkSbmsvS5VnTXxdUIOr482oK+1iZirXB1wS7UqmR1Ogrg=
+  bucket:
+    secure: FRBXnQKkKxa19sOUTCaMUQLRLwjhvVwTZ2+OZJZtHvONMqtBgBdex5jr8y2qjwSaHzAtTAZHiia8MGak2SQiN5oPwmeJtM0QYkd6o46mpv+GE3BL7Wv0TaOJYuK5HeYxHMzTe9TfkEbuAbmzGCHupdmWjyk9Wd9mDu+M2A9sNShff8gd7ysRGQEXQ2EfiTU+y/ewE5jDHeOuh6ZFOU8QFa6w5T42gX1njmGxYflQEGZEzo2X3u00WsoHFCBkEzxFX1szBgrYDQCQ1Gf1zR/tI02QTJ68LJcRL6crO4LP3iaoEML9Y/Gz6pUicqdTcnfFDlnw9wolCbVASVbrYOXT1wM9loJds7/OOc+Tt8poRXoi01sfN7FbEhU5DPmy5DglQOAdEeKca+4BPdWKGltJDgiuadUUy4hQaGB3w1APsU8WINxhIoDIof4fc01XCNp5QXVsnKiRqPylk1BOwthlGLtduYYHAPdcojjTnrQxMmEHKVg6Us2+dhoi0u7vjWqVaAED6Z0BqcT0H10PoHBPaXtzfS5jq09rZ4lqI90lQV/rQgmeK5eqYbgzVcWIwc4qlvt+5kJ/eCYoZtzuWLE2uq6YiNmknsMeNVbiOZ4Vcv5uoa0E7LTyomPwiH4+jtI0qqcYNsrPi9136p0mvYEGHq6L7sCx/ca4wo9DZNJpJpU=
+  region: eu-west-1
+  skip_cleanup: true
+  local_dir: dist
+  on:
+    branch: develop
+after_script:
+- cat ./coverage/*/lcov.info | ./node_modules/coveralls/bin/coveralls.js

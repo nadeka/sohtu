@@ -40,6 +40,7 @@ module.exports = function(config) {
       dir : 'coverage/',
       reporters: [
         { type: 'text-summary' },
+        { type: 'lcov' },
         { type: 'json' },
         { type: 'html' }
       ]

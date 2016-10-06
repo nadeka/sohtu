@@ -25,3 +25,8 @@ Now the app is running on [http://localhost:3000](http://localhost:3000)
 ### Running tests
 
     npm run test
+    
+### Deploying to S3 manually
+
+    npm run build
+    aws s3 cp dist/ s3://<bucket_name> --recursive
