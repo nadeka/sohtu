@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { CampaignMailingList } from './campaign-mailing-list'
 import { MailingListsService } from '../../services/mailing-lists.service';
+import { EnglishConfig } from '../../english.language';
 
 @Component({
     selector: 'campaign-mailing-lists',
@@ -10,6 +11,12 @@ import { MailingListsService } from '../../services/mailing-lists.service';
 })
 
 export class CampaignMailingLists {
+
+    //Variables for static text on the page
+    selectAllButtonLabel = EnglishConfig.SELECT_ALL_BUTTON_LABEL;
+    deselectAllButtonLabel = EnglishConfig.DESELECT_ALL_BUTTON_LABEL;
+    mailingListsHeader = EnglishConfig.MAILING_LISTS_HEADER;
+
     public campaignMailingLists: CampaignMailingList[] = [];
 
     constructor(private mailingListsService: MailingListsService) {}

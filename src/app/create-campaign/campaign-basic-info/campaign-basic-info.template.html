@@ -14,14 +14,14 @@
 <!-- Form for campaign name and subject -->
 <div>
 
-  <label for="new-campaign-name">Campaign Name</label>
+  <label for="new-campaign-name">{{ campaignNameLabel }}</label>
   <div class="form-group">
     <input required type="text" class="form-control" id="new-campaign-name" [(ngModel)]=campaignName>
   </div>
 
   <br>
 
-  <label for="new-campaign-subject">Subject</label>
+  <label for="new-campaign-subject">{{ campaignSubjectLabel }}</label>
   <div class="form-group">
     <input required type="text" class="form-control" id="new-campaign-subject" [(ngModel)]=campaignSubject>
   </div>

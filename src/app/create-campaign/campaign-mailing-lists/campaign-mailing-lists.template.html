@@ -1,9 +1,9 @@
-<h3>Mailing lists</h3>
+<h3>{{ mailingListsHeader }}</h3>
 <br>
 <div class="campaign-mailing-lists-and-select-buttons">
     <div class="select-buttons">
-        <div (click)="selectAll()" class="btn btn-default btn-xs">Select all</div>
-        <div (click)="deselectAll()" class="btn btn-default btn-xs">Deselect all</div>
+        <div (click)="selectAll()" class="btn btn-default btn-xs">{{ selectAllButtonLabel }}</div>
+        <div (click)="deselectAll()" class="btn btn-default btn-xs">{{ deselectAllButtonLabel }}</div>
     </div>
 
     <div class="campaign-mailing-lists list-group">
