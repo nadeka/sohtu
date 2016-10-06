@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
-import { CampaignMailingList } from './campaign-mailing-list'
-import { MailingListsService } from '../../services/mailing-lists.service';
+import { Component, OnInit } from '@angular/core';
+import { CampaignMailingList } from '../../models/campaign-mailing-list.model'
+import { MailingListsService } from '../../services/mailing-lists/mailing-lists.service';
 import { EnglishConfig } from '../../english.language';
 
 @Component({
@@ -10,14 +10,14 @@ import { EnglishConfig } from '../../english.language';
     templateUrl: './campaign-mailing-lists.template.html'
 })
 
-export class CampaignMailingLists {
+export class CampaignMailingLists implements OnInit {
 
     //Variables for static text on the page
     selectAllButtonLabel = EnglishConfig.SELECT_ALL_BUTTON_LABEL;
     deselectAllButtonLabel = EnglishConfig.DESELECT_ALL_BUTTON_LABEL;
     mailingListsHeader = EnglishConfig.MAILING_LISTS_HEADER;
 
-    public campaignMailingLists: CampaignMailingList[] = [];
+    public campaignMailingLists: Array<CampaignMailingList> = [];
 
     constructor(private mailingListsService: MailingListsService) {}
 
@@ -27,29 +27,33 @@ export class CampaignMailingLists {
 
     getCampaignMailingLists(): void {
         this.mailingListsService.getMailingLists()
-            .then(lists =>
-                lists.forEach(list =>
-                    this.campaignMailingLists.push({ list: list, selected: false })));
+            .then(mailingLists =>
+                mailingLists.forEach(mailingList =>
+                    this.campaignMailingLists.push(new CampaignMailingList(mailingList, false))));
+    }
+
+    hasSelected(): boolean {
+        return this.campaignMailingLists.some(campaignMailingList => campaignMailingList.selected);
+    }
+
+    getSelected(): Array<CampaignMailingList> {
+        return this.campaignMailingLists.filter(campaignMailingList => campaignMailingList.selected);
     }
 
     toggleSelection(mailingListId): void {
-        this.campaignMailingLists.forEach(function(list) {
-            if (list.list.id == mailingListId) {
-                list.selected = !list.selected;
+        this.campaignMailingLists.forEach(function(campaignMailingList) {
+            if (campaignMailingList.mailingList.id == mailingListId) {
+                campaignMailingList.selected = !campaignMailingList.selected;
                 return;
             }
         });
     }
 
-    getSelected(): void {
-        this.campaignMailingLists.filter(list => list.selected);
-    }
-
     selectAll(): void {
-        this.campaignMailingLists.forEach(list => list.selected = true);
+        this.campaignMailingLists.forEach(campaignMailingList => campaignMailingList.selected = true);
     }
 
     deselectAll(): void {
-        this.campaignMailingLists.forEach(list => list.selected = false);
+        this.campaignMailingLists.forEach(campaignMailingList => campaignMailingList.selected = false);
     }
 }

@@ -8,9 +8,10 @@
 
     <div class="campaign-mailing-lists list-group">
         <div *ngFor="let campaignMailingList of campaignMailingLists"
-             [class.active]="campaignMailingList.selected" class="campaign-mailing-list list-group-item btn btn-default"
-             (click)="toggleSelection(campaignMailingList.list.id)">
-                {{campaignMailingList.list.name}}
+             [class.active]="campaignMailingList.selected"
+             class="campaign-mailing-list list-group-item btn btn-default"
+             (click)="toggleSelection(campaignMailingList.mailingList.id)">
+                {{campaignMailingList.mailingList.name}}
         </div>
     </div>
 </div>

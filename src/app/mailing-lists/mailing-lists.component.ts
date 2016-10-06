@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { MailingList } from '../models/mailing-list';
-import { MailingListsService } from '../services/mailing-lists.service';
+import { MailingList } from '../models/mailing-list.model';
+import { MailingListsService } from '../services/mailing-lists/mailing-lists.service';
 
 @Component({
   selector: 'mailing-lists',
@@ -10,7 +10,7 @@ import { MailingListsService } from '../services/mailing-lists.service';
   templateUrl: './mailing-lists.template.html'
 })
 export class MailingLists {
-  mailingLists: MailingList[];
+  mailingLists: Array<MailingList> = [];
 
   constructor(private mailingListsService: MailingListsService) {}
 
@@ -19,6 +19,6 @@ export class MailingLists {
   }
 
   getMailingLists(): void {
-    this.mailingListsService.getMailingLists().then(lists => this.mailingLists = lists);
+    this.mailingListsService.getMailingLists().then(mailingLists => this.mailingLists = mailingLists);
   }
 }
