@@ -1,4 +1,4 @@
-# sohtu [![Build Status](https://travis-ci.org/nadeka/sohtu.svg?branch=master)](https://travis-ci.org/nadeka/sohtu) [![Coverage Status](https://coveralls.io/repos/github/nadeka/sohtu/badge.svg)](https://coveralls.io/github/nadeka/sohtu)
+# sohtu [![Build Status](https://travis-ci.org/nadeka/sohtu.svg?branch=develop)](https://travis-ci.org/nadeka/sohtu) [![Coverage Status](https://coveralls.io/repos/github/nadeka/sohtu/badge.svg?branch=develop)](https://coveralls.io/github/nadeka/sohtu?branch=develop)
 
 ### Setup for development
 
