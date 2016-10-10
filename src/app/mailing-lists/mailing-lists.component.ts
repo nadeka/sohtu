@@ -1,13 +1,12 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
 import { MailingList } from '../models/mailing-list.model';
 import { MailingListsService } from '../services/mailing-lists/mailing-lists.service';
 
 @Component({
   selector: 'mailing-lists',
-  styleUrls: [ './mailing-lists.style.css' ],
+  styleUrls: [ 'mailing-lists.style.css' ],
   providers: [MailingListsService],
-  templateUrl: './mailing-lists.template.html'
+  templateUrl: 'mailing-lists.template.html'
 })
 export class MailingLists {
   mailingLists: Array<MailingList> = [];

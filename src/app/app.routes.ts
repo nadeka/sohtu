@@ -1,4 +1,4 @@
-import { RouterConfig } from '@angular/router';
+import { Routes } from '@angular/router';
 import { Dashboard } from './dashboard';
 import { Contacts } from './contacts';
 import { Marketing } from './marketing';
@@ -11,7 +11,7 @@ import { CreateCampaign } from './create-campaign';
 
 import { NoContent } from './no-content';
 
-export const routes: RouterConfig = [
+export const routes: Routes = [
   { path: '',      component: Dashboard },
   { path: 'dashboard',  component: Dashboard },
   { path: 'contacts', component: Contacts },

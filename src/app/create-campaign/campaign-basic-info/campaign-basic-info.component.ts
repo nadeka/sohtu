@@ -4,7 +4,7 @@ import { EnglishConfig } from '../../english.language';
 
 @Component({
   selector: 'campaign-basic-info',
-  templateUrl: './campaign-basic-info.template.html'
+  templateUrl: 'campaign-basic-info.template.html'
 })
 
 export class CampaignBasicInfo {

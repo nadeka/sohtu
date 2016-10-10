@@ -1,5 +1,7 @@
 # sohtu [![Build Status](https://travis-ci.org/nadeka/sohtu.svg?branch=develop)](https://travis-ci.org/nadeka/sohtu) [![Coverage Status](https://coveralls.io/repos/github/nadeka/sohtu/badge.svg?branch=develop)](https://coveralls.io/github/nadeka/sohtu?branch=develop)
 
+[Link to S3](http://ext-dev-marketing-automation.s3-website-eu-west-1.amazonaws.com/)
+
 ### Setup for development
 
 ##### 1. Install Node v6.0.0 (if you don't already have it)

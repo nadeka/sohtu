@@ -5,8 +5,8 @@ import { CampaignMailingLists } from './campaign-mailing-lists';
 
 @Component({
   selector: 'create-campaign',
-  templateUrl: './create-campaign.template.html',
-  directives: [CampaignBasicInfo, CampaignMailingLists]
+  templateUrl: 'create-campaign.template.html',
+  providers: [CampaignBasicInfo, CampaignMailingLists]
 })
 
 export class CreateCampaign {

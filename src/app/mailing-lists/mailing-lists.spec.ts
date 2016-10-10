@@ -1,10 +1,8 @@
 import {
-    beforeEachProviders,
-    describe,
-    inject,
-    it
+    TestBed,
+    async
 }
-    from '@angular/core/testing';
+from '@angular/core/testing';
 
 import { MailingLists } from './mailing-lists.component.ts';
 import { MailingListsService } from '../services/mailing-lists/mailing-lists.service'
@@ -12,32 +10,36 @@ import { MailingList } from '../models/mailing-list.model'
 import { MockMailingListsService } from '../services/mailing-lists/mock-mailing-lists.service'
 
 describe('Component: MailingLists', () => {
-    beforeEachProviders(() => [
-        {
-            provide: MailingListsService,
-            useClass: MockMailingListsService
-        },
-        MailingLists
-    ]);
 
-    it('should be defined in the beginning', inject([ MailingLists, MailingListsService ],
-        (component: MailingLists) => {
-            expect(component).toBeDefined();
-        }));
+    let fixture: any;
+    let component: any;
 
-    it('should have a defined and empty array in the beginning', inject([ MailingLists, MailingListsService ],
-        (component: MailingLists) => {
-            expect(component.mailingLists).toBeDefined();
-            expect(component.mailingLists.length).toBe(0);
-        }));
+    beforeEach(async(() => {
+        TestBed.configureTestingModule({
+            declarations: [
+                MailingLists
+            ],
+            imports: [],
+            providers: [
+                {
+                    provide: MailingListsService,
+                    useClass: MockMailingListsService
+                }
+            ]
+        }).compileComponents().then(function(arr) {
+            fixture = TestBed.createComponent(MailingLists);
+            component = fixture.componentInstance;
 
-    it('should have 3 valid mailing lists after initialization', inject([ MailingLists, MailingListsService ],
-        (component: MailingLists) => {
-            component.ngOnInit();
-            expect(component.mailingLists.length).toBe(3);
-            component.mailingLists
-                .forEach(mailingList => validateMailingList(mailingList))
-        }));
+            // Detect changes to wire up the `fixture.nativeElement` as necessary:
+            fixture.detectChanges();
+        });
+    }));
+
+    it('should have 3 valid mailing lists in the beginning', () => {
+        expect(component.mailingLists.length).toBe(3);
+        component.mailingLists
+            .forEach(mailingList => validateMailingList(mailingList))
+    });
 });
 
 function validateMailingList(mailingList: MailingList) {

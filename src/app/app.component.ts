@@ -1,9 +1,4 @@
 import { Component, ViewEncapsulation } from '@angular/core';
-
-
-import 'jquery';
-import 'bootstrap';
-
 /*
  * App Component
  * Top Level Component
@@ -11,10 +6,8 @@ import 'bootstrap';
 @Component({
   selector: 'app',
   encapsulation: ViewEncapsulation.None,
-  styles: [
-    require('./app.style.less').toString()
-  ],
-  templateUrl: './app.mainComponent.html'
+  styles: [ 'app.style.css' ],
+  templateUrl: 'app.component.html'
 })
 
 export class App {
