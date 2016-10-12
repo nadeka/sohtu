@@ -7,6 +7,7 @@ import { Component, ViewEncapsulation } from '@angular/core';
   selector: 'app',
   encapsulation: ViewEncapsulation.None,
   styles: [ 'app.style.css' ],
+
   templateUrl: 'app.component.html'
 })
 
