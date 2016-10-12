@@ -5,6 +5,8 @@ import { RouterModule }   from '@angular/router';
 import { HttpModule } from '@angular/http';
 import { removeNgStyles, createNewHosts, createInputTransfer } from '@angularclass/hmr';
 
+import { DropdownModule } from 'ng2-bootstrap/ng2-bootstrap';
+
 import { routes }   from './app.routes';
 
 import { APP_RESOLVER_PROVIDERS } from './app.resolver';
@@ -48,7 +50,8 @@ type StoreType = {
         BrowserModule,
         HttpModule,
         RouterModule.forRoot(routes, { useHash: true }),
-        FormsModule
+        FormsModule,
+        DropdownModule
     ],
     declarations: [
         App,

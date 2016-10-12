@@ -12,7 +12,13 @@ import { Component, ViewEncapsulation } from '@angular/core';
 })
 
 export class App {
+public status:{isopen:boolean} = {isopen: false};
   name = 'Sohtu';
 
   constructor(){}
+  public toggleDropdown($event:MouseEvent):void {
+  $event.preventDefault();
+  $event.stopPropagation();
+  this.status.isopen = !this.status.isopen;
+}
 }
