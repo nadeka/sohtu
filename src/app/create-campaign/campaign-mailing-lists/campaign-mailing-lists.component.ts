@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CampaignMailingList } from '../../models/campaign-mailing-list.model'
+import { CampaignMailingList } from '../../models/campaign-mailing-list.model';
 import { MailingListsService } from '../../services/mailing-lists/mailing-lists.service';
 import { EnglishConfig } from '../../english.language';
 
@@ -11,7 +11,7 @@ import { EnglishConfig } from '../../english.language';
 
 export class CampaignMailingLists implements OnInit {
 
-    //Variables for static text on the page
+    // Variables for static text on the page
     selectAllButtonLabel = EnglishConfig.SELECT_ALL_BUTTON_LABEL;
     deselectAllButtonLabel = EnglishConfig.DESELECT_ALL_BUTTON_LABEL;
     mailingListsHeader = EnglishConfig.MAILING_LISTS_HEADER;
@@ -36,12 +36,13 @@ export class CampaignMailingLists implements OnInit {
     }
 
     getSelected(): Array<CampaignMailingList> {
-        return this.campaignMailingLists.filter(campaignMailingList => campaignMailingList.selected);
+        return this.campaignMailingLists.filter(campaignMailingList =>
+                                          campaignMailingList.selected);
     }
 
     toggleSelection(mailingListId): void {
         this.campaignMailingLists.forEach(function(campaignMailingList) {
-            if (campaignMailingList.mailingList.id == mailingListId) {
+            if (campaignMailingList.mailingList.id === mailingListId) {
                 campaignMailingList.selected = !campaignMailingList.selected;
                 return;
             }
@@ -49,10 +50,12 @@ export class CampaignMailingLists implements OnInit {
     }
 
     selectAll(): void {
-        this.campaignMailingLists.forEach(campaignMailingList => campaignMailingList.selected = true);
+        this.campaignMailingLists.forEach(campaignMailingList =>
+                                          campaignMailingList.selected = true);
     }
 
     deselectAll(): void {
-        this.campaignMailingLists.forEach(campaignMailingList => campaignMailingList.selected = false);
+        this.campaignMailingLists.forEach(campaignMailingList =>
+                                          campaignMailingList.selected = false);
     }
 }

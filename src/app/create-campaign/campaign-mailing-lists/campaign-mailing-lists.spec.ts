@@ -5,9 +5,9 @@ import {
 from '@angular/core/testing';
 
 import { CampaignMailingLists } from './campaign-mailing-lists.component.ts';
-import { MailingListsService } from '../../services/mailing-lists/mailing-lists.service'
-import { CampaignMailingList } from '../../models/campaign-mailing-list.model'
-import { MockMailingListsService } from '../../services/mailing-lists/mock-mailing-lists.service'
+import { MailingListsService } from '../../services/mailing-lists/mailing-lists.service';
+import { CampaignMailingList } from '../../models/campaign-mailing-list.model';
+import { MockMailingListsService } from '../../services/mailing-lists/mock-mailing-lists.service';
 
 describe('Component: CampaignMailingLists', () => {
     let fixture: any;
@@ -37,7 +37,7 @@ describe('Component: CampaignMailingLists', () => {
     it('should have 3 unselected and valid mailing lists in the beginning', () => {
         expect(component.campaignMailingLists.length).toBe(3);
         component.campaignMailingLists
-            .forEach(campaignMailingList => validateCampaignMailingList(campaignMailingList))
+            .forEach(campaignMailingList => validateCampaignMailingList(campaignMailingList));
     });
 
     it('toggleSelection should toggle mailing list selection', () => {

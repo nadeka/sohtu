@@ -9,7 +9,7 @@ import { EnglishConfig } from '../../english.language';
 
 export class CampaignBasicInfo {
 
-  //Variables for static text on the page
+  // Variables for static text on the page
   campaignNameLabel = EnglishConfig.CAMPAIGN_NAME_LABEL;
   campaignSubjectLabel = EnglishConfig.CAMPAIGN_SUBJECT_LABEL;
 

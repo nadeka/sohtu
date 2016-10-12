@@ -18,6 +18,7 @@ export class MailingLists {
   }
 
   getMailingLists(): void {
-    this.mailingListsService.getMailingLists().then(mailingLists => this.mailingLists = mailingLists);
+    this.mailingListsService.getMailingLists().then(mailingLists =>
+                              this.mailingLists = mailingLists);
   }
 }

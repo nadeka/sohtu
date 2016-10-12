@@ -8,7 +8,7 @@ describe('Service: MailingListsService', () => {
 
     it('should return 3 mailing lists', function() {
         this.mailingListsService.getMailingLists()
-            .then(mailingLists => validateMailingLists(mailingLists))
+            .then(mailingLists => validateMailingLists(mailingLists));
     });
 });
 
