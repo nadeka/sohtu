@@ -25,9 +25,10 @@ import { MailingLists } from './mailing-lists/mailing-lists.component';
 import { Templates } from './templates/templates.component';
 import { SocialMedia } from './social-media/social-media.component';
 import { Reports } from './reports/reports.component';
-import { CreateCampaign } from './create-campaign/create-campaign.component';
-import { CampaignBasicInfo } from './create-campaign/campaign-basic-info/campaign-basic-info.component';
-import { CampaignMailingLists } from './create-campaign/campaign-mailing-lists/campaign-mailing-lists.component';
+import { CampaignSettings } from './create-campaign/campaign-settings/campaign-settings.component';
+import { CampaignBasicInfo } from './create-campaign/campaign-settings/campaign-basic-info/campaign-basic-info.component';
+import { CampaignMailingLists } from './create-campaign/campaign-settings/campaign-mailing-lists/campaign-mailing-lists.component';
+import { CampaignSchedule } from './create-campaign/campaign-schedule/campaign-schedule.component';
 import { NoContent } from './no-content/no-content';
 
 // Services
@@ -63,9 +64,10 @@ type StoreType = {
         Templates,
         SocialMedia,
         Reports,
-        CreateCampaign,
+        CampaignSettings,
         CampaignBasicInfo,
         CampaignMailingLists,
+        CampaignSchedule,
         NoContent
     ],
     providers: [ // expose our Services and Providers into Angular's dependency injection
