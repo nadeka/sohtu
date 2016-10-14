@@ -7,7 +7,8 @@ from '@angular/core/testing';
 import { CampaignMailingLists } from './campaign-mailing-lists.component.ts';
 import { MailingListsService } from '../../../services/mailing-lists/mailing-lists.service';
 import { CampaignMailingList } from '../../../models/campaign-mailing-list.model';
-import { MockMailingListsService } from '../../../services/mailing-lists/mock-mailing-lists.service';
+import { MockMailingListsService }
+    from '../../../services/mailing-lists/mock-mailing-lists.service';
 
 describe('Component: CampaignMailingLists', () => {
     let fixture: any;

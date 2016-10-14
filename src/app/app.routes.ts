@@ -9,6 +9,7 @@ import { SocialMedia } from './social-media';
 import { Reports } from './reports';
 import { CampaignSettings } from './create-campaign/campaign-settings';
 import { CampaignSchedule } from './create-campaign/campaign-schedule';
+import { CampaignTemplates } from './create-campaign/campaign-templates';
 
 import { NoContent } from './no-content';
 
@@ -26,6 +27,10 @@ export const routes: Routes = [
           {
             path: '',
             component: CampaignSettings
+          },
+          {
+            path: 'template',
+            component: CampaignTemplates
           },
           {
             path: 'schedule',
