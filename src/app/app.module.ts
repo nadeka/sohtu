@@ -6,6 +6,8 @@ import { HttpModule } from '@angular/http';
 import { removeNgStyles, createNewHosts, createInputTransfer } from '@angularclass/hmr';
 
 import { DropdownModule } from 'ng2-bootstrap/ng2-bootstrap';
+import { DatepickerModule } from 'ng2-bootstrap/ng2-bootstrap';
+import { TimepickerModule } from 'ng2-bootstrap/ng2-bootstrap';
 
 import { routes }   from './app.routes';
 
@@ -33,7 +35,7 @@ import { CampaignTemplatesList } from './create-campaign/campaign-templates/camp
 import { CampaignSchedule } from './create-campaign/campaign-schedule/campaign-schedule.component';
 import { NoContent } from './no-content/no-content';
 import { HTML2CanvasService } from './services/html2canvas/html2canvas.service';
-
+import { DateTimePicker} from './create-campaign/campaign-schedule/date-time-picker/date-time-picker.component';
 // Services
 import { MailingListsService } from './services/mailing-lists/mailing-lists.service';
 import { TemplatesService } from './services/templates/templates.service';
@@ -56,7 +58,9 @@ type StoreType = {
         HttpModule,
         RouterModule.forRoot(routes, { useHash: true }),
         FormsModule,
-        DropdownModule
+        DropdownModule,
+        TimepickerModule,
+        DatepickerModule
     ],
     declarations: [
         App,
@@ -74,7 +78,8 @@ type StoreType = {
         CampaignTemplates,
         CampaignTemplatesList,
         CampaignSchedule,
-        NoContent
+        NoContent,
+        DateTimePicker
     ],
     providers: [ // expose our Services and Providers into Angular's dependency injection
         ENV_PROVIDERS,

@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
-import * as moment from 'moment';
+import { DateTimePicker } from './date-time-picker/date-time-picker.component'
 
 @Component({
   selector: 'campaign-schedule',
-  styleUrls: [ 'campaign-schedule.style.css' ],
-  templateUrl: 'campaign-schedule.template.html'
+  templateUrl: 'campaign-schedule.template.html',
+  providers: [DateTimePicker]
 })
 
 export class CampaignSchedule {
-  
+  schedule: Date = new Date();
 }
