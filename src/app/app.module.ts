@@ -8,6 +8,7 @@ import { removeNgStyles, createNewHosts, createInputTransfer } from '@angularcla
 import { DropdownModule } from 'ng2-bootstrap/ng2-bootstrap';
 import { DatepickerModule } from 'ng2-bootstrap/ng2-bootstrap';
 import { TimepickerModule } from 'ng2-bootstrap/ng2-bootstrap';
+import { ButtonsModule } from 'ng2-bootstrap/components/buttons';
 
 import { routes }   from './app.routes';
 
@@ -60,7 +61,8 @@ type StoreType = {
         FormsModule,
         DropdownModule,
         TimepickerModule,
-        DatepickerModule
+        DatepickerModule,
+        ButtonsModule
     ],
     declarations: [
         App,

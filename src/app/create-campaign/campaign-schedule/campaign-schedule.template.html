@@ -1,2 +1,8 @@
-<date-time-picker [(ngModel)]="schedule" ngDefaultControl>Loading...</date-time-picker>
-<p>{{schedule}}</p>
+<h1>Campaign Schedule</h1>
+<div class="btn-group">
+  <label class="btn btn-primary" [(ngModel)]="scheduling" btnRadio="sendNow">Send Now</label>
+  <label class="btn btn-primary" [(ngModel)]="scheduling" btnRadio="schedule">Schedule</label>
+</div>
+<p *ngIf="scheduling == 'schedule'">Campaign will be sent on {{schedule}}</p>
+
+<date-time-picker *ngIf="scheduling == 'schedule'" [(ngModel)]="schedule" ngDefaultControl>Loading...</date-time-picker>

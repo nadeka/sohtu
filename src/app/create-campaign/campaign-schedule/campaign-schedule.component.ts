@@ -8,5 +8,12 @@ import { DateTimePicker } from './date-time-picker/date-time-picker.component'
 })
 
 export class CampaignSchedule {
-  schedule: Date = new Date();
+  schedule: Date;
+  scheduling: string;
+
+  constructor() {
+    this.schedule = new Date();
+    this.scheduling = "sendNow";
+  }
+
 }
