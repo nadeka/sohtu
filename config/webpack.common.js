@@ -91,6 +91,7 @@ module.exports = function(options) {
      * See: http://webpack.github.io/docs/configuration.html#module
      */
     module: {
+      noParse: /node_modules\/html2canvas/,
 
       /*
        * An array of applied pre and post loaders.
@@ -300,7 +301,7 @@ module.exports = function(options) {
       new HtmlElementsPlugin({
         headTags: require('./head-config.common')
       }),
-      new webpack.ProvidePlugin({
+      new ProvidePlugin({
         jQuery: 'jquery',
         $: 'jquery',
         jquery: 'jquery'

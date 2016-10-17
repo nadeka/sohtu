@@ -7,7 +7,9 @@ import { MailingLists } from './mailing-lists';
 import { Templates } from './templates';
 import { SocialMedia } from './social-media';
 import { Reports } from './reports';
-import { CreateCampaign } from './create-campaign';
+import { CampaignSettings } from './create-campaign/campaign-settings';
+import { CampaignSchedule } from './create-campaign/campaign-schedule';
+import { CampaignTemplates } from './create-campaign/campaign-templates';
 
 import { NoContent } from './no-content';
 
@@ -20,7 +22,22 @@ export const routes: Routes = [
       { path: '', component: Marketing },
       { path: 'campaigns', component: Campaigns },
       { path: 'mailing-lists', component: MailingLists },
-      { path: 'create-campaign', component: CreateCampaign },
+      { path: 'create-campaign',
+        children: [
+          {
+            path: '',
+            component: CampaignSettings
+          },
+          {
+            path: 'template',
+            component: CampaignTemplates
+          },
+          {
+            path: 'schedule',
+            component: CampaignSchedule
+          }
+        ]
+      },
       { path: 'templates', component: Templates }
     ]
   },

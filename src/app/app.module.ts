@@ -6,6 +6,9 @@ import { HttpModule } from '@angular/http';
 import { removeNgStyles, createNewHosts, createInputTransfer } from '@angularclass/hmr';
 
 import { DropdownModule } from 'ng2-bootstrap/ng2-bootstrap';
+import { DatepickerModule } from 'ng2-bootstrap/ng2-bootstrap';
+import { TimepickerModule } from 'ng2-bootstrap/ng2-bootstrap';
+import { ButtonsModule } from 'ng2-bootstrap/components/buttons';
 
 import { routes }   from './app.routes';
 
@@ -25,13 +28,18 @@ import { MailingLists } from './mailing-lists/mailing-lists.component';
 import { Templates } from './templates/templates.component';
 import { SocialMedia } from './social-media/social-media.component';
 import { Reports } from './reports/reports.component';
-import { CreateCampaign } from './create-campaign/create-campaign.component';
-import { CampaignBasicInfo } from './create-campaign/campaign-basic-info/campaign-basic-info.component';
-import { CampaignMailingLists } from './create-campaign/campaign-mailing-lists/campaign-mailing-lists.component';
+import { CampaignSettings } from './create-campaign/campaign-settings/campaign-settings.component';
+import { CampaignBasicInfo } from './create-campaign/campaign-settings/campaign-basic-info/campaign-basic-info.component';
+import { CampaignMailingLists } from './create-campaign/campaign-settings/campaign-mailing-lists/campaign-mailing-lists.component';
+import { CampaignTemplates } from './create-campaign/campaign-templates/campaign-templates.component';
+import { CampaignTemplatesList } from './create-campaign/campaign-templates/campaign-templates-list/campaign-templates-list.component';
+import { CampaignSchedule } from './create-campaign/campaign-schedule/campaign-schedule.component';
 import { NoContent } from './no-content/no-content';
-
+import { HTML2CanvasService } from './services/html2canvas/html2canvas.service';
+import { DateTimePicker} from './create-campaign/campaign-schedule/date-time-picker/date-time-picker.component';
 // Services
 import { MailingListsService } from './services/mailing-lists/mailing-lists.service';
+import { TemplatesService } from './services/templates/templates.service';
 
 // Application wide providers
 const APP_PROVIDERS = [
@@ -51,7 +59,10 @@ type StoreType = {
         HttpModule,
         RouterModule.forRoot(routes, { useHash: true }),
         FormsModule,
-        DropdownModule
+        DropdownModule,
+        TimepickerModule,
+        DatepickerModule,
+        ButtonsModule
     ],
     declarations: [
         App,
@@ -63,15 +74,21 @@ type StoreType = {
         Templates,
         SocialMedia,
         Reports,
-        CreateCampaign,
+        CampaignSettings,
         CampaignBasicInfo,
         CampaignMailingLists,
-        NoContent
+        CampaignTemplates,
+        CampaignTemplatesList,
+        CampaignSchedule,
+        NoContent,
+        DateTimePicker
     ],
     providers: [ // expose our Services and Providers into Angular's dependency injection
         ENV_PROVIDERS,
         APP_PROVIDERS,
-        MailingListsService
+        MailingListsService,
+        TemplatesService,
+        HTML2CanvasService
     ],
     bootstrap: [ App ]
 })
