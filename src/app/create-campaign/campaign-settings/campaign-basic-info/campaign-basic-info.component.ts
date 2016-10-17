@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { EnglishConfig } from '../../english.language';
+import { EnglishConfig } from '../../../english.language';
 
 
 @Component({
