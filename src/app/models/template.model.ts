@@ -10,4 +10,5 @@ export class Template {
         this.content = content;
         this.thumbnailImage = thumbnailImage;
     }
+
 }

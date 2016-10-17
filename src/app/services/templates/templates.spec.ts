@@ -6,12 +6,12 @@ describe('Service: TemplatesService', () => {
         this.templatesService = new TemplatesService();
     });
 
-    it('should return 8 templates', function() {
+    it('should return 9 templates', function() {
         this.templatesService.getTemplates()
             .then(templates => validateTemplates(templates));
     });
 });
 
 function validateTemplates(templates) {
-    expect(templates.length).toBe(8);
+    expect(templates.length).toBe(9);
 }

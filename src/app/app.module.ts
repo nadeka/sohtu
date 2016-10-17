@@ -33,6 +33,7 @@ import { CampaignBasicInfo } from './create-campaign/campaign-settings/campaign-
 import { CampaignMailingLists } from './create-campaign/campaign-settings/campaign-mailing-lists/campaign-mailing-lists.component';
 import { CampaignTemplates } from './create-campaign/campaign-templates/campaign-templates.component';
 import { CampaignTemplatesList } from './create-campaign/campaign-templates/campaign-templates-list/campaign-templates-list.component';
+import { CampaignChosenTemplate } from './create-campaign/campaign-templates/campaign-chosen-template/campaign-chosen-template.component';
 import { CampaignSchedule } from './create-campaign/campaign-schedule/campaign-schedule.component';
 import { NoContent } from './no-content/no-content';
 import { HTML2CanvasService } from './services/html2canvas/html2canvas.service';
@@ -77,6 +78,7 @@ type StoreType = {
         CampaignSettings,
         CampaignBasicInfo,
         CampaignMailingLists,
+        CampaignChosenTemplate,
         CampaignTemplates,
         CampaignTemplatesList,
         CampaignSchedule,

@@ -42,13 +42,16 @@ describe('Component: CampaignTemplatesList', () => {
         });
     }));
 
-    it('should have 8 unselected and valid templates in the beginning', () => {
-        expect(component.campaignTemplates.length).toBe(8);
+    it('should have 9 unselected and valid templates in the beginning', () => {
+        expect(component.campaignTemplates.length).toBe(9);
         component.campaignTemplates
             .forEach(campaignTemplate => validateCampaignTemplate(campaignTemplate));
     });
 
+
+    // TÄTÄ TESTIÄ EN SAA LÄPI
     it('setSelected should set template with given id as selected', () => {
+
         component.setSelected(1);
 
         component.campaignTemplates

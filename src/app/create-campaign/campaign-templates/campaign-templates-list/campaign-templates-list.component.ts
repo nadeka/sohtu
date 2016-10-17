@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { CampaignTemplate } from '../../../models/campaign-template.model';
 import { TemplatesService } from '../../../services/templates/templates.service';
 import { HTML2CanvasService } from '../../../services/html2canvas/html2canvas.service';
@@ -12,6 +12,9 @@ import { Template } from '../../../models/template.model';
 })
 
 export class CampaignTemplatesList implements OnInit {
+
+    // Notification to parent that a template has been chosen
+    @Output() notify = new EventEmitter();
 
     campaignTemplatesHeader = EnglishConfig.CAMPAIGN_TEMPLATES_HEADER;
     public campaignTemplates: Array<CampaignTemplate> = [];
@@ -52,10 +55,12 @@ export class CampaignTemplatesList implements OnInit {
         this.campaignTemplates.forEach(function (campaignTemplate) {
             if (campaignTemplate.template.id === templateId) {
                 campaignTemplate.selected = true;
+
             } else {
                 campaignTemplate.selected = false;
             }
         });
+        this.notify.emit(this.getSelected());
     }
 
     scrollLeft(amount: number): void {
