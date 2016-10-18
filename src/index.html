@@ -39,24 +39,7 @@
   <!-- Webpack Dev Server reload -->
   <script src="/webpack-dev-server.js"></script>
   <% } %>
-  <script>
-      tinymce.init({
-    selector: 'div.tinymce',
-    theme: 'inlite',
-    plugins: 'image table link paste contextmenu textpattern autolink',
-    init_instance_callback : function(editor) {
-  console.debug(tinyMCE.activeEditor.getContent());
-    },
-    insert_toolbar: '',
-    selection_toolbar: 'bold italic | quicklink | h1 | alignleft aligncenter alignright alignjustify',
-    inline: true,
-    paste_data_images: true,
-    content_css: [
-      '//fonts.googleapis.com/css?family=Lato:300,300i,400,400i',
-      '//www.tinymce.com/css/codepen.min.css'
-    ]
-    });
-  </script>
+
 
 </body>
 </html>
