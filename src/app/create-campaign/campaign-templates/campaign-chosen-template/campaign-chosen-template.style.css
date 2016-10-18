@@ -11,4 +11,5 @@ a[href] {
   border-style: solid;
   border-width: 2px;
   border-color: gray;
+  padding-top: 1em;
 }
