@@ -1,0 +1,17 @@
+<h3>Campaign Overview</h3>
+<br>
+<div class="basic-information">
+	<label for="campaign-name">Campaign name</label>
+	{{campaignName}}
+	<br>
+	<label for="campaign-subject">Campaign subject</label>
+	{{campaignSubject}}
+</div>
+<br>
+<div class="selected-mailing-lists">
+	<b>Listat</b>
+	<div *ngFor="let campaignMailingList of campaignMailingLists"
+             [class.active]="campaignMailingList.selected">
+                {{campaignMailingList.mailingList.name}}
+    </div>
+</div>

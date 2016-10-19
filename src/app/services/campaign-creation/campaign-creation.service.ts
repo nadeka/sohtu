@@ -28,10 +28,7 @@ export class CampaignCreationService {
   }
 
   public setMailingLists(mailingLists: Array<MailingList>) {
-    console.log('Editing');
-    console.log(mailingLists);
     this.campaign.mailingLists = mailingLists;
-    console.log(this.campaign.mailingLists);
   };
 
   public getMailingLists() {
@@ -45,6 +42,18 @@ export class CampaignCreationService {
   public getName() {
     return this.campaign.name;
   };
+
+  public getSubject() {
+    return this.campaign.subject;
+  }
+
+  public setSubject(subject: string) {
+    this.campaign.subject = subject;
+  }
+
+  public getCampaign() {
+    return this.campaign;
+  }
 
   public getInitialStep() {
     this.router.navigate([this.baseRoute + '/' + this.steps[0]]);

@@ -35,6 +35,7 @@ import { CampaignTemplates } from './create-campaign/campaign-templates/campaign
 import { CampaignTemplatesList } from './create-campaign/campaign-templates/campaign-templates-list/campaign-templates-list.component';
 import { CampaignChosenTemplate } from './create-campaign/campaign-templates/campaign-chosen-template/campaign-chosen-template.component';
 import { CampaignSchedule } from './create-campaign/campaign-schedule/campaign-schedule.component';
+import { CampaignConfirmation } from './create-campaign/campaign-confirmation/campaign-confirmation.component';
 import { NoContent } from './no-content/no-content';
 import { HTML2CanvasService } from './services/html2canvas/html2canvas.service';
 import { DateTimePicker} from './create-campaign/campaign-schedule/date-time-picker/date-time-picker.component';
@@ -83,6 +84,7 @@ type StoreType = {
         CampaignTemplates,
         CampaignTemplatesList,
         CampaignSchedule,
+        CampaignConfirmation,
         NoContent,
         DateTimePicker
     ],
