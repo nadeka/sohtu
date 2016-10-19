@@ -11,8 +11,8 @@ import { CampaignTemplate } from '../../../models/campaign-template.model';
 export class CampaignChosenTemplate {
   templateContent = '';
   templateTemp;
-  constructor(private templatesService: TemplatesService) {}
 
+  constructor(private templatesService: TemplatesService) {}
 
   updateTemplate() {
     this.templateContent=this.templatesService.getSelectedTemplate().template.content;
@@ -21,5 +21,20 @@ export class CampaignChosenTemplate {
 
   ngOnInit() {
     console.log('CampaignChosenTemplate component created');
+
+    // Text editor for editing emails
+    tinymce.init({
+      selector: 'div.tinymce',
+      theme: 'inlite',
+      plugins: '',
+      insert_toolbar: '',
+      selection_toolbar: 'bold italic | quicklink | h1 h2 | alignleft aligncenter alignright alignjustify',
+      inline: true,
+      paste_data_images: true,
+      content_css: [
+        '//fonts.googleapis.com/css?family=Lato:300,300i,400,400i',
+        '//www.tinymce.com/css/codepen.min.css'
+      ]
+    });
   }
 }
