@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { CampaignMailingList } from '../../../models/campaign-mailing-list.model';
 import { MailingListsService } from '../../../services/mailing-lists/mailing-lists.service';
 import { EnglishConfig } from '../../../english.language';

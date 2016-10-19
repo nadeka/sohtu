@@ -58,6 +58,8 @@ export class DateTimePicker implements ControlValueAccessor {
     }
     if (obj && obj instanceof Date) {
       this.internalDateTime = obj;
+      this.time = obj;
+      this.date = obj;
       return;
     }
     this.internalDateTime = obj ? new Date(obj) : void 0;

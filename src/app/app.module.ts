@@ -41,6 +41,7 @@ import { DateTimePicker} from './create-campaign/campaign-schedule/date-time-pic
 // Services
 import { MailingListsService } from './services/mailing-lists/mailing-lists.service';
 import { TemplatesService } from './services/templates/templates.service';
+import { CampaignCreationService } from './services/campaign-creation/campaign-creation.service';
 
 // Application wide providers
 const APP_PROVIDERS = [
@@ -90,7 +91,8 @@ type StoreType = {
         APP_PROVIDERS,
         MailingListsService,
         TemplatesService,
-        HTML2CanvasService
+        HTML2CanvasService,
+        CampaignCreationService,
     ],
     bootstrap: [ App ]
 })

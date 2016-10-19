@@ -1,8 +1,20 @@
-<h1>Campaign Schedule</h1>
-<div class="btn-group">
-  <label class="btn btn-primary" [(ngModel)]="scheduling" btnRadio="sendNow">Send Now</label>
-  <label class="btn btn-primary" [(ngModel)]="scheduling" btnRadio="schedule">Schedule</label>
+<div class="container col-md-2 col-md-offset-5">
+  <br>
+  <button type="button" (click)="goToStep('template')" class="btn btn-primary">
+    Previous
+  </button>
+  <button type="button" style="float: right;" (click)="goToStep('confirmation')" class="btn btn-primary">
+    Next
+  </button>
 </div>
-<p *ngIf="scheduling == 'schedule'">Campaign will be sent on {{schedule}}</p>
-
-<date-time-picker *ngIf="scheduling == 'schedule'" [(ngModel)]="schedule" ngDefaultControl>Loading...</date-time-picker>
+<div class="container col-md-8 col-md-offset-2">
+  <h3>Campaign Schedule</h3>
+  <div class="btn-group">
+    <label class="btn btn-primary" [(ngModel)]="scheduling" btnRadio="sendNow">Send Now</label>
+    <label class="btn btn-primary" [(ngModel)]="scheduling" btnRadio="schedule">Schedule</label>
+  </div>
+  <div *ngIf="scheduling=='schedule'">
+    <p *ngIf="scheduling == 'schedule'">Campaign will be sent on {{schedule}}</p>
+    <date-time-picker *ngIf="scheduling == 'schedule'" [(ngModel)]="schedule" ngDefaultControl>Loading...</date-time-picker>
+  </div>
+</div>

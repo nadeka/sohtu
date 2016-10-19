@@ -13,10 +13,10 @@ export class CampaignBasicInfo {
   campaignNameLabel = EnglishConfig.CAMPAIGN_NAME_LABEL;
   campaignSubjectLabel = EnglishConfig.CAMPAIGN_SUBJECT_LABEL;
 
-  public campaignName;
-  public campaignSubject;
+  public campaignName: string;
+  public campaignSubject: string;
 
   constructor() {
-  //
+    
   }
 }
