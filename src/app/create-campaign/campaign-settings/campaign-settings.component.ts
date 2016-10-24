@@ -6,12 +6,13 @@ import { CampaignCreationService } from '../../services/campaign-creation/campai
 @Component({
   selector: 'campaign-settings',
   templateUrl: 'campaign-settings.template.html',
+  styleUrls: [ 'campaign-settings.style.css' ],
   providers: [ CampaignMailingLists, CampaignBasicInfo ]
 })
 
 export class CampaignSettings {
 
-  
+
 
   constructor(private campaignCreationService: CampaignCreationService) {
   }
@@ -19,7 +20,7 @@ export class CampaignSettings {
   @ViewChild('basicInfo') campaignBasicInfo: CampaignBasicInfo
   @ViewChild('mailingLists') campaignMailingLists: CampaignMailingLists
 
-  
+
   goToStep(step) {
     //save to service
     this.campaignCreationService.setName(this.campaignBasicInfo.getName());
