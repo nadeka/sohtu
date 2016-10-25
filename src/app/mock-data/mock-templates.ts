@@ -113,20 +113,9 @@ export const TEMPLATES: Template[] = [
         '<p>I am template 8</p>' +
         '</body>', ''),
     new Template(9, 'Template 9',
-        '<!DOCTYPE html>' +
-        '<html lang="">' +
-        '<head>' +
-            '<meta charset="utf-8">' +
-            '<style>' +
-                'h1 {color: red;}' +
-                'p {color: blue;}' +
-            '</style>' +
-        '</head>' +
-        '<body>' +
-            '<h1>Hello!</h1>' +
-            '<p>I am template 9. sfsdfsdfsd' +
+            '<h1 style="color: red;">Hello!</h1>' +
+            '<p style="color: blue;">I am template 9. sfsdfsdfsd' +
         'dfgdferhdfdrter' +
-        'asdadasdasdsd</p>' +
-        '</body>', ''),
+        'asdadasdasdsd</p>', ''),
 
 ];

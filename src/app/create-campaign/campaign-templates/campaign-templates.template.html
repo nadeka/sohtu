@@ -1,17 +1,19 @@
-<div class="container col-md-2 col-md-offset-5">
+<div class="container col-md-8 col-md-offset-2">
   <br>
-  <button type="button" (click)="goToStep('')" class="btn btn-primary">
-    Previous
-  </button>
-  <button type="button" (click)="goToStep('schedule')" class="btn btn-primary">
-    Next
-  </button>
+    <div>
+      <a style="float:left; display:inline;" (click)="goToStep('')" class="navigation-btn">
+        Previous
+      </a>
+      <a style="float:right; display:inline;" (click)="goToStep('schedule')" class="navigation-btn">
+        Next
+      </a>
+    </div>
 </div>
 <div class="container">
     <form>
         <div class="row">
             <br>
-            <div class="col-md-8 col-md-offset-2">
+            <div class="col-md-8 col-md-offset-2 box">
                 <campaign-templates-list (notify)='templateChanged($event)'>Loading template list...</campaign-templates-list>
             </div>
         </div>

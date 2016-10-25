@@ -25,7 +25,7 @@ export class CampaignTemplates {
 
     templateChanged(c: CampaignTemplate):void {
         this.templatesService.setUserSelectedTemplate(c);
-        this.campaignChosenTemplate.updateTemplate();
+        //this.campaignChosenTemplate.updateTemplate();
     }
 
     goToStep(step: string) {
