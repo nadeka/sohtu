@@ -18,12 +18,14 @@ export class CampaignConfirmation {
 	private campaignName: string;
 	private campaignSubject: string;
 	private campaignMailingLists;
+	private campaignSchedule;
 
 	constructor (private campaignCreationService: CampaignCreationService){
 		this.campaign = campaignCreationService.getCampaign();
 		this.campaignName = this.campaign.name;
 		this.campaignSubject = this.campaign.subject;
 		this.campaignMailingLists = this.campaign.mailingLists;
+		this.campaignSchedule = this.campaign.schedule;
 	}
 
 	ngOnInit() {
