@@ -24,15 +24,21 @@ export class DateTimePicker implements ControlValueAccessor {
   private onTouchedCallback: () => void = noop;
   private onChangeCallback: (_: any) => void = noop;
 
+  constructor() {
+    this.internalTime = new Date();
+    this.internalDate = new Date();
+    this.internalDateTime = new Date();
+  }
+
   get time(): any {
     return this.internalTime;
   };
 
   set time(v: any) {
       this.internalTime = v;
-      this.internalDateTime.setHours(this.internalTime.getHours());
-      this.internalDateTime.setMinutes(this.internalTime.getMinutes());
-      this.internalDateTime.setSeconds(this.internalTime.getSeconds());
+      this.internalDateTime.setHours(v.getHours());
+      this.internalDateTime.setMinutes(v.getMinutes());
+      this.internalDateTime.setSeconds(v.getSeconds());
       this.onChangeCallback(this.internalDateTime);
   }
 
@@ -42,9 +48,9 @@ export class DateTimePicker implements ControlValueAccessor {
 
   set date(v: any) {
       this.internalDate = v;
-      this.internalDateTime.setFullYear(this.internalDate.getFullYear());
-      this.internalDateTime.setMonth(this.internalDate.getMonth());
-      this.internalDateTime.setDate(this.internalDate.getDate());
+      this.internalDateTime.setFullYear(v.getFullYear());
+      this.internalDateTime.setMonth(v.getMonth());
+      this.internalDateTime.setDate(v.getDate());
       this.onChangeCallback(this.internalDateTime);
   }
 
@@ -57,9 +63,9 @@ export class DateTimePicker implements ControlValueAccessor {
       return;
     }
     if (obj && obj instanceof Date) {
-      this.internalDateTime = obj;
-      this.time = obj;
-      this.date = obj;
+      this.internalDateTime = obj
+      this.internalTime.setTime(obj.getTime());
+      this.internalDate.setTime(obj.getTime());
       return;
     }
     this.internalDateTime = obj ? new Date(obj) : void 0;
