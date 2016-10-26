@@ -5,7 +5,7 @@ import { CampaignCreationService} from '../../services/campaign-creation/campaig
 @Component({
   selector: 'campaign-schedule',
   templateUrl: 'campaign-schedule.template.html',
-  styleUrls: [ '../campaign-creation.style.css'],
+  styleUrls: [ '../campaign-creation.style.css', 'campaign-schedule.style.css'],
   providers: [DateTimePicker]
 })
 
