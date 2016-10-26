@@ -19,10 +19,8 @@ export class CampaignConfirmation {
 	private campaignSubject: string;
 	private campaignMailingLists;
 
-	constructor (private creationService: CampaignCreationService){
-		this.campaign = creationService.getCampaign();
-
-
+	constructor (private campaignCreationService: CampaignCreationService){
+		this.campaign = campaignCreationService.getCampaign();
 		this.campaignName = this.campaign.name;
 		this.campaignSubject = this.campaign.subject;
 		this.campaignMailingLists = this.campaign.mailingLists;
@@ -31,5 +29,9 @@ export class CampaignConfirmation {
 	ngOnInit() {
     console.log('hello `CONFIRMATION` component');
   }
+
+	goToStep(step: string) {
+		this.campaignCreationService.goToStep(step);
+	}
 
 }

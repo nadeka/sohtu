@@ -24,3 +24,17 @@ h3 {
   word-wrap: break-word;
   white-space: inherit
 }
+
+.navigation-btn {
+  background: #ff6193;
+  font-family: Arial;
+  color: #ffffff;
+  font-size: 20px;
+  padding: 10px 20px 10px 20px;
+  text-decoration: none;
+  transition: 0.1s ease-in-out;
+}
+
+.navigation-btn:hover {
+  box-shadow: 1px 1px 1px #888888;
+}

@@ -1,5 +1,13 @@
+<div class="col-md-4 col-md-offset-4">
+  <ul class="breadcrumb">
+    <li><a (click)="goToStep('')">Settings</a></li>
+    <li class="active">Template</li>
+    <li><a (click)="goToStep('schedule')">Schedule</a></li>
+    <li><a (click)="goToStep('confirmation')">Confirmation</a></li>
+  </ul>
+</div>
+
 <div class="container col-md-8 col-md-offset-2">
-  <br>
     <div>
       <a style="float:left; display:inline;" (click)="goToStep('')" class="navigation-btn">
         Previous
@@ -9,6 +17,7 @@
       </a>
     </div>
 </div>
+
 <div class="container">
     <form>
         <div class="row">
