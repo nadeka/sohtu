@@ -12,14 +12,11 @@ import { CampaignCreationService } from '../../services/campaign-creation/campai
 
 export class CampaignSettings {
 
-
-
   constructor(private campaignCreationService: CampaignCreationService) {
   }
 
   @ViewChild('basicInfo') campaignBasicInfo: CampaignBasicInfo
   @ViewChild('mailingLists') campaignMailingLists: CampaignMailingLists
-
 
   goToStep(step) {
     //save to service

@@ -37,7 +37,7 @@
 		</div>
 		<div class="selected-mailing-lists box">
 			<b>Listat:</b>
-			<div class="chosen-lists" *ngFor="let campaignMailingList of campaignMailingLists"
+			<div class="chosen-lists" *ngFor="let campaignMailingList of campaign.mailingLists"
 		             [class.active]="campaignMailingList.selected">
 		                {{campaignMailingList.mailingList.name}}
 		    </div>
