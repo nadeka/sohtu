@@ -6,7 +6,7 @@ import { CampaignCreationService } from '../../services/campaign-creation/campai
 @Component({
   selector: 'campaign-settings',
   templateUrl: 'campaign-settings.template.html',
-  styleUrls: [ 'campaign-settings.style.css' ],
+  styleUrls: [ '../campaign-creation.style.css' ],
   providers: [ CampaignMailingLists, CampaignBasicInfo ]
 })
 

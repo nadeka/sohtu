@@ -8,7 +8,7 @@ import { CampaignCreationService} from '../../services/campaign-creation/campaig
 @Component({
     selector: 'campaign-templates',
     templateUrl: 'campaign-templates.template.html',
-    styleUrls: [ 'campaign-templates.style.css' ],
+    styleUrls: [ 'campaign-templates.style.css', '../campaign-creation.style.css' ],
     providers: [CampaignTemplatesList, CampaignChosenTemplate]
 })
 
