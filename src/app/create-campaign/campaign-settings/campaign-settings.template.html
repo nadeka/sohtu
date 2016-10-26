@@ -7,19 +7,17 @@
 </ul>
 </div>
 
-<div class="container col-md-2 col-md-offset-5">
+<div class="container col-md-2 col-md-offset-7">
   <br>
-
-  <button type="button" (click)="goToStep('template')" class="btn btn-primary">
+  <a (click)="goToStep('template')" class="navigation-btn">
     Next
-  </button>
+  </a>
 </div>
 
-<div class=" col-md-8 col-md-offset-2 container">
+<div class="col-md-8 col-md-offset-2 container">
   <form>
     <div class="row">
-      <br>
-      <div class="col-md-8">
+      <div class="col-md-8 box">
         <campaign-basic-info #basicInfo>Loading basic info form...</campaign-basic-info>
         <br>
         <campaign-mailing-lists #mailingLists>Loading mailing lists...</campaign-mailing-lists>

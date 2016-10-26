@@ -27,6 +27,7 @@ Now the app is running on [http://localhost:3000](http://localhost:3000)
 ### Running tests
 
     npm run test
+    npm run e2e
     
 ### Deploying to S3 manually
 

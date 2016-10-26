@@ -1,3 +1,12 @@
+<div class="col-md-8 col-md-offset-2">
+<ul class="breadcrumb">
+    <li class="active">Settings</li>
+    <li><a (click)="goToStep('template')">Template</a></li>
+    <li><a (click)="goToStep('schedule')">Schedule</a></li>
+    <li><a (click)="goToStep('confirmation')">Confirmation</a></li>
+</ul>
+</div>
+
 <div class="container col-md-2 col-md-offset-5">
   <br>
   <button type="button" (click)="goToStep('template')" class="btn btn-primary">
@@ -7,6 +16,7 @@
     Next
   </button>
 </div>
+
 <div class="container col-md-8 col-md-offset-2">
   <h3>Campaign Schedule</h3>
   <div class="btn-group">

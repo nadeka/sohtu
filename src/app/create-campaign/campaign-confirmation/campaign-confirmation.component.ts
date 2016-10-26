@@ -7,6 +7,7 @@ import { Campaign } from '../../models/campaign.model';
 @Component({
 	selector: 'campaign-confirmation',
 	templateUrl: './campaign-confirmation.template.html',
+	styleUrls: [ 'campaign-confirmation.style.css' ],
 	providers: [CampaignBasicInfo, CampaignMailingLists]
 })
 

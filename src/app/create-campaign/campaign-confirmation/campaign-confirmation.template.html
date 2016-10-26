@@ -1,20 +1,22 @@
-
-<br>
-<div class="container col-md-8 col-md-offset-2">
-	<h3>Campaign Overview</h3>
-	<div class="basic-information">
-		<label for="campaign-name">Campaign name</label>
-		{{campaignName}}
-		<br>
-		<label for="campaign-subject">Campaign subject</label>
-		{{campaignSubject}}
-	</div>
+<div class="col-md-8 col-md-offset-2">
 	<br>
-	<div class="selected-mailing-lists">
-		<b>Listat</b>
-		<div *ngFor="let campaignMailingList of campaignMailingLists"
-		[class.active]="campaignMailingList.selected">
-		{{campaignMailingList.mailingList.name}}
+	<div>
+		<h3>Campaign Overview</h3>
+		<br>
+		<div class="basic-information box">
+			<label for="campaign-name">Campaign name:</label>
+			{{campaignName}}
+			<br>
+			<br>
+			<label for="campaign-subject">Campaign subject:</label>
+			{{campaignSubject}}
+		</div>
+		<div class="selected-mailing-lists box">
+			<b>Listat:</b>
+			<div class="chosen-lists" *ngFor="let campaignMailingList of campaignMailingLists"
+		             [class.active]="campaignMailingList.selected">
+		                {{campaignMailingList.mailingList.name}}
+		    </div>
+		</div>
 	</div>
-</div>
 </div>

@@ -1,20 +1,20 @@
 
 
 <div class="row">
+<!--<button type="button" class="btn btn-success" (click)="updateTemplate()">Change template</button>-->
 
-  <div class="col-md-8 col-md-offset-2 email-container">
-
+  <div class="col-md-8 col-md-offset-2 email-container" id="emailContainer">
     <!-- This DIV should be the one that updates -->
-    <!--<div [innerHTML]="templateContent"></div> -->
+    <!-- <div [innerHTML]="templateContent"></div> -->
 
     <!-- PLACEHOLDER -->
     <!-- Email content starts-->
-   <table style="width: 100%;">
+    <table style="width: 100%;">
 
        <!-- Header starts -->
        <tr>
-         <td style="background-color: #ffb3b3; padding-top:1em;">
-           <div class="tinymce" >
+         <td style="background-color: #ffb3b3; padding:2em; font-family: 'Trebuchet MS', Helvetica, sans-serif;">
+           <div class="tinymce">
                <h1>Your header here!</h1>
            </div>
          </td>
@@ -23,15 +23,17 @@
 
        <!-- Paragraph 1 starts -->
        <tr>
-         <div class="tinymce">
-         <p>
-           Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
-           Sed posuere interdum sem. Quisque ligula eros ullamcorper quis,
-           lacinia quis facilisis sed sapien. Mauris varius diam vitae arcu.
-           Sed arcu lectus auctor vitae, consectetuer et venenatis eget velit.
-           Sed augue orci, lacinia eu tincidunt et eleifend nec lacus.
-         </p>
-       </div>
+         <td style="padding:2em; color: #666666;">
+           <div class="tinymce">
+             <p>
+               Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
+               Sed posuere interdum sem. Quisque ligula eros ullamcorper quis,
+               lacinia quis facilisis sed sapien. Mauris varius diam vitae arcu.
+               Sed arcu lectus auctor vitae, consectetuer et venenatis eget velit.
+               Sed augue orci, lacinia eu tincidunt et eleifend nec lacus.
+             </p>
+          </div>
+        </td>
        </tr>
        <!-- Paragraph 1 ends -->
 
@@ -43,15 +45,17 @@
 
        <!-- Paragraph 2 starts -->
        <tr>
-         <div class="tinymce">
-           <p>
-             Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
-             Sed posuere interdum sem. Quisque ligula eros ullamcorper quis,
-             lacinia quis facilisis sed sapien. Mauris varius diam vitae arcu.
-             Sed arcu lectus auctor vitae, consectetuer et venenatis eget velit.
-             Sed augue orci, lacinia eu tincidunt et eleifend nec lacus.
-           </p>
-         </div>
+         <td style="padding:2em; color: #666666;">
+           <div class="tinymce">
+             <p>
+               Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
+               Sed posuere interdum sem. Quisque ligula eros ullamcorper quis,
+               lacinia quis facilisis sed sapien. Mauris varius diam vitae arcu.
+               Sed arcu lectus auctor vitae, consectetuer et venenatis eget velit.
+               Sed augue orci, lacinia eu tincidunt et eleifend nec lacus.
+             </p>
+           </div>
+         </td>
        </tr>
        <!-- Paragraph 2 ends -->
 
@@ -65,8 +69,8 @@
            </p>
        </tr>
        <!-- Footer ends -->
-   </table>
-   <!-- Email content ends-->
+    </table>
+    <!-- Email content ends-->
 
   </div>
 </div>
