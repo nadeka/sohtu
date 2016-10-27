@@ -1,13 +1,12 @@
 <!-- Form for campaign name and subject -->
-<div class="box">
-  <label for="new-campaign-name">{{ campaignNameLabel }}</label>
-  <div class="form-group">
-    <input required type="text" class="form-control" id="new-campaign-name" [ngModel]="campaignName" (ngModelChange)=onNameChange($event)>
-  </div>
-  <br>
 
-  <label for="new-campaign-subject">{{ campaignSubjectLabel }}</label>
-  <div class="form-group">
-    <input required type="text" class="form-control" id="new-campaign-subject" [ngModel]="campaignSubject" (ngModelChange)=onSubjectChange($event)>
-  </div>
+<label for="new-campaign-name">{{ campaignNameLabel }}</label>
+<div class="form-group">
+  <input required type="text" class="form-control" id="new-campaign-name" [ngModel]="campaignName" (ngModelChange)=onNameChange($event)>
+</div>
+<br>
+
+<label for="new-campaign-subject">{{ campaignSubjectLabel }}</label>
+<div class="form-group">
+  <input required type="text" class="form-control" id="new-campaign-subject" [ngModel]="campaignSubject" (ngModelChange)=onSubjectChange($event)>
 </div>

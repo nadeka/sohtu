@@ -8,7 +8,7 @@ import { Template } from '../../../models/template.model';
 @Component({
     selector: 'campaign-templates-list',
     styleUrls: [ 'campaign-templates-list.style.css' ],
-    templateUrl: 'campaign-templates-list.template.html'
+    templateUrl: 'campaign-templates-list.template.html',
 })
 
 export class CampaignTemplatesList implements OnInit {

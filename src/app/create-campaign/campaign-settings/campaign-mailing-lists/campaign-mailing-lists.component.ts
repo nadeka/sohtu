@@ -6,7 +6,7 @@ import { EnglishConfig } from '../../../english.language';
 @Component({
     selector: 'campaign-mailing-lists',
     styleUrls: [ 'campaign-mailing-lists.style.css' ],
-    templateUrl: 'campaign-mailing-lists.template.html'
+    templateUrl: 'campaign-mailing-lists.template.html',
 })
 
 export class CampaignMailingLists implements OnInit {

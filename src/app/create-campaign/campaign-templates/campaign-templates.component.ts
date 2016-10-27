@@ -9,10 +9,12 @@ import { CampaignCreationService} from '../../services/campaign-creation/campaig
     selector: 'campaign-templates',
     templateUrl: 'campaign-templates.template.html',
     styleUrls: [ 'campaign-templates.style.css', '../campaign-creation.style.css' ],
-    providers: [CampaignTemplatesList, CampaignChosenTemplate]
+    providers: [CampaignTemplatesList, CampaignChosenTemplate],
 })
 
 export class CampaignTemplates {
+    
+
     constructor(private campaignCreationService: CampaignCreationService,
                 private campaignChosenTemplate: CampaignChosenTemplate,
                 private campaignTemplatesList: CampaignTemplatesList,
