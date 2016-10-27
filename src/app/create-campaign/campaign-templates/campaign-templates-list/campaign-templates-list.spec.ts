@@ -12,6 +12,7 @@ import { MockTemplatesService }
     from '../../../services/templates/mock-templates.service';
 import { MockHTML2CanvasService }
     from '../../../services/html2canvas/mock-html2canvas.service';
+import { LanguageService } from '../../../services/language.service';
 
 describe('Component: CampaignTemplatesList', () => {
     let fixture: any;
@@ -31,7 +32,8 @@ describe('Component: CampaignTemplatesList', () => {
                 {
                     provide: HTML2CanvasService,
                     useClass: MockHTML2CanvasService
-                }
+                },
+                LanguageService
             ]
         }).compileComponents().then(function(arr) {
             fixture = TestBed.createComponent(CampaignTemplatesList);

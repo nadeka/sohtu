@@ -9,6 +9,7 @@ import { MailingListsService } from '../../../services/mailing-lists/mailing-lis
 import { CampaignMailingList } from '../../../models/campaign-mailing-list.model';
 import { MockMailingListsService }
     from '../../../services/mailing-lists/mock-mailing-lists.service';
+import { LanguageService } from '../../../services/language.service';
 
 describe('Component: CampaignMailingLists', () => {
     let fixture: any;
@@ -24,7 +25,8 @@ describe('Component: CampaignMailingLists', () => {
                 {
                     provide: MailingListsService,
                     useClass: MockMailingListsService
-                }
+                },
+                LanguageService
             ]
         }).compileComponents().then(function(arr) {
             fixture = TestBed.createComponent(CampaignMailingLists);

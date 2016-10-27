@@ -63,7 +63,7 @@ export class DateTimePicker implements ControlValueAccessor {
       return;
     }
     if (obj && obj instanceof Date) {
-      this.internalDateTime = obj
+      this.internalDateTime = obj;
       this.internalTime.setTime(obj.getTime());
       this.internalDate.setTime(obj.getTime());
       return;

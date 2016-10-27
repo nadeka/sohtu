@@ -4,8 +4,10 @@ import {
 }
 from '@angular/core/testing';
 
-import { CampaignCreationService } from '../../services/campaign-creation/campaign-creation.service';
-import { MockCampaignCreationService } from '../../services/campaign-creation/mock-campaign-creation.service';
+import { CampaignCreationService } from
+        '../../services/campaign-creation/campaign-creation.service';
+import { MockCampaignCreationService } from
+        '../../services/campaign-creation/mock-campaign-creation.service';
 import { CampaignSchedule } from './campaign-schedule.component';
 import { FormsModule } from '@angular/forms';
 import { DateTimePicker } from './date-time-picker/date-time-picker.component';

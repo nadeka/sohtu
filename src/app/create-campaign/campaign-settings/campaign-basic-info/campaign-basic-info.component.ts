@@ -1,10 +1,10 @@
-import { Component, Input} from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { LanguageService } from '../../../services/language.service';
 
 @Component({
   selector: 'campaign-basic-info',
   templateUrl: 'campaign-basic-info.template.html',
-  providers:[]
+  providers: []
 })
 export class CampaignBasicInfo {
 
@@ -28,7 +28,7 @@ export class CampaignBasicInfo {
   }
 
   public getName(): string {
-  	return this.campaignName;
+    return this.campaignName;
   }
 
   public getSubject(): string {

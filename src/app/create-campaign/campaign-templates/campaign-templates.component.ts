@@ -14,12 +14,14 @@ import { LanguageService } from '../../services/language.service';
 })
 
 export class CampaignTemplates {
+
     constructor(private language: LanguageService,
                 private campaignCreationService: CampaignCreationService,
                 private campaignChosenTemplate: CampaignChosenTemplate,
                 private campaignTemplatesList: CampaignTemplatesList,
-                private templatesService: TemplatesService) {
-    }
+                private templatesService: TemplatesService){}
+
+
 
     ngOnInit() {
         console.log('hello `CampaignTemplates` component');

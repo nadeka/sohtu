@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { DateTimePicker } from './date-time-picker/date-time-picker.component'
-import { CampaignCreationService} from '../../services/campaign-creation/campaign-creation.service';
+import { DateTimePicker } from './date-time-picker/date-time-picker.component';
+import { CampaignCreationService } from
+        '../../services/campaign-creation/campaign-creation.service';
 
 @Component({
   selector: 'campaign-schedule',
@@ -14,18 +15,18 @@ export class CampaignSchedule {
   scheduling: string;
 
   constructor(private campaignCreationService: CampaignCreationService) {
-    this.scheduling = "sendNow";
+    this.scheduling = 'sendNow';
   }
 
   ngOnInit() {
-    this.schedule=this.campaignCreationService.getSchedule();
-    if (this.schedule==undefined) {
-      this.schedule=new Date();
+    this.schedule = this.campaignCreationService.getSchedule();
+    if (this.schedule === undefined) {
+      this.schedule = new Date();
     }
   }
 
   goToStep(step: string) {
-    if (this.scheduling=='sendNow') {
+    if (this.scheduling === 'sendNow') {
       this.campaignCreationService.setSchedule(new Date());
     } else {
       this.campaignCreationService.setSchedule(this.schedule);
