@@ -2,17 +2,19 @@ import { Component, Inject, ViewChild } from '@angular/core';
 import { CampaignBasicInfo } from './campaign-basic-info';
 import { CampaignMailingLists } from './campaign-mailing-lists';
 import { CampaignCreationService } from '../../services/campaign-creation/campaign-creation.service';
+import { LanguageService } from '../../services/language.service';
 
 @Component({
   selector: 'campaign-settings',
   templateUrl: 'campaign-settings.template.html',
   styleUrls: [ '../campaign-creation.style.css', 'campaign-settings.style.css' ],
-  providers: [ CampaignMailingLists, CampaignBasicInfo ]
+  providers: [ CampaignMailingLists, CampaignBasicInfo, LanguageService]
 })
 
 export class CampaignSettings {
 
-  constructor(private campaignCreationService: CampaignCreationService) {
+  constructor(private language: LanguageService,
+              private campaignCreationService: CampaignCreationService) {
   }
 
   @ViewChild('basicInfo') campaignBasicInfo: CampaignBasicInfo

@@ -1,24 +1,25 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { CampaignMailingList } from '../../../models/campaign-mailing-list.model';
 import { MailingListsService } from '../../../services/mailing-lists/mailing-lists.service';
-import { EnglishConfig } from '../../../english.language';
+import { LanguageService } from '../../../services/language.service';
 
 @Component({
     selector: 'campaign-mailing-lists',
     styleUrls: [ 'campaign-mailing-lists.style.css' ],
-    templateUrl: 'campaign-mailing-lists.template.html'
+    templateUrl: 'campaign-mailing-lists.template.html',
 })
 
 export class CampaignMailingLists implements OnInit {
 
     // Variables for static text on the page
-    selectAllButtonLabel = EnglishConfig.SELECT_ALL_BUTTON_LABEL;
-    deselectAllButtonLabel = EnglishConfig.DESELECT_ALL_BUTTON_LABEL;
-    mailingListsHeader = EnglishConfig.MAILING_LISTS_HEADER;
+    selectAllButtonLabel = this.language.getWord('SELECT_ALL_BUTTON_LABEL');
+    deselectAllButtonLabel = this.language.getWord('DESELECT_ALL_BUTTON_LABEL');
+    mailingListsHeader = this.language.getWord('MAILING_LISTS_HEADER');
 
     public campaignMailingLists: Array<CampaignMailingList> = [];
 
-    constructor(private mailingListsService: MailingListsService) {}
+    constructor(private language: LanguageService,
+                private mailingListsService: MailingListsService) {}
 
     ngOnInit() {
         this.getCampaignMailingLists();

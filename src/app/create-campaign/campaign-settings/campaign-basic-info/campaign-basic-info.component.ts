@@ -1,22 +1,22 @@
 import { Component, Input} from '@angular/core';
-import { EnglishConfig } from '../../../english.language';
-
+import { LanguageService } from '../../../services/language.service';
 
 @Component({
   selector: 'campaign-basic-info',
   templateUrl: 'campaign-basic-info.template.html',
+  providers:[]
 })
 export class CampaignBasicInfo {
 
   // Variables for static text on the page
-  campaignNameLabel = EnglishConfig.CAMPAIGN_NAME_LABEL;
-  campaignSubjectLabel = EnglishConfig.CAMPAIGN_SUBJECT_LABEL;
+  campaignNameLabel = this.language.getWord('CAMPAIGN_NAME_LABEL');
+  campaignSubjectLabel = this.language.getWord('CAMPAIGN_SUBJECT_LABEL');
 
 
   public campaignName: string;
   public campaignSubject: string;
 
-  constructor() {
+  constructor(private language: LanguageService) {
   }
 
   onNameChange(newValue) {

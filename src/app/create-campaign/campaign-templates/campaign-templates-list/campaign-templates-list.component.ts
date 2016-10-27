@@ -2,13 +2,13 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { CampaignTemplate } from '../../../models/campaign-template.model';
 import { TemplatesService } from '../../../services/templates/templates.service';
 import { HTML2CanvasService } from '../../../services/html2canvas/html2canvas.service';
-import { EnglishConfig } from '../../../english.language';
 import { Template } from '../../../models/template.model';
+import { LanguageService } from '../../../services/language.service';
 
 @Component({
     selector: 'campaign-templates-list',
     styleUrls: [ 'campaign-templates-list.style.css' ],
-    templateUrl: 'campaign-templates-list.template.html'
+    templateUrl: 'campaign-templates-list.template.html',
 })
 
 export class CampaignTemplatesList implements OnInit {
@@ -16,10 +16,12 @@ export class CampaignTemplatesList implements OnInit {
     // Notification to parent that a template has been chosen
     @Output() notify = new EventEmitter();
 
-    campaignTemplatesHeader = EnglishConfig.CAMPAIGN_TEMPLATES_HEADER;
+    campaignTemplatesHeader = this.language.getWord('CAMPAIGN_TEMPLATES_HEADER');
+
     public campaignTemplates: Array<CampaignTemplate> = [];
 
-    constructor(private templatesService: TemplatesService,
+    constructor(private language: LanguageService,
+                private templatesService: TemplatesService,
                 private html2CanvasService: HTML2CanvasService) {}
 
     ngOnInit() {
