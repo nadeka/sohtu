@@ -8,11 +8,7 @@ import { LanguageService } from '../../services/language.service';
   selector: 'campaign-settings',
   templateUrl: 'campaign-settings.template.html',
   styleUrls: [ '../campaign-creation.style.css', 'campaign-settings.style.css' ],
-<<<<<<< HEAD
   providers: [ CampaignMailingLists, CampaignBasicInfo, LanguageService]
-=======
-  providers: [ CampaignMailingLists, CampaignBasicInfo ],
->>>>>>> 4f0a1229a6061d0b2b8dcdfdcc504b9c2956473d
 })
 
 export class CampaignSettings {
