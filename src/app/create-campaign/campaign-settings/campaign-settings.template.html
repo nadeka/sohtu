@@ -19,7 +19,7 @@
       <div class="col-md-6 col-md-offset-3">
         <div class="box">
           <h3>Settings</h3>
-          <campaign-basic-info #basicInfo>Loading basic info form...</campaign-basic-info>
+          <campaign-basic-info [campaignName]="name" [campaignSubject]="subject" #basicInfo>Loading basic info form...</campaign-basic-info>
           <campaign-mailing-lists #mailingLists>Loading mailing lists...</campaign-mailing-lists>
         </div>
       </div>

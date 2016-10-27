@@ -13,12 +13,26 @@ import { LanguageService } from '../../services/language.service';
 
 export class CampaignSettings {
 
+  name: string;
+  subject: string;
+
   constructor(private language: LanguageService,
               private campaignCreationService: CampaignCreationService) {
   }
 
   @ViewChild('basicInfo') campaignBasicInfo: CampaignBasicInfo
   @ViewChild('mailingLists') campaignMailingLists: CampaignMailingLists
+
+  ngOnInit() {
+    this.name = this.campaignCreationService.getName();
+    if(this.name == undefined){
+      this.name="";
+    }
+    this.subject = this.campaignCreationService.getSubject();
+    if(this.subject == undefined){
+      this.subject="";
+    }
+  }
 
   goToStep(step) {
     //save to service

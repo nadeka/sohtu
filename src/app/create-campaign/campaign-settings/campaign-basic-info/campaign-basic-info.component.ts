@@ -13,8 +13,8 @@ export class CampaignBasicInfo {
   campaignSubjectLabel = this.language.getWord('CAMPAIGN_SUBJECT_LABEL');
 
 
-  public campaignName: string;
-  public campaignSubject: string;
+  @Input() campaignName: string;
+  @Input() campaignSubject: string;
 
   constructor(private language: LanguageService) {
   }
