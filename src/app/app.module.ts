@@ -37,13 +37,13 @@ import { CampaignChosenTemplate } from './create-campaign/campaign-templates/cam
 import { CampaignSchedule } from './create-campaign/campaign-schedule/campaign-schedule.component';
 import { CampaignConfirmation } from './create-campaign/campaign-confirmation/campaign-confirmation.component';
 import { NoContent } from './no-content/no-content';
-import { HTML2CanvasService } from './services/html2canvas/html2canvas.service';
 import { DateTimePicker} from './create-campaign/campaign-schedule/date-time-picker/date-time-picker.component';
 // Services
 import { MailingListsService } from './services/mailing-lists/mailing-lists.service';
 import { TemplatesService } from './services/templates/templates.service';
 import { CampaignCreationService } from './services/campaign-creation/campaign-creation.service';
 import { LanguageService } from './services/language.service';
+import { HTML2ImageService } from './services/html2image/html2image.service';
 
 // Application wide providers
 const APP_PROVIDERS = [
@@ -94,7 +94,7 @@ type StoreType = {
         APP_PROVIDERS,
         MailingListsService,
         TemplatesService,
-        HTML2CanvasService,
+        HTML2ImageService,
         CampaignCreationService,
         LanguageService
     ],

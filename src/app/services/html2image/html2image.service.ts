@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
-let html2canvas = require('html2canvas');
+let domtoimage = require('dom-to-image');
 
 @Injectable()
-export class HTML2CanvasService {
+export class HTML2ImageService {
 
-    // Put the HTML string in an IFrame element and use html2canvas to take
+    // Put the HTML string in an IFrame element and use html2image to take
     // a "snapshot" of the IFrame.
-    toCanvas(htmlString: string): Promise<any> {
+    toImage(htmlString: string): Promise<string> {
         let iframe = document.createElement('iframe');
         iframe.setAttribute('hidden', 'true');
 
@@ -15,6 +15,6 @@ export class HTML2CanvasService {
         let iframedoc = iframe.contentDocument || iframe.contentWindow.document;
         iframedoc.body.innerHTML = htmlString;
 
-        return Promise.resolve(html2canvas(iframedoc.body));
+        return Promise.resolve(domtoimage.toPng(iframedoc.body, { height: 532, width: 750 }));
     }
 }

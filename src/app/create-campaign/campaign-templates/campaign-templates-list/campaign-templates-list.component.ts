@@ -1,7 +1,7 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { CampaignTemplate } from '../../../models/campaign-template.model';
 import { TemplatesService } from '../../../services/templates/templates.service';
-import { HTML2CanvasService } from '../../../services/html2canvas/html2canvas.service';
+import { HTML2ImageService } from '../../../services/html2image/html2image.service';
 import { Template } from '../../../models/template.model';
 import { LanguageService } from '../../../services/language.service';
 
@@ -22,7 +22,7 @@ export class CampaignTemplatesList implements OnInit {
 
     constructor(private language: LanguageService,
                 private templatesService: TemplatesService,
-                private html2CanvasService: HTML2CanvasService) {}
+                private html2ImageService: HTML2ImageService) {}
 
     ngOnInit() {
         this.getCampaignTemplates();
@@ -35,8 +35,9 @@ export class CampaignTemplatesList implements OnInit {
     }
 
     convertToCampaignTemplate(template: Template): void {
-        this.html2CanvasService.toCanvas(template.content)
-            .then(canvas => template.thumbnailImage = canvas.toDataURL());
+        this.html2ImageService.toImage(template.content)
+            .then(imageUrl => template.thumbnailImage = imageUrl)
+            .catch(err => console.log(err));
 
         this.campaignTemplates.push(new CampaignTemplate(template, false));
     }
@@ -46,11 +47,11 @@ export class CampaignTemplatesList implements OnInit {
             .some(campaignMailingList => campaignMailingList.selected);
     }
 
-    getSelected(): CampaignTemplate {
+    getSelected(): Template {
         let campaignTemplate = this.campaignTemplates
             .find(template => template.selected === true);
 
-        return campaignTemplate ? campaignTemplate : null;
+        return campaignTemplate ? campaignTemplate.template : null;
     }
 
     setSelected(templateId: number): void {
@@ -66,6 +67,6 @@ export class CampaignTemplatesList implements OnInit {
     }
 
     scrollLeft(amount: number): void {
-        $('.campaign-templates-list').animate({ scrollLeft: '-=' + amount }, 400);
+        $('.campaign-templates-list').animate({ scrollLeft: '-=' + amount }, 300);
     }
 }

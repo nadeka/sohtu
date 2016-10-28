@@ -2,6 +2,7 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { CampaignMailingList } from '../../../models/campaign-mailing-list.model';
 import { MailingListsService } from '../../../services/mailing-lists/mailing-lists.service';
 import { LanguageService } from '../../../services/language.service';
+import { MailingList } from '../../../models/mailing-list.model';
 
 @Component({
     selector: 'campaign-mailing-lists',
@@ -36,9 +37,10 @@ export class CampaignMailingLists implements OnInit {
         return this.campaignMailingLists.some(campaignMailingList => campaignMailingList.selected);
     }
 
-    getSelected(): Array<CampaignMailingList> {
-        return this.campaignMailingLists.filter(campaignMailingList =>
-                                          campaignMailingList.selected);
+    getSelected(): Array<MailingList> {
+        return this.campaignMailingLists
+                .filter(campaignMailingList => campaignMailingList.selected)
+                .map(campaignMailingList => campaignMailingList.mailingList);
     }
 
     toggleSelection(mailingListId): void {

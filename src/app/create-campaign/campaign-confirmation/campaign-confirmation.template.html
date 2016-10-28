@@ -37,9 +37,8 @@
   		</div>
   		<div class="selected-mailing-lists">
   			<b>Mailing lists:</b>
-  			<div class="chosen-lists" *ngFor="let campaignMailingList of campaign.mailingLists"
-  		             [class.active]="campaignMailingList.selected">
-  		                {{campaignMailingList.mailingList.name}}
+  			<div class="chosen-lists" *ngFor="let mailingList of campaign.mailingLists">
+  		                {{mailingList.name}}
   		    </div>
   		</div>
   	</div>

@@ -60,8 +60,7 @@ describe('Component: CampaignMailingLists', () => {
         expect(component.getSelected().length).toBe(0);
         component.campaignMailingLists[0].selected = true;
         expect(component.getSelected().length).toBe(1);
-        expect(component.getSelected()[0].selected).toBe(true);
-        expect(component.getSelected()[0].mailingList.id)
+        expect(component.getSelected()[0].id)
             .toBe(component.campaignMailingLists[0].mailingList.id);
     });
 

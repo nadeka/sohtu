@@ -27,15 +27,13 @@ h3 {
 }
 
 .campaign-template-thumbnail {
-    height: 200px;
-    width: 120px;
+    height: 180px;
+    width: 250px;
     border-color: #f1f1f7;
-    border-width: 7px;
+    border-width: 5px;
 }
 
 .campaign-template-thumbnail:hover, .active {
-    height: 200px;
-    width: 120px;
     outline: 0;
     border-color: #d6d6dc;
     cursor: pointer;

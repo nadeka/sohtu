@@ -6,12 +6,12 @@ import {
 
 import { CampaignTemplatesList } from './campaign-templates-list.component.ts';
 import { TemplatesService } from '../../../services/templates/templates.service';
-import { HTML2CanvasService } from '../../../services/html2canvas/html2canvas.service';
+import { HTML2ImageService } from '../../../services/html2image/html2image.service';
 import { CampaignTemplate } from '../../../models/campaign-template.model';
 import { MockTemplatesService }
     from '../../../services/templates/mock-templates.service';
-import { MockHTML2CanvasService }
-    from '../../../services/html2canvas/mock-html2canvas.service';
+import { MockHTML2ImageService }
+    from '../../../services/html2image/mock-html2image.service';
 import { LanguageService } from '../../../services/language.service';
 
 describe('Component: CampaignTemplatesList', () => {
@@ -30,8 +30,8 @@ describe('Component: CampaignTemplatesList', () => {
                     useClass: MockTemplatesService
                 },
                 {
-                    provide: HTML2CanvasService,
-                    useClass: MockHTML2CanvasService
+                    provide: HTML2ImageService,
+                    useClass: MockHTML2ImageService
                 },
                 LanguageService
             ]
@@ -87,8 +87,7 @@ describe('Component: CampaignTemplatesList', () => {
         expect(component.getSelected()).toBeNull();
         component.campaignTemplates[0].selected = true;
         expect(component.getSelected()).not.toBeNull();
-        expect(component.getSelected().selected).toBe(true);
-        expect(component.getSelected().template.id)
+        expect(component.getSelected().id)
             .toBe(component.campaignTemplates[0].template.id);
     });
 });
