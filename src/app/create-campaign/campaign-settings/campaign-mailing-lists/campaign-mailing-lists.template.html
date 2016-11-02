@@ -6,11 +6,11 @@
     </div>
 
     <div class="campaign-mailing-lists list-group">
-        <div *ngFor="let campaignMailingList of campaignMailingLists"
-             [class.active]="campaignMailingList.selected"
+        <div *ngFor="let mailingList of mailingLists"
+             [class.active]="isSelected(mailingList.id)"
              class="campaign-mailing-list list-group-item btn btn-default"
-             (click)="toggleSelection(campaignMailingList.mailingList.id)">
-                {{campaignMailingList.mailingList.name}}
+             (click)="toggleSelection(mailingList)">
+                {{mailingList.name}}
         </div>
     </div>
 </div>

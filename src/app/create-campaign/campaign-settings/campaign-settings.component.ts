@@ -34,6 +34,13 @@ export class CampaignSettings {
     }
   }
 
+  ngAfterViewInit() {
+    let selectedMailingLists = this.campaignCreationService.getMailingLists();
+    if (selectedMailingLists) {
+      this.campaignMailingLists.selectMany(this.campaignCreationService.getMailingLists());
+    }
+  }
+
   goToStep(step) {
     //save to service
     this.campaignCreationService.setName(this.campaignBasicInfo.getName());

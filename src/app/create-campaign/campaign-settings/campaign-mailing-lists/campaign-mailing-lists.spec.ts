@@ -6,7 +6,7 @@ from '@angular/core/testing';
 
 import { CampaignMailingLists } from './campaign-mailing-lists.component.ts';
 import { MailingListsService } from '../../../services/mailing-lists/mailing-lists.service';
-import { CampaignMailingList } from '../../../models/campaign-mailing-list.model';
+import { MailingList } from '../../../models/mailing-list.model';
 import { MockMailingListsService }
     from '../../../services/mailing-lists/mock-mailing-lists.service';
 import { LanguageService } from '../../../services/language.service';
@@ -38,51 +38,49 @@ describe('Component: CampaignMailingLists', () => {
     }));
 
     it('should have 3 unselected and valid mailing lists in the beginning', () => {
-        expect(component.campaignMailingLists.length).toBe(3);
-        component.campaignMailingLists
-            .forEach(campaignMailingList => validateCampaignMailingList(campaignMailingList));
+        expect(component.mailingLists.length).toBe(3);
+        component.mailingLists
+            .forEach(campaignMailingList => validateMailingList(campaignMailingList));
     });
 
     it('toggleSelection should toggle mailing list selection', () => {
-        component.toggleSelection(1);
-        expect(component.campaignMailingLists[0].selected).toBe(true);
-        component.toggleSelection(1);
-        expect(component.campaignMailingLists[0].selected).toBe(false);
+        component.toggleSelection(component.mailingLists[0]);
+        expect(component.isSelected(component.mailingLists[0].id)).toBe(true);
+        component.toggleSelection(component.mailingLists[0]);
+        expect(component.isSelected(component.mailingLists[0].id)).toBe(false);
     });
 
     it('hasSelected should return true when some mailing lists are selected', () => {
         expect(component.hasSelected()).toBe(false);
-        component.campaignMailingLists[0].selected = true;
+        component.select(component.mailingLists[0]);
         expect(component.hasSelected()).toBe(true);
     });
 
     it('getSelected should return selected mailing lists', () => {
         expect(component.getSelected().length).toBe(0);
-        component.campaignMailingLists[0].selected = true;
+        component.select(component.mailingLists[0]);
         expect(component.getSelected().length).toBe(1);
         expect(component.getSelected()[0].id)
-            .toBe(component.campaignMailingLists[0].mailingList.id);
+            .toBe(component.mailingLists[0].id);
     });
 
     it('selectAll should set all mailing lists selected', () => {
         component.selectAll();
-        component.campaignMailingLists
-            .forEach(campaignMailingList => expect(campaignMailingList.selected).toBe(true));
+        component.mailingLists
+            .forEach(mailingList => expect(component.isSelected(mailingList.id)).toBe(true));
     });
 
     it('deselectAll should set all mailing lists unselected', () => {
-        component.campaignMailingLists[0].selected = true;
-        component.campaignMailingLists[1].selected = true;
+        component.select(component.mailingLists[0]);
+        component.select(component.mailingLists[1]);
         component.deselectAll();
-        component.campaignMailingLists
-            .forEach(campaignMailingList => expect(campaignMailingList.selected).toBe(false));
+        component.mailingLists
+            .forEach(mailingList => expect(component.isSelected(mailingList.id)).toBe(false));
     });
 });
 
-function validateCampaignMailingList(campaignMailingList: CampaignMailingList) {
-    expect(campaignMailingList).toBeDefined();
-    expect(campaignMailingList.mailingList).toBeDefined();
-    expect(campaignMailingList.mailingList.name).toBeDefined();
-    expect(campaignMailingList.mailingList.id).toBeDefined();
-    expect(campaignMailingList.selected).toBe(false);
+function validateMailingList(mailingList: MailingList) {
+    expect(mailingList).toBeDefined();
+    expect(mailingList.name).toBeDefined();
+    expect(mailingList.id).toBeDefined();
 }

@@ -1,5 +1,4 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { CampaignMailingList } from '../../../models/campaign-mailing-list.model';
 import { MailingListsService } from '../../../services/mailing-lists/mailing-lists.service';
 import { LanguageService } from '../../../services/language.service';
 import { MailingList } from '../../../models/mailing-list.model';
@@ -17,48 +16,63 @@ export class CampaignMailingLists implements OnInit {
     deselectAllButtonLabel = this.language.getWord('DESELECT_ALL_BUTTON_LABEL');
     mailingListsHeader = this.language.getWord('MAILING_LISTS_HEADER');
 
-    public campaignMailingLists: Array<CampaignMailingList> = [];
+    public mailingLists: Array<MailingList> = [];
+    private selected: Set<number>;
 
     constructor(private language: LanguageService,
-                private mailingListsService: MailingListsService) {}
+                private mailingListsService: MailingListsService) {
+                  this.selected = new Set();
+                }
 
     ngOnInit() {
-        this.getCampaignMailingLists();
+        this.getMailingLists();
     }
 
-    getCampaignMailingLists(): void {
+    getMailingLists(): void {
         this.mailingListsService.getMailingLists()
             .then(mailingLists =>
-                mailingLists.forEach(mailingList =>
-                    this.campaignMailingLists.push(new CampaignMailingList(mailingList, false))));
+                this.mailingLists = mailingLists);
     }
 
     hasSelected(): boolean {
-        return this.campaignMailingLists.some(campaignMailingList => campaignMailingList.selected);
+        return this.selected.size != 0;
     }
 
     getSelected(): Array<MailingList> {
-        return this.campaignMailingLists
-                .filter(campaignMailingList => campaignMailingList.selected)
-                .map(campaignMailingList => campaignMailingList.mailingList);
+        return this.mailingLists
+                .filter(mailingList => this.selected.has(mailingList.id));
     }
 
-    toggleSelection(mailingListId): void {
-        this.campaignMailingLists.forEach(function(campaignMailingList) {
-            if (campaignMailingList.mailingList.id === mailingListId) {
-                campaignMailingList.selected = !campaignMailingList.selected;
-                return;
-            }
-        });
+    toggleSelection(mailingList): void {
+        if (this.selected.has(mailingList.id)) {
+            this.deselect(mailingList);
+        } else {
+            this.select(mailingList);
+        }
     }
 
     selectAll(): void {
-        this.campaignMailingLists.forEach(campaignMailingList =>
-                                          campaignMailingList.selected = true);
+        this.mailingLists.forEach(mailingList =>
+                                          this.selected.add(mailingList.id));
     }
 
     deselectAll(): void {
-        this.campaignMailingLists.forEach(campaignMailingList =>
-                                          campaignMailingList.selected = false);
+        this.selected.clear();
+    }
+
+    selectMany(mailingLists: Array<MailingList>): void {
+        mailingLists.forEach(mailingList => this.selected.add(mailingList.id));
+    }
+
+    select(mailingList: MailingList): void {
+        this.selected.add(mailingList.id);
+    }
+
+    deselect(mailingList: MailingList): void {
+        this.selected.delete(mailingList.id);
+    }
+
+    isSelected(id: number): boolean {
+        return this.selected.has(id);
     }
 }
