@@ -3,7 +3,12 @@
     <div class="select-buttons">
         <div (click)="selectAll()" class="btn btn-default btn-xs">{{ selectAllButtonLabel }}</div>
         <div (click)="deselectAll()" class="btn btn-default btn-xs">{{ deselectAllButtonLabel }}</div>
+        <div class="import-mailing-list-button btn btn-success btn-xs" (click)="showImporter()">
+            {{importButtonLabel}}
+        </div>
     </div>
+
+    <import-mailing-lists (mailingListImported)="getMailingLists()"></import-mailing-lists>
 
     <div class="campaign-mailing-lists list-group">
         <div *ngFor="let mailingList of mailingLists"

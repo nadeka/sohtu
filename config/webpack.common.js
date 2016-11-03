@@ -91,8 +91,6 @@ module.exports = function(options) {
      * See: http://webpack.github.io/docs/configuration.html#module
      */
     module: {
-      noParse: /node_modules\/html2canvas/,
-
       /*
        * An array of applied pre and post loaders.
        *

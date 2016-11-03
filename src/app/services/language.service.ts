@@ -8,7 +8,10 @@ export var eng: { [key: string]: string; } = {
   'SELECT_ALL_BUTTON_LABEL' : 'Select all',
   'DESELECT_ALL_BUTTON_LABEL' : 'Deselect all',
   'MAILING_LISTS_HEADER' : 'Mailing lists',
-  'CAMPAIGN_TEMPLATES_HEADER' : 'Campaign Template'
+  'CAMPAIGN_TEMPLATES_HEADER' : 'Campaign Template',
+  'IMPORT_BUTTON_LABEL' : 'Import',
+  'MAILING_LIST_NAME_LABEL' : 'Name',
+  'MAILING_LIST_DESCRIPTION_LABEL' : 'Description'
 };
 
 @Injectable()

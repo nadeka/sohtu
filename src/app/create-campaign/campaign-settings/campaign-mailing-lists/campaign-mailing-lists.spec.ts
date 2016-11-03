@@ -4,6 +4,7 @@ import {
 }
 from '@angular/core/testing';
 
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CampaignMailingLists } from './campaign-mailing-lists.component.ts';
 import { MailingListsService } from '../../../services/mailing-lists/mailing-lists.service';
 import { MailingList } from '../../../models/mailing-list.model';
@@ -27,7 +28,8 @@ describe('Component: CampaignMailingLists', () => {
                     useClass: MockMailingListsService
                 },
                 LanguageService
-            ]
+            ],
+            schemas: [CUSTOM_ELEMENTS_SCHEMA]
         }).compileComponents().then(function(arr) {
             fixture = TestBed.createComponent(CampaignMailingLists);
             component = fixture.componentInstance;
