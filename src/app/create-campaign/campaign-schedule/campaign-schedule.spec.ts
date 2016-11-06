@@ -34,7 +34,7 @@ describe('Component: CampaignSchedule', () => {
               {
                   provide: CampaignCreationService,
                   useClass: MockCampaignCreationService
-              }
+              },
             ],
         }).compileComponents().then(function(arr) {
             fixture = TestBed.createComponent(CampaignSchedule);
@@ -44,16 +44,16 @@ describe('Component: CampaignSchedule', () => {
           });
     }));
 
-    // it('should fetch schedule from service', () => {
-    //     expect(campaignCreationService.getSchedule).toHaveBeenCalled();
-    // });
-    //
-    // it('should initialize schedule', () => {
-    //     expect(component.schedule).toBeDefined();
-    // });
-    //
-    // it('should initialize scheduling as sendNow', () => {
-    //     expect(component.scheduling).toBe('sendNow');
-    // });
+    /* it('should fetch schedule from service', () => {
+         expect(campaignCreationService.getSchedule).toHaveBeenCalled();
+     });
+
+     it('should initialize schedule', () => {
+         expect(component.schedule).toBeDefined();
+     });
+
+     it('should initialize scheduling as sendNow', () => {
+         expect(component.scheduling).toBe('sendNow');
+     });*/
 
 });

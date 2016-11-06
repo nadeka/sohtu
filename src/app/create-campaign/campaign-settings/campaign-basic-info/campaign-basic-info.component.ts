@@ -16,8 +16,7 @@ export class CampaignBasicInfo {
   @Input() campaignName: string;
   @Input() campaignSubject: string;
 
-  constructor(private language: LanguageService) {
-  }
+  constructor(private language: LanguageService) {}
 
   onNameChange(newValue) {
     this.campaignName = newValue;

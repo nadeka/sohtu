@@ -9,6 +9,7 @@ import { DropdownModule } from 'ng2-bootstrap/ng2-bootstrap';
 import { DatepickerModule } from 'ng2-bootstrap/ng2-bootstrap';
 import { TimepickerModule } from 'ng2-bootstrap/ng2-bootstrap';
 import { ButtonsModule } from 'ng2-bootstrap/components/buttons';
+import { ModalModule } from 'ng2-bootstrap/ng2-bootstrap';
 
 import { routes }   from './app.routes';
 
@@ -38,12 +39,16 @@ import { CampaignSchedule } from './create-campaign/campaign-schedule/campaign-s
 import { CampaignConfirmation } from './create-campaign/campaign-confirmation/campaign-confirmation.component';
 import { NoContent } from './no-content/no-content';
 import { DateTimePicker} from './create-campaign/campaign-schedule/date-time-picker/date-time-picker.component';
+import { ImportMailingLists } from './mailing-lists/import-mailing-lists/import-mailing-lists.component';
+
 // Services
 import { MailingListsService } from './services/mailing-lists/mailing-lists.service';
 import { TemplatesService } from './services/templates/templates.service';
+import { ContactsService } from './services/contacts/contacts.service';
 import { CampaignCreationService } from './services/campaign-creation/campaign-creation.service';
 import { LanguageService } from './services/language.service';
 import { HTML2ImageService } from './services/html2image/html2image.service';
+import { File2JSONService } from './services/file2json/file2json.service';
 
 // Application wide providers
 const APP_PROVIDERS = [
@@ -66,7 +71,8 @@ type StoreType = {
         DropdownModule,
         TimepickerModule,
         DatepickerModule,
-        ButtonsModule
+        ButtonsModule,
+        ModalModule
     ],
     declarations: [
         App,
@@ -87,14 +93,17 @@ type StoreType = {
         CampaignSchedule,
         CampaignConfirmation,
         NoContent,
-        DateTimePicker
+        DateTimePicker,
+        ImportMailingLists
     ],
     providers: [ // expose our Services and Providers into Angular's dependency injection
         ENV_PROVIDERS,
         APP_PROVIDERS,
         MailingListsService,
         TemplatesService,
+        ContactsService,
         HTML2ImageService,
+        File2JSONService,
         CampaignCreationService,
         LanguageService
     ],
