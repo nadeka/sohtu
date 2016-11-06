@@ -1,4 +1,4 @@
-import { Component, Inject, ViewChild } from '@angular/core';
+import { Component, ViewChild, ChangeDetectorRef } from '@angular/core';
 import { CampaignBasicInfo } from './campaign-basic-info';
 import { CampaignMailingLists } from './campaign-mailing-lists';
 import { CampaignCreationService } from '../../services/campaign-creation/campaign-creation.service';
@@ -17,7 +17,8 @@ export class CampaignSettings {
   subject: string;
 
   constructor(private language: LanguageService,
-              private campaignCreationService: CampaignCreationService) {
+              private campaignCreationService: CampaignCreationService,
+              private ref: ChangeDetectorRef) {
   }
 
   @ViewChild('basicInfo') campaignBasicInfo: CampaignBasicInfo
@@ -39,6 +40,8 @@ export class CampaignSettings {
     if (selectedMailingLists) {
       this.campaignMailingLists.selectMany(this.campaignCreationService.getMailingLists());
     }
+    //Change detection needs to be forced because the selections have been added
+    this.ref.detectChanges();
   }
 
   goToStep(step) {
