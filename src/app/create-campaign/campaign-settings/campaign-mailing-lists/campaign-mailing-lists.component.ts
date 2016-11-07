@@ -51,7 +51,7 @@ export class CampaignMailingLists implements OnInit {
     }
 
     hasSelected(): boolean {
-        return this.selected.size != 0;
+        return this.selected.size !== 0;
     }
 
     getSelected(): Array<MailingList> {

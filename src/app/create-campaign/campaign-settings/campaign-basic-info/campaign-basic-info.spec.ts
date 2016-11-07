@@ -1,7 +1,7 @@
 
 // Load the implementations that should be tested
 import { FormsModule } from '@angular/forms';
-import { ComponentFixture, TestBed, async} from '@angular/core/testing';
+import { ComponentFixture, TestBed, async } from '@angular/core/testing';
 import { CampaignBasicInfo } from './campaign-basic-info.component.ts';
 import { LanguageService } from '../../../services/language.service';
 import { DebugElement }    from '@angular/core';

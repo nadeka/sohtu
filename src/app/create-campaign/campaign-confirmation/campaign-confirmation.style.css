@@ -6,3 +6,19 @@
        -moz-box-shadow: 0 10px 6px -6px #777;
             box-shadow: 0 10px 6px -6px #777;
 }
+
+hr {
+  border-color: #b3b3b3;
+}
+
+.chosen-lists {
+  color: white;
+  border-color: #ff6193;
+  border-radius: 4px;
+  background-color: #ff6193;
+  text-align: left;
+  margin-top: 0.5em;
+  padding: 1em;
+  word-wrap: break-word;
+  white-space: inherit;
+}

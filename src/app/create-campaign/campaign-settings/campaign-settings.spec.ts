@@ -95,7 +95,7 @@ describe('Component: CampaignSettings', () => {
   });
 
   it('should save campaign name to service when moving to another step', () => {
-      const campaignName = 'October2016'
+      const campaignName = 'October2016';
       component.name = campaignName;
       fixture.detectChanges();
       page.nextButton.triggerEventHandler('click', null);

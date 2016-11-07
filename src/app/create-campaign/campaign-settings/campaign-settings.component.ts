@@ -1,7 +1,8 @@
 import { Component, ViewChild, ChangeDetectorRef } from '@angular/core';
 import { CampaignBasicInfo } from './campaign-basic-info';
 import { CampaignMailingLists } from './campaign-mailing-lists';
-import { CampaignCreationService } from '../../services/campaign-creation/campaign-creation.service';
+import { CampaignCreationService }
+    from '../../services/campaign-creation/campaign-creation.service';
 import { LanguageService } from '../../services/language.service';
 
 @Component({
@@ -13,6 +14,9 @@ import { LanguageService } from '../../services/language.service';
 
 export class CampaignSettings {
 
+  @ViewChild('basicInfo') campaignBasicInfo: CampaignBasicInfo;
+  @ViewChild('mailingLists') campaignMailingLists: CampaignMailingLists;
+
   name: string;
   subject: string;
 
@@ -21,17 +25,16 @@ export class CampaignSettings {
               private ref: ChangeDetectorRef) {
   }
 
-  @ViewChild('basicInfo') campaignBasicInfo: CampaignBasicInfo
-  @ViewChild('mailingLists') campaignMailingLists: CampaignMailingLists
-
   ngOnInit() {
     this.name = this.campaignCreationService.getName();
-    if(this.name == undefined){
-      this.name="";
+
+    if (this.name === undefined) {
+      this.name = '';
     }
+
     this.subject = this.campaignCreationService.getSubject();
-    if(this.subject == undefined){
-      this.subject="";
+    if (this.subject === undefined) {
+      this.subject = '';
     }
   }
 
@@ -40,12 +43,12 @@ export class CampaignSettings {
     if (selectedMailingLists) {
       this.campaignMailingLists.selectMany(this.campaignCreationService.getMailingLists());
     }
-    //Change detection needs to be forced because the selections have been added
+    // Change detection needs to be forced because the selections have been added
     this.ref.detectChanges();
   }
 
   goToStep(step) {
-    //save to service
+    // save to service
     this.campaignCreationService.setName(this.campaignBasicInfo.getName());
     this.campaignCreationService.setSubject(this.campaignBasicInfo.getSubject());
     this.campaignCreationService.setMailingLists(this.campaignMailingLists.getSelected());

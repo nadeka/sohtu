@@ -18,7 +18,6 @@ describe('Service: CampaignCreationService', () => {
     it('should initialize the campaign', () => {
         expect(this.campaignCreationService.campaign).toBeDefined();
     });
-    
 });
 
 class RouterStub {

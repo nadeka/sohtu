@@ -73,7 +73,8 @@ export class ImportMailingLists {
     }
 
     isValid() {
-        return this.mailingListName.length > 0 && this.file != null && this.file.type === 'text/csv';
+        return this.mailingListName.length > 0 &&
+                    this.file != null && this.file.type === 'text/csv';
     }
 
     reset() {

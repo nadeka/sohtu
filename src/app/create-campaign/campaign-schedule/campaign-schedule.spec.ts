@@ -44,5 +44,4 @@ describe('Component: CampaignSchedule', () => {
           });
     }));
 
-
 });

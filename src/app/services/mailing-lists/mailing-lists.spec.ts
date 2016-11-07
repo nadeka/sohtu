@@ -16,7 +16,8 @@ describe('Service: MailingListsService', () => {
     it('create mailing list function should work', function() {
         let c: Contact = new Contact(1, 'firstname', 'lastname', 'test@test.com');
         let test: MailingList;
-        this.test = this.mailingListsService.createMailingList('test list', 'testing creating list', [this.c]);
+        this.test = this.mailingListsService.createMailingList(
+                    'test list', 'testing creating list', [this.c]);
         expect(this.test.members.length).toBe(1);
     });
 });

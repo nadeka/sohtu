@@ -25,21 +25,23 @@
   		<br>
   		<div class="basic-information">
   			<label for="campaign-name">Campaign name:</label>
-  			{{campaign.name}}
+        {{campaign.name}}
   			<br>
   			<br>
   			<label for="campaign-subject">Campaign subject:</label>
   			{{campaign.subject}}
-  			<br>
-  			<br>
+
+        <hr>
+
   			<label for="campaign-schedule">Will be sent:</label>
   			{{campaign.schedule}}
   		</div>
+      <br>
   		<div class="selected-mailing-lists">
   			<b>Mailing lists:</b>
   			<div class="chosen-lists" *ngFor="let mailingList of campaign.mailingLists">
   		                {{mailingList.name}}
-  		    </div>
+  		  </div>
   		</div>
   	</div>
   </div>
