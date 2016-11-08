@@ -11,6 +11,7 @@ import { CampaignSettings } from './create-campaign/campaign-settings';
 import { CampaignSchedule } from './create-campaign/campaign-schedule';
 import { CampaignTemplates } from './create-campaign/campaign-templates';
 import { CampaignConfirmation } from './create-campaign/campaign-confirmation';
+import { CampaignContent } from './create-campaign/campaign-content';
 
 import { NoContent } from './no-content';
 
@@ -32,6 +33,10 @@ export const routes: Routes = [
           {
             path: 'template',
             component: CampaignTemplates
+          },
+          {
+            path: 'content',
+            component: CampaignContent
           },
           {
             path: 'schedule',

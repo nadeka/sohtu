@@ -1,28 +1,12 @@
 <h3>{{ campaignTemplatesHeader }}</h3>
 <br>
-<div class="campaign-templates">
-    <div class="campaign-templates-list">
-        <ul class="list-inline" >
-            <li class="list-inline-item campaign-template"
-                *ngFor="let campaignTemplate of campaignTemplates"
-                (click)="setSelected(campaignTemplate.template.id)">
-                <img src="{{campaignTemplate.template.thumbnailImage}}"
-                     [class.active]="campaignTemplate.selected"
+
+<div class="row campaign">
+    <div class="col-md-6 col-md-4" *ngFor="let campaignTemplate of campaignTemplates"
+                (click)="select(campaignTemplate.id)">
+                <img src="{{campaignTemplate.thumbnailImage}}"
+                     [class.active]="isSelected(campaignTemplate.id)"
                      class="campaign-template-thumbnail img-thumbnail">
-                <p class="campaign-template-name">{{campaignTemplate.template.name}}</p>
-            </li>
-        </ul>
-    </div>
-
-    <div class="scroll-buttons">
-        <div class="scroll-button btn btn-default btn-lg"
-             (click)="scrollLeft(250)"
-             id="left-scroll-button"><
-        </div>
-
-        <div class="scroll-button btn btn-default btn-lg"
-             (click)="scrollLeft(-250)"
-             id="right-scroll-button">>
-        </div>
-    </div>
+                <p class="campaign-template-name">{{campaignTemplate.name}}</p>
+            </div>
 </div>

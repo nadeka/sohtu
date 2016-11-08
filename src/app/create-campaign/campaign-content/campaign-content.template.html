@@ -1,7 +1,8 @@
 <div class="col-md-4 col-md-offset-4">
   <ul class="breadcrumb">
     <li><a (click)="goToStep('')">Settings</a></li>
-    <li class="active">Template</li>
+    <li><a (click)="goToStep('template')">Template</a></li>
+    <li class="active">Content</li>
     <li><a (click)="goToStep('schedule')">Schedule</a></li>
     <li><a (click)="goToStep('confirmation')">Confirmation</a></li>
   </ul>
@@ -12,19 +13,13 @@
       <button style="float:left; display:inline;" (click)="goToStep('')" class="navigation-btn">
         Previous
       </button>
-      <button style="float:right; display:inline;" (click)="goToStep('content')" class="navigation-btn">
+      <button style="float:right; display:inline;" (click)="goToStep('schedule')" class="navigation-btn">
         Next
       </button>
     </div>
 </div>
 
+
 <div class="container">
-        <div class="row">
-            <br>
-            <div class="col-md-8 col-md-offset-2 box">
-                <h3>{{ campaignTemplatesHeader }}</h3>
-                <campaign-templates-list #templates (notify)='templateChanged($event)'>Loading template list...</campaign-templates-list>
-            </div>
-        </div>
-    <br>
+    <campaign-chosen-template>Loading a template...</campaign-chosen-template>
 </div>

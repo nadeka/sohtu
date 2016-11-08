@@ -18,20 +18,26 @@ export class CampaignTemplatesList implements OnInit {
 
     campaignTemplatesHeader = this.language.getWord('CAMPAIGN_TEMPLATES_HEADER');
 
-    public campaignTemplates: Array<CampaignTemplate> = [];
+    public campaignTemplates: Array<Template> = [];
+
+    private selectedTemplate: number;
 
     constructor(private language: LanguageService,
                 private templatesService: TemplatesService,
-                private html2ImageService: HTML2ImageService) {}
+                private html2ImageService: HTML2ImageService) {
+                    this.selectedTemplate = null;
+                }
 
     ngOnInit() {
         this.getCampaignTemplates();
     }
 
     getCampaignTemplates(): void {
+        this.campaignTemplates = [];
         this.templatesService.getTemplates()
-            .then(templates =>
-                templates.forEach(template => this.convertToCampaignTemplate(template)));
+            .then(templates => {this.campaignTemplates = templates;
+                templates.forEach(template => this.convertToCampaignTemplate(template));
+                });
     }
 
     convertToCampaignTemplate(template: Template): void {
@@ -39,34 +45,30 @@ export class CampaignTemplatesList implements OnInit {
             .then(imageUrl => template.thumbnailImage = imageUrl)
             .catch(err => console.log(err));
 
-        this.campaignTemplates.push(new CampaignTemplate(template, false));
     }
 
     hasSelected(): boolean {
-        return this.campaignTemplates
-            .some(campaignMailingList => campaignMailingList.selected);
+        if (this.selectedTemplate) {
+            return true;
+        }
+        return false;
     }
 
     getSelected(): Template {
         let campaignTemplate = this.campaignTemplates
-            .find(template => template.selected === true);
-
-        return campaignTemplate ? campaignTemplate.template : null;
+            .find(template => template.id === this.selectedTemplate);
+        return campaignTemplate ? campaignTemplate : null;
     }
 
-    setSelected(templateId: number): void {
-        this.campaignTemplates.forEach(function (campaignTemplate) {
-            if (campaignTemplate.template.id === templateId) {
-                campaignTemplate.selected = true;
-
-            } else {
-                campaignTemplate.selected = false;
-            }
-        });
+    select(templateId: number): void {
+        this.selectedTemplate = templateId;
         this.notify.emit(this.getSelected());
     }
 
-    scrollLeft(amount: number): void {
-        $('.campaign-templates-list').animate({ scrollLeft: '-=' + amount }, 300);
+    isSelected(templateId: number): boolean {
+        if (this.selectedTemplate) {
+            return (templateId === this.selectedTemplate);
+        }
+        return false;
     }
 }

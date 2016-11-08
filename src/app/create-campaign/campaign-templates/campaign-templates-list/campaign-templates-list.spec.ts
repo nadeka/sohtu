@@ -7,7 +7,7 @@ import {
 import { CampaignTemplatesList } from './campaign-templates-list.component.ts';
 import { TemplatesService } from '../../../services/templates/templates.service';
 import { HTML2ImageService } from '../../../services/html2image/html2image.service';
-import { CampaignTemplate } from '../../../models/campaign-template.model';
+import { Template } from '../../../models/template.model';
 import { MockTemplatesService }
     from '../../../services/templates/mock-templates.service';
 import { MockHTML2ImageService }
@@ -52,52 +52,32 @@ describe('Component: CampaignTemplatesList', () => {
 
 
     // TÄTÄ TESTIÄ EN SAA LÄPI
-    it('setSelected should set template with given id as selected', () => {
-
-        component.setSelected(1);
-
-        component.campaignTemplates
-            .forEach(function(template) {
-                if (template.template.id === 1) {
-                    expect(template.selected).toBe(true);
-                } else {
-                    expect(template.selected).toBe(false);
-                }
-            });
-
-        component.setSelected(1);
-
-        component.campaignTemplates
-            .forEach(function(template) {
-                if (template.template.id === 1) {
-                    expect(template.selected).toBe(true);
-                } else {
-                    expect(template.selected).toBe(false);
-                }
-            });
+    it('select should set template with given id as selected', () => {
+        component.select(1);
+        expect(component.selectedTemplate).toBe(1);
+        component.select(2);
+        expect(component.selectedTemplate).toBe(2);
     });
 
     it('hasSelected should return true when a template is selected', () => {
         expect(component.hasSelected()).toBe(false);
-        component.campaignTemplates[0].selected = true;
+        component.selectedTemplate = 1;
         expect(component.hasSelected()).toBe(true);
     });
 
     it('getSelected should return selected template', () => {
         expect(component.getSelected()).toBeNull();
-        component.campaignTemplates[0].selected = true;
+        component.selectedTemplate = 1;
         expect(component.getSelected()).not.toBeNull();
         expect(component.getSelected().id)
-            .toBe(component.campaignTemplates[0].template.id);
+            .toBe(1);
     });
 });
 
-function validateCampaignTemplate(campaignTemplate: CampaignTemplate) {
+function validateCampaignTemplate(campaignTemplate: Template) {
     expect(campaignTemplate).toBeDefined();
-    expect(campaignTemplate.template).toBeDefined();
-    expect(campaignTemplate.template.name).toBeDefined();
-    expect(campaignTemplate.template.id).toBeDefined();
-    expect(campaignTemplate.template.content).toBeDefined();
-    expect(campaignTemplate.template.thumbnailImage).toBeDefined();
-    expect(campaignTemplate.selected).toBe(false);
+    expect(campaignTemplate.name).toBeDefined();
+    expect(campaignTemplate.id).toBeDefined();
+    expect(campaignTemplate.content).toBeDefined();
+    expect(campaignTemplate.thumbnailImage).toBeDefined();
 }

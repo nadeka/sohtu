@@ -2,6 +2,7 @@ import { Injectable, Inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { Campaign } from '../../models/campaign.model';
 import { MailingList } from '../../models/mailing-list.model';
+import { Template } from '../../models/template.model';
 
 @Injectable()
 export class CampaignCreationService {
@@ -43,6 +44,14 @@ export class CampaignCreationService {
 
   public setSubject(subject: string) {
     this.campaign.subject = subject;
+  }
+
+  public setTemplate(template: Template) {
+    this.campaign.template = template;
+  }
+
+  public getTemplate() {
+    return this.campaign.template;
   }
 
   public getCampaign() {
