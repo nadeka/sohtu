@@ -18,7 +18,6 @@
     ],
     "types": [
       "hammerjs",
-      "html2canvas",
       "jasmine",
       "jquery",
       "node",
