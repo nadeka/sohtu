@@ -23,6 +23,7 @@ export class CampaignContent {
     }
 
     goToStep(step: string) {
+        // Might need to implement something that saves the updated content?
         this.campaignCreationService.goToStep(step);
     }
 }

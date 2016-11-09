@@ -1,5 +1,6 @@
 import { Component, OnInit} from '@angular/core';
 import { TemplatesService } from '../../../services/templates/templates.service';
+import { CampaignCreationService } from '../../../services/campaign-creation/campaign-creation.service';
 import { CampaignTemplate } from '../../../models/campaign-template.model';
 import { DomSanitizer } from '@angular/platform-browser'
 
@@ -12,16 +13,29 @@ import { DomSanitizer } from '@angular/platform-browser'
 export class CampaignChosenTemplate {
   templateContent = '';
 
-  constructor(private templatesService: TemplatesService, private sanitized: DomSanitizer) {}
+  constructor(private templatesService: TemplatesService, private campaignCreationService: CampaignCreationService,private sanitized: DomSanitizer) {}
 
+  // for fetching template from the service
   updateTemplate() {
-    this.templateContent = this.sanitized.bypassSecurityTrustHtml(this.templatesService.getSelectedTemplate().template.content);
+    this.templateContent = this.sanitized.bypassSecurityTrustHtml(this.campaignCreationService.getTemplate().content);
+  }
 
-    console.log(this.getCurrentTemplateContent());
-  //  tinymce.remove();
+  getCurrentTemplateContent() {
+    return document.getElementById('emailContainer').outerHTML;
+  }
+
+  // load template from service
+  ngOnInit() {
+    console.log('CampaignChosenTemplate component created');
+    this.updateTemplate();
+  }
+
+  // load tinyMCE last
+  ngAfterViewInit() {
     this.loadTinymce();
   }
 
+  // for loading tinyMCE
   loadTinymce() {
     tinymce.init({
       selector: 'div.tinymce',
@@ -35,16 +49,5 @@ export class CampaignChosenTemplate {
 
       ]
     });
-  }
-
-  getCurrentTemplateContent() {
-    return document.getElementById('emailContainer').outerHTML;
-  }
-
-  ngOnInit() {
-    console.log('CampaignChosenTemplate component created');
-
-    // Text editor for editing emails
-    this.loadTinymce();
   }
 }
