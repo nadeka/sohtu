@@ -21,8 +21,6 @@ export class CampaignTemplates {
                 private campaignTemplatesList: CampaignTemplatesList,
                 private templatesService: TemplatesService, private ref: ChangeDetectorRef){}
 
-
-
     ngOnInit() {
         console.log('hello `CampaignTemplates` component');
     }
