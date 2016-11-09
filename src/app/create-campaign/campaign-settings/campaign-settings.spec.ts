@@ -89,8 +89,10 @@ describe('Component: CampaignSettings', () => {
       page.breadCrumbLinks[0].triggerEventHandler('click', null);
       expect(campaignCreationService.stepParameter).toBe('template');
       page.breadCrumbLinks[1].triggerEventHandler('click', null);
-      expect(campaignCreationService.stepParameter).toBe('schedule');
+      expect(campaignCreationService.stepParameter).toBe('content');
       page.breadCrumbLinks[2].triggerEventHandler('click', null);
+      expect(campaignCreationService.stepParameter).toBe('schedule');
+      page.breadCrumbLinks[3].triggerEventHandler('click', null);
       expect(campaignCreationService.stepParameter).toBe('confirmation');
   });
 

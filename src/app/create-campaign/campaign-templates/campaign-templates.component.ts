@@ -26,6 +26,7 @@ export class CampaignTemplates {
     }
 
     ngAfterViewInit() {
+        // check if there is a pre-selected template, if so set it as selected
         let selectedTemplate = this.campaignCreationService.getTemplate();
         if(selectedTemplate){
             this.campaignTemplates.select(selectedTemplate.id);
@@ -37,7 +38,8 @@ export class CampaignTemplates {
 
     templateChanged(c: CampaignTemplate):void {
         this.templatesService.setUserSelectedTemplate(c);
-        //this.campaignChosenTemplate.updateTemplate();
+        // this.campaignCreationService.setTemplate(c);
+        // this.campaignChosenTemplate.updateTemplate();
     }
 
     goToStep(step: string) {

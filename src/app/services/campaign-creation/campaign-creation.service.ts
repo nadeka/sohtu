@@ -61,5 +61,4 @@ export class CampaignCreationService {
   public goToStep(step): any {
     this.router.navigate([this.baseRoute + '/' + step]);
   };
-
 };

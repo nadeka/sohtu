@@ -20,6 +20,4 @@ export class TemplatesService {
     getTemplates(): Promise<Template[]> {
         return Promise.resolve(TEMPLATES);
     }
-
-
 }

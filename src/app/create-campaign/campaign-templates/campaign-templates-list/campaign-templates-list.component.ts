@@ -44,7 +44,6 @@ export class CampaignTemplatesList implements OnInit {
         this.html2ImageService.toImage(template.content)
             .then(imageUrl => template.thumbnailImage = imageUrl)
             .catch(err => console.log(err));
-
     }
 
     hasSelected(): boolean {

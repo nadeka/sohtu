@@ -60,7 +60,7 @@ export const TEMPLATES: Template[] = [
         '<!-- Header starts -->' +
         '<tr>' +
         '<div class="tinymce">' +
-        '<h1 style="background-color: #ffb3b3; padding: 1em;">Your header here!</h1>' +
+        '<h1 style="background-color: #ffb3b3; padding: 1em;">Your header here! Template2</h1>' +
         '</div>' +
         '</tr>' +
         '<!-- Header ends-->' +
