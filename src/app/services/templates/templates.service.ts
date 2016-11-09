@@ -7,16 +7,6 @@ import { CampaignTemplate } from '../../models/campaign-template.model';
 @Injectable()
 export class TemplatesService {
 
-    private chosenTemplate: CampaignTemplate = null;
-
-    setUserSelectedTemplate(t: CampaignTemplate): void {
-        this.chosenTemplate = t;
-    }
-
-    getSelectedTemplate(): CampaignTemplate {
-        return this.chosenTemplate;
-    }
-
     getTemplates(): Promise<Template[]> {
         return Promise.resolve(TEMPLATES);
     }

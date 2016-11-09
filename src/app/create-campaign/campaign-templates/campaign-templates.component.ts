@@ -36,12 +36,6 @@ export class CampaignTemplates {
         this.ref.detectChanges();
     }
 
-    templateChanged(c: CampaignTemplate):void {
-        this.templatesService.setUserSelectedTemplate(c);
-        // this.campaignCreationService.setTemplate(c);
-        // this.campaignChosenTemplate.updateTemplate();
-    }
-
     goToStep(step: string) {
         this.campaignCreationService.setTemplate(this.campaignTemplates.getSelected());
         this.campaignCreationService.goToStep(step);
