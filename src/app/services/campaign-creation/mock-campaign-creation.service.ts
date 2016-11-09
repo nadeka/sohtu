@@ -1,17 +1,28 @@
 import { Injectable } from '@angular/core';
 import { MAILING_LISTS } from '../../mock-data/mock-mailing-lists';
 import { MailingList } from '../../models/mailing-list.model';
+import { Campaign } from '../../models/campaign.model';
 
 @Injectable()
 export class MockCampaignCreationService {
 
   stepParameter: string;
-  name: string;
-  subject: string;
-  mailingLists: Array<MailingList>;
+  campaign: Campaign;
+
+  constructor() {
+    this.campaign = new Campaign();
+  }
+
+  getCampaign() {
+    return this.campaign;
+  }
 
   getSchedule() {
-    return new Date(2017, 1, 2, 14, 54, 45, 0);
+    return this.campaign.schedule;
+  }
+
+  setSchedule(schedule: Date) {
+    this.campaign.schedule = schedule;
   }
 
   goToStep(step: string) {
@@ -19,27 +30,27 @@ export class MockCampaignCreationService {
   }
 
   getName() {
-    return this.name;
+    return this.campaign.name;
   }
 
   setName(name: string) {
-    this.name = name;
+    this.campaign.name = name;
   }
 
   getSubject() {
-    return this.subject;
+    return this.campaign.subject;
   }
 
   setSubject(subject: string) {
-    this.subject = subject;
+    this.campaign.subject = subject;
   }
 
   getMailingLists() {
-    return this.mailingLists;
+    return this.campaign.mailingLists;
   }
 
   setMailingLists(mailingLists: Array<MailingList>) {
-    this.mailingLists = mailingLists;
+    this.campaign.mailingLists = mailingLists;
   }
 
 

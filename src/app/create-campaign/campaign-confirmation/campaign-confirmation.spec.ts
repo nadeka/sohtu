@@ -1,21 +1,18 @@
-import { TestBed, async} from '@angular/core/testing';
-import { DebugElement } from '@angular/core';
+import { TestBed, async } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
+import { DebugElement } from '@angular/core';
 
+import { CampaignConfirmation } from './campaign-confirmation.component';
 import { CampaignCreationService } from
-        '../../services/campaign-creation/campaign-creation.service';
+'../../services/campaign-creation/campaign-creation.service';
 import { MockCampaignCreationService } from
-        '../../services/campaign-creation/mock-campaign-creation.service';
-import { CampaignSchedule } from './campaign-schedule.component';
-import { FormsModule } from '@angular/forms';
-import { DateTimePicker } from './date-time-picker/date-time-picker.component';
-import { DatepickerModule } from 'ng2-bootstrap/ng2-bootstrap';
-import { TimepickerModule } from 'ng2-bootstrap/ng2-bootstrap';
+'../../services/campaign-creation/mock-campaign-creation.service';
+import { LanguageService } from '../../services/language.service';
 
-describe('Component: CampaignSchedule', () => {
+describe('Component: CampaignConfirmation', () => {
     let fixture: any;
-    let component: any;
     let campaignCreationService: any;
+    let component: any;
     let page: Page;
 
     class Page {
@@ -31,24 +28,19 @@ describe('Component: CampaignSchedule', () => {
     beforeEach(async(() => {
         TestBed.configureTestingModule({
             declarations: [
-              CampaignSchedule,
-              DateTimePicker
-            ],
-            imports: [
-              FormsModule,
-              TimepickerModule,
-              DatepickerModule
+              CampaignConfirmation,
             ],
             providers: [
               {
                   provide: CampaignCreationService,
                   useClass: MockCampaignCreationService
               },
+              LanguageService
             ],
         }).compileComponents().then(function(arr) {
-            fixture = TestBed.createComponent(CampaignSchedule);
+            fixture = TestBed.createComponent(CampaignConfirmation);
             component = fixture.componentInstance;
-            campaignCreationService = TestBed.get(CampaignCreationService);
+            campaignCreationService = fixture.debugElement.injector.get(CampaignCreationService);
             page = new Page();
             page.addPageElements();
             fixture.detectChanges();
@@ -63,17 +55,7 @@ describe('Component: CampaignSchedule', () => {
         page.breadCrumbLinks[2].triggerEventHandler('click', null);
         expect(campaignCreationService.stepParameter).toBe('content');
         page.breadCrumbLinks[3].triggerEventHandler('click', null);
-        expect(campaignCreationService.stepParameter).toBe('confirmation');
-    });
-
-    it('should save campaign schedule to service when moving to another step', () => {
-        const testSchedule = new Date();
-        const spy = spyOn(campaignCreationService, 'setSchedule');
-        component.schedule = testSchedule;
-        component.scheduling = 'schedule';
-        fixture.detectChanges();
-        page.navButtons[1].triggerEventHandler('click', null);
-        expect(spy).toHaveBeenCalledWith(testSchedule);
+        expect(campaignCreationService.stepParameter).toBe('schedule');
     });
 
 });

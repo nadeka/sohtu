@@ -98,18 +98,20 @@ describe('Component: CampaignSettings', () => {
 
   it('should save campaign name to service when moving to another step', () => {
       const campaignName = 'October2016';
+      const spy = spyOn(campaignCreationService, 'setName');
       component.name = campaignName;
       fixture.detectChanges();
       page.nextButton.triggerEventHandler('click', null);
-      expect(campaignCreationService.name).toBe(campaignName);
+      expect(spy).toHaveBeenCalledWith(campaignName);
   });
 
   it('should save campaign subject to service when moving to another step', () => {
       const campaignSubject = '10% Off Selected items!';
+      const spy = spyOn(campaignCreationService, 'setSubject');
       component.subject = campaignSubject;
       fixture.detectChanges();
       page.nextButton.triggerEventHandler('click', null);
-      expect(campaignCreationService.subject).toBe(campaignSubject);
+      expect(spy).toHaveBeenCalledWith(campaignSubject);
   });
 
 });

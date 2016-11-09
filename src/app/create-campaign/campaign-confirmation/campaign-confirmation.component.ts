@@ -8,7 +8,6 @@ import { Campaign } from '../../models/campaign.model';
 	selector: 'campaign-confirmation',
 	templateUrl: './campaign-confirmation.template.html',
 	styleUrls: [ 'campaign-confirmation.style.css', '../campaign-creation.style.css' ],
-	providers: [CampaignBasicInfo, CampaignMailingLists]
 })
 
 export class CampaignConfirmation {
