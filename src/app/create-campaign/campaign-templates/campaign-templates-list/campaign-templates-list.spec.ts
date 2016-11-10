@@ -2,8 +2,9 @@ import {
     TestBed,
     async
 }
-    from '@angular/core/testing';
-
+from '@angular/core/testing';
+import { By } from '@angular/platform-browser';
+import { DebugElement } from '@angular/core';
 import { CampaignTemplatesList } from './campaign-templates-list.component.ts';
 import { TemplatesService } from '../../../services/templates/templates.service';
 import { HTML2ImageService } from '../../../services/html2image/html2image.service';
@@ -17,6 +18,16 @@ import { LanguageService } from '../../../services/language.service';
 describe('Component: CampaignTemplatesList', () => {
     let fixture: any;
     let component: any;
+    let page: Page;
+
+    class Page {
+      // starts from thumbnails[1]
+      thumbnails:   Array<DebugElement>;
+
+      addPageElements() {
+        this.thumbnails = fixture.debugElement.queryAll(By.css('div'));
+      }
+    }
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
@@ -38,9 +49,11 @@ describe('Component: CampaignTemplatesList', () => {
         }).compileComponents().then(function(arr) {
             fixture = TestBed.createComponent(CampaignTemplatesList);
             component = fixture.componentInstance;
+            page = new Page();
 
             // Detect changes to wire up the `fixture.nativeElement` as necessary:
             fixture.detectChanges();
+            page.addPageElements();
         });
     }));
 
@@ -51,7 +64,6 @@ describe('Component: CampaignTemplatesList', () => {
     });
 
 
-    // TÄTÄ TESTIÄ EN SAA LÄPI
     it('select should set template with given id as selected', () => {
         component.select(1);
         expect(component.selectedTemplate).toBe(1);
@@ -71,6 +83,20 @@ describe('Component: CampaignTemplatesList', () => {
         expect(component.getSelected()).not.toBeNull();
         expect(component.getSelected().id)
             .toBe(1);
+    });
+
+    // UI tests
+    it('clicking first thumbnail should choose that template', () => {
+        page.thumbnails[1].triggerEventHandler('click', null);
+        expect(component.selectedTemplate).toBe(1);
+    });
+
+    it('clicking on another thumbnail should change thumbnail', () => {
+        page.thumbnails[1].triggerEventHandler('click', null);
+        expect(component.selectedTemplate).toBe(1);
+
+        page.thumbnails[2].triggerEventHandler('click', null);
+        expect(component.selectedTemplate).toBe(2);
     });
 });
 

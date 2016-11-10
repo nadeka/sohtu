@@ -113,5 +113,4 @@ describe('Component: CampaignSettings', () => {
       page.nextButton.triggerEventHandler('click', null);
       expect(spy).toHaveBeenCalledWith(campaignSubject);
   });
-
 });
