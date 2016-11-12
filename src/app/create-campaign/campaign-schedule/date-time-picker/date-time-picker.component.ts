@@ -35,11 +35,11 @@ export class DateTimePicker implements ControlValueAccessor {
   };
 
   set time(v: any) {
-      this.internalTime = v;
-      this.internalDateTime.setHours(v.getHours());
-      this.internalDateTime.setMinutes(v.getMinutes());
-      this.internalDateTime.setSeconds(v.getSeconds());
-      this.onChangeCallback(this.internalDateTime);
+    this.internalTime = v;
+    this.internalDateTime.setHours(v.getHours());
+    this.internalDateTime.setMinutes(v.getMinutes());
+    this.internalDateTime.setSeconds(v.getSeconds());
+    this.onChangeCallback(this.internalDateTime);
   }
 
   get date(): any {
@@ -47,11 +47,11 @@ export class DateTimePicker implements ControlValueAccessor {
   };
 
   set date(v: any) {
-      this.internalDate = v;
-      this.internalDateTime.setFullYear(v.getFullYear());
-      this.internalDateTime.setMonth(v.getMonth());
-      this.internalDateTime.setDate(v.getDate());
-      this.onChangeCallback(this.internalDateTime);
+    this.internalDate = v;
+    this.internalDateTime.setFullYear(v.getFullYear());
+    this.internalDateTime.setMonth(v.getMonth());
+    this.internalDateTime.setDate(v.getDate());
+    this.onChangeCallback(this.internalDateTime);
   }
 
   onBlur() {
