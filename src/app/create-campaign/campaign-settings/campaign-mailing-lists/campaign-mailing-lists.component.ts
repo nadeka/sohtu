@@ -1,17 +1,20 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit, ViewChild } from '@angular/core';
 import { ImportMailingLists }
     from '../../../mailing-lists/import-mailing-lists/import-mailing-lists.component';
 import { MailingListsService } from '../../../services/mailing-lists/mailing-lists.service';
 import { LanguageService } from '../../../services/language.service';
 import { MailingList } from '../../../models/mailing-list.model';
+import { ModalDirective } from 'ng2-bootstrap/ng2-bootstrap';
 
 @Component({
     selector: 'campaign-mailing-lists',
     styleUrls: [ 'campaign-mailing-lists.style.css' ],
-    templateUrl: 'campaign-mailing-lists.template.html'
+    templateUrl: 'campaign-mailing-lists.template.html',
+    changeDetection: ChangeDetectionStrategy.OnPush,
 })
 
 export class CampaignMailingLists implements OnInit {
+    @ViewChild('lgModal') public lgModal: ModalDirective;
 
     // Variables for static text on the page
     selectAllButtonLabel = this.language.getWord('SELECT_ALL_BUTTON_LABEL');
@@ -30,15 +33,15 @@ export class CampaignMailingLists implements OnInit {
                   this.selected = new Set();
                 }
 
-    showImporter() {
-        this.importMailingLists.show();
-    }
-
-    hideImporter() {
-        this.importMailingLists.hide();
-    }
-
     ngOnInit() {
+        this.getMailingLists();
+    }
+
+    mailingListImported(mailingList: MailingList) {
+        if (mailingList) {
+            this.select(mailingList);
+        }
+
         this.getMailingLists();
     }
 
@@ -67,13 +70,21 @@ export class CampaignMailingLists implements OnInit {
         }
     }
 
-    selectAll(): void {
+    selectAll() {
         this.mailingLists.forEach(mailingList =>
-                                          this.selected.add(mailingList.id));
+            this.selected.add(mailingList.id));
     }
 
-    deselectAll(): void {
+    deselectAll() {
         this.selected.clear();
+    }
+
+    selectAllToggle(event): void {
+        if (event.target.checked) {
+            this.selectAll();
+        } else {
+            this.deselectAll();
+        }
     }
 
     selectMany(mailingLists: Array<MailingList>): void {
@@ -90,5 +101,13 @@ export class CampaignMailingLists implements OnInit {
 
     isSelected(id: number): boolean {
         return this.selected.has(id);
+    }
+
+    show() {
+        this.lgModal.show();
+    }
+
+    hide() {
+        this.lgModal.hide();
     }
 }

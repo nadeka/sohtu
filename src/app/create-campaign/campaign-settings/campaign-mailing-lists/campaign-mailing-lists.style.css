@@ -1,18 +1,62 @@
-.campaign-mailing-list {
-    text-align: left;
-    max-width: 500px;
+.choose-btn {
+    margin-bottom: 12px;
+}
+
+.selected-list {
+    height: 50px;
+}
+
+.selected-btn {
+    font-size: 10px;
+    font-weight: bold;
+    margin-right: 3px;
+    margin-bottom: 3px;
+    padding: 7px;
+    border-radius: 14px;
+    -moz-border-radius: 14px;
+    -webkit-border-radius: 14px;
+}
+
+.deselect {
+    padding-right: 3px;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+tr {
     width: 100%;
-    margin-bottom: 0.5em;
-    word-wrap: break-word;
-    white-space: inherit;
+    display: inline-table;
+    table-layout: fixed;
 }
 
-.campaign-mailing-list:hover, .active, .campaign-mailing-list:visited {
-    color: white;
-    border-color: #ff6193;
-    background-color: #ff6193;
+.table > tbody > tr.active td {
+    background-color: white;
 }
 
-.select-buttons {
-    margin-bottom: 0.5em;
+table {
+    height: 300px;
+    display: -moz-groupbox;
+}
+
+tbody {
+    overflow-y: scroll;
+    margin-right: 15px;
+    height: 250px;
+    position: absolute;
+}
+
+::-webkit-scrollbar
+{
+    width: 12px;  /* for vertical scrollbars */
+    height: 12px; /* for horizontal scrollbars */
+}
+
+::-webkit-scrollbar-track
+{
+    background: #f4f4fa;
+}
+
+::-webkit-scrollbar-thumb
+{
+    background: #e6e6ec;
 }

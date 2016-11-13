@@ -6,3 +6,19 @@
        -moz-box-shadow: 0 10px 6px -6px #777;
             box-shadow: 0 10px 6px -6px #777;
 }
+
+#selected-mailing-lists-amount {
+    font-size: 11px;
+    color: #0074D9;
+}
+
+.selected-btn {
+    font-size: 10px;
+    font-weight: bold;
+    margin-right: 3px;
+    margin-bottom: 3px;
+    padding: 7px;
+    border-radius: 14px;
+    -moz-border-radius: 14px;
+    -webkit-border-radius: 14px;
+}

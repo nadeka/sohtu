@@ -10,6 +10,11 @@ export var eng: { [key: string]: string; } = {
   'MAILING_LISTS_HEADER' : 'Mailing lists',
   'CAMPAIGN_TEMPLATES_HEADER' : 'Campaign Template',
   'IMPORT_BUTTON_LABEL' : 'Import',
+  'IMPORT_MAILING_LIST_HEADER' : 'Import mailing list',
+  'CHOOSE_FILE' : 'Choose file',
+  'NO_FILE_CHOSEN' : 'No file chosen',
+  'FILE_PARSE_ERROR' : 'Could not parse file',
+  'ACCEPTED_FORMATS' : 'Accepted formats: .csv',
   'MAILING_LIST_NAME_LABEL' : 'Name',
   'MAILING_LIST_DESCRIPTION_LABEL' : 'Description'
 };

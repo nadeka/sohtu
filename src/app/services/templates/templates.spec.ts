@@ -1,13 +1,14 @@
 import { TemplatesService } from './templates.service';
 
 describe('Service: TemplatesService', () => {
+    let templatesService: TemplatesService;
 
     beforeEach(function() {
-        this.templatesService = new TemplatesService();
+        templatesService = new TemplatesService();
     });
 
     it('should return 9 templates', function() {
-        this.templatesService.getTemplates()
+        templatesService.getTemplates()
             .then(templates => validateTemplates(templates));
     });
 });

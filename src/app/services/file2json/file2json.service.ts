@@ -8,7 +8,7 @@ export class File2JSONService {
         let config = {	skipEmptyLines: true,
                         header: true,
                         complete: function(results) {
-                            callback(results.data);
+                            callback(results);
                         }};
 
         papa.parse(csvFile, config);
