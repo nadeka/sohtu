@@ -1,5 +1,4 @@
 import { Component, OnInit} from '@angular/core';
-import { TemplatesService } from '../../../services/templates/templates.service';
 import { CampaignCreationService } from '../../../services/campaign-creation/campaign-creation.service';
 import { CampaignTemplate } from '../../../models/campaign-template.model';
 import { DomSanitizer } from '@angular/platform-browser'
@@ -13,7 +12,7 @@ import { DomSanitizer } from '@angular/platform-browser'
 export class CampaignChosenTemplate {
   templateContent = '';
 
-  constructor(private templatesService: TemplatesService, private campaignCreationService: CampaignCreationService,private sanitized: DomSanitizer) {}
+  constructor(private campaignCreationService: CampaignCreationService,private sanitized: DomSanitizer) {}
 
   // for fetching template from the service
   updateTemplate() {

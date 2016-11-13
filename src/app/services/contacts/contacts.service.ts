@@ -2,13 +2,14 @@ import { Injectable } from '@angular/core';
 import { Contact } from '../../models/contact.model';
 import { CONTACTS } from '../../mock-data/mock-contacts';
 
-// This returns same mock data as MockContactsService until we get real data
+// This returns mock data until we get real data
 @Injectable()
 export class ContactsService {
-    id: number = 0;
+    id: number = CONTACTS.length + 1;
+    contacts: Contact[] = CONTACTS;
 
     getContacts(): Promise<Contact[]> {
-        return Promise.resolve(CONTACTS);
+        return Promise.resolve(this.contacts);
     }
 
     createContacts(contacts): Contact[] {
@@ -21,8 +22,9 @@ export class ContactsService {
     }
 
     createContact(contact): Contact {
-        let firstNameRegex = /^first name|firstName|etunimi/g;
-        let lastNameRegex = /^last name|lastName|sukunimi/g;
+        // Test a few possible CSV column names
+        let firstNameRegex = /^first name|firstname|etunimi/g;
+        let lastNameRegex = /^last name|lastname|sukunimi/g;
         let emailRegex = /^email|sähköposti$/g;
 
         let firstName = '';
@@ -41,7 +43,14 @@ export class ContactsService {
             }
         }
 
+        let existingContact = this.contacts.find(c => c.email === email);
+
+        if (existingContact) {
+            return existingContact;
+        }
+
         let createdContact = new Contact(this.id, firstName, lastName, email);
+        this.contacts.push(createdContact);
         this.id++;
         return createdContact;
     }

@@ -1,21 +1,70 @@
+<br>
 <h4>{{ mailingListsHeader }}</h4>
-<div class="campaign-mailing-lists-and-select-buttons">
-    <div class="select-buttons">
-        <div (click)="selectAll()" class="btn btn-default btn-xs">{{ selectAllButtonLabel }}</div>
-        <div (click)="deselectAll()" class="btn btn-default btn-xs">{{ deselectAllButtonLabel }}</div>
-        <div class="import-mailing-list-button btn btn-success btn-xs" (click)="showImporter()">
-            {{importButtonLabel}}
-        </div>
-    </div>
+<div class="btn btn-default choose-btn" (click)="show()">Choose</div>
 
-    <import-mailing-lists (mailingListImported)="getMailingLists()"></import-mailing-lists>
-
-    <div class="campaign-mailing-lists list-group">
-        <div *ngFor="let mailingList of mailingLists"
-             [class.active]="isSelected(mailingList.id)"
-             class="campaign-mailing-list list-group-item btn btn-default"
-             (click)="toggleSelection(mailingList)">
-                {{mailingList.name}}
+<div bsModal #lgModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" (click)="hide()" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title">{{ mailingListsHeader }}</h4>
+            </div>
+            <div class="modal-body">
+                <tabset>
+                    <tab heading='Mailing lists'>
+                        <br>
+                        <div class="selected-list">
+                            <div class="btn btn-primary btn-xs selected-btn"
+                                 *ngFor="let mailingList of getSelected()">
+                                <span class="deselect" (click)="deselect(mailingList)">x  </span>
+                                {{mailingList.name}}
+                            </div>
+                        </div>
+                            <div class="table-responsive">
+                                <table class="table table-sm">
+                                    <thead>
+                                        <tr>
+                                            <th>
+                                                <label>
+                                                    <input type="checkbox"
+                                                           class="select-all-toggle"
+                                                           (change)="selectAllToggle($event)"
+                                                           value=""
+                                                           aria-label="...">
+                                                </label>
+                                            </th>
+                                            <th>Name</th>
+                                            <th>Member count</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngFor="let mailingList of mailingLists"
+                                            [class.active]="isSelected(mailingList.id)"
+                                            class="campaign-mailing-list"
+                                            (click)="toggleSelection(mailingList)">
+                                            <td>
+                                                <label>
+                                                    <input type="checkbox"
+                                                           [checked]="isSelected(mailingList.id)"
+                                                           value=""
+                                                           aria-label="...">
+                                                </label>
+                                            </td>
+                                            <td>{{mailingList.name}}</td>
+                                            <td>{{mailingList.members.length}}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                    </tab>
+                    <tab heading="Import">
+                        <br>
+                        <import-mailing-lists (mailingListImported)="mailingListImported($event)"></import-mailing-lists>
+                    </tab>
+                </tabset>
+            </div>
         </div>
     </div>
 </div>

@@ -1,6 +1,6 @@
 import { TestBed, async } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-import { DebugElement } from '@angular/core';
+import { DebugElement, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 import { CampaignCreationService } from
 '../../services/campaign-creation/campaign-creation.service';
@@ -17,6 +17,8 @@ import { MockContactsService } from '../../services/contacts/mock-contacts.servi
 import { ImportMailingLists } from '../../mailing-lists/import-mailing-lists';
 import { FormsModule } from '@angular/forms';
 import { ModalModule } from 'ng2-bootstrap/ng2-bootstrap';
+import { TabsModule } from 'ng2-bootstrap/ng2-bootstrap';
+import { AlertModule } from 'ng2-bootstrap/ng2-bootstrap';
 import { File2JSONService } from '../../services/file2json/file2json.service';
 import { MockFile2JSONService } from '../../services/file2json/mock-file2json.service';
 
@@ -46,7 +48,9 @@ describe('Component: CampaignSettings', () => {
       ],
       imports: [
         FormsModule,
-        ModalModule
+        ModalModule,
+        TabsModule,
+        AlertModule
       ],
       providers: [
         {
@@ -70,6 +74,7 @@ describe('Component: CampaignSettings', () => {
           useClass: MockFile2JSONService
         }
       ],
+        schemas: [CUSTOM_ELEMENTS_SCHEMA]
     }).compileComponents().then(function(arr) {
       fixture = TestBed.createComponent(CampaignSettings);
       component = fixture.componentInstance;

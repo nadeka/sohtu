@@ -10,6 +10,8 @@ import { DatepickerModule } from 'ng2-bootstrap/ng2-bootstrap';
 import { TimepickerModule } from 'ng2-bootstrap/ng2-bootstrap';
 import { ButtonsModule } from 'ng2-bootstrap/components/buttons';
 import { ModalModule } from 'ng2-bootstrap/ng2-bootstrap';
+import { TabsModule } from 'ng2-bootstrap/ng2-bootstrap';
+import { AlertModule } from 'ng2-bootstrap/ng2-bootstrap';
 
 import { routes }   from './app.routes';
 
@@ -73,7 +75,9 @@ type StoreType = {
         TimepickerModule,
         DatepickerModule,
         ButtonsModule,
-        ModalModule
+        ModalModule,
+        TabsModule,
+        AlertModule
     ],
     declarations: [
         App,

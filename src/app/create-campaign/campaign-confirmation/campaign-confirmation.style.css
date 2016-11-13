@@ -11,14 +11,17 @@ hr {
   border-color: #b3b3b3;
 }
 
-.chosen-lists {
-  color: white;
-  border-color: #ff6193;
-  border-radius: 4px;
-  background-color: #ff6193;
-  text-align: left;
-  margin-top: 0.5em;
-  padding: 1em;
-  word-wrap: break-word;
-  white-space: inherit;
+.selected-btn {
+    font-size: 10px;
+    font-weight: bold;
+    margin-right: 3px;
+    margin-bottom: 3px;
+    padding: 7px;
+    border-radius: 14px;
+    -moz-border-radius: 14px;
+    -webkit-border-radius: 14px;
+}
+
+p {
+    font-weight: bold;
 }

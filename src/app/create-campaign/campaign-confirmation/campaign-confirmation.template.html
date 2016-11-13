@@ -25,25 +25,24 @@
   		<h3>Campaign Overview</h3>
   		<br>
   		<div class="basic-information">
-  			<label for="campaign-name">Campaign name:</label>
-        {{campaign.name}}
+  			<label for="campaign-name">Campaign name</label>
+        <p id="campaign-name">{{campaign.name}}</p>
   			<br>
   			<br>
-  			<label for="campaign-subject">Campaign subject:</label>
-  			{{campaign.subject}}
-
+  			<label for="campaign-subject">Campaign subject</label>
+  			<p id="campaign-subject">{{campaign.subject}}</p>
+			<br>
+			<br>
+			<p>Mailing lists</p>
+			<div class="btn btn-primary btn-xs selected-btn"
+				 *ngFor="let mailingList of campaign.mailingLists">
+				{{mailingList.name}}
+			</div>
         <hr>
-
-  			<label for="campaign-schedule">Will be sent:</label>
-  			{{campaign.schedule}}
+  			<label for="campaign-schedule">Will be sent</label>
+  			<p id="campaign-schedule">{{campaign.schedule}}</p>
   		</div>
       <br>
-  		<div class="selected-mailing-lists">
-  			<b>Mailing lists:</b>
-  			<div class="chosen-lists" *ngFor="let mailingList of campaign.mailingLists">
-  		                {{mailingList.name}}
-  		  </div>
-  		</div>
   	</div>
   </div>
 </div>
