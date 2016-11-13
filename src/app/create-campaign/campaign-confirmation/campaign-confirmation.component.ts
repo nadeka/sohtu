@@ -26,4 +26,7 @@ export class CampaignConfirmation {
 		this.campaignCreationService.goToStep(step);
 	}
 
+	getCampaign() {
+		return this.campaign;
+	}
 }

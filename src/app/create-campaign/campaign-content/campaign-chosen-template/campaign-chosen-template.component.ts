@@ -24,6 +24,10 @@ export class CampaignChosenTemplate {
     return document.getElementById('emailContainer').outerHTML;
   }
 
+  printContent() {
+    console.log(document.getElementById('emailContainer'));
+  }
+
   // load template from service
   ngOnInit() {
     console.log('CampaignChosenTemplate component created');
@@ -40,7 +44,6 @@ export class CampaignChosenTemplate {
     tinymce.init({
       selector: 'div.tinymce',
       theme: 'inlite',
-      plugins: '',
       insert_toolbar: '',
       selection_toolbar: 'bold italic | quicklink | h1 h2 | alignleft aligncenter alignright alignjustify',
       inline: true,
