@@ -21,6 +21,7 @@ import { TabsModule } from 'ng2-bootstrap/ng2-bootstrap';
 import { AlertModule } from 'ng2-bootstrap/ng2-bootstrap';
 import { File2JSONService } from '../../services/file2json/file2json.service';
 import { MockFile2JSONService } from '../../services/file2json/mock-file2json.service';
+import { CampaignBreadcrumb } from '../campaign-breadcrumb';
 
 describe('Component: CampaignSettings', () => {
   let fixture: any;
@@ -44,7 +45,8 @@ describe('Component: CampaignSettings', () => {
         CampaignSettings,
         CampaignBasicInfo,
         CampaignMailingLists,
-        ImportMailingLists
+        ImportMailingLists,
+        CampaignBreadcrumb
       ],
       imports: [
         FormsModule,
@@ -88,17 +90,6 @@ describe('Component: CampaignSettings', () => {
   it('should navigate to correct page through the service when pressing next', () => {
       page.nextButton.triggerEventHandler('click', null);
       expect(campaignCreationService.stepParameter).toBe('template');
-  });
-
-  it('should navigate to correct pages through the service using workflow navigation', () => {
-      page.breadCrumbLinks[0].triggerEventHandler('click', null);
-      expect(campaignCreationService.stepParameter).toBe('template');
-      page.breadCrumbLinks[1].triggerEventHandler('click', null);
-      expect(campaignCreationService.stepParameter).toBe('content');
-      page.breadCrumbLinks[2].triggerEventHandler('click', null);
-      expect(campaignCreationService.stepParameter).toBe('schedule');
-      page.breadCrumbLinks[3].triggerEventHandler('click', null);
-      expect(campaignCreationService.stepParameter).toBe('confirmation');
   });
 
   it('should save campaign name to service when moving to another step', () => {

@@ -4,13 +4,13 @@ import { CampaignMailingLists } from './campaign-mailing-lists';
 import { CampaignCreationService }
     from '../../services/campaign-creation/campaign-creation.service';
 import { LanguageService } from '../../services/language.service';
-// import { CampaignBreadcrumb } from '../campaign-breadcrumb';
+import { CampaignBreadcrumb } from '../campaign-breadcrumb';
 
 @Component({
   selector: 'campaign-settings',
   templateUrl: 'campaign-settings.template.html',
   styleUrls: [ '../campaign-creation.style.css', 'campaign-settings.style.css' ],
-  providers: [ CampaignMailingLists, CampaignBasicInfo, LanguageService]
+  providers: [ CampaignMailingLists, CampaignBasicInfo, LanguageService, CampaignBreadcrumb]
 })
 
 export class CampaignSettings {
@@ -37,7 +37,7 @@ export class CampaignSettings {
     if (this.subject === undefined) {
       this.subject = '';
     }
-    this.campaignCreationService.setCurrentStep('settings');
+
   }
 
   ngAfterViewInit() {
@@ -46,15 +46,19 @@ export class CampaignSettings {
       this.campaignMailingLists.selectMany(this.campaignCreationService.getMailingLists());
     }
     // Change detection needs to be forced because the selections have been added
+    this.campaignCreationService.setCurrentStep('settings');
     this.ref.detectChanges();
   }
 
-  goToStep(step) {
-    // save to service
+  goToStep(step: string) {
+    this.saveChanges();
+    this.campaignCreationService.goToStep(step);
+  }
+
+  saveChanges() {
     this.campaignCreationService.setName(this.campaignBasicInfo.getName());
     this.campaignCreationService.setSubject(this.campaignBasicInfo.getSubject());
     this.campaignCreationService.setMailingLists(this.campaignMailingLists.getSelected());
-    this.campaignCreationService.goToStep(step);
   }
 
 }

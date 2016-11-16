@@ -8,6 +8,8 @@ import { MockCampaignCreationService } from
         '../../services/campaign-creation/mock-campaign-creation.service';
 import { CampaignContent } from './campaign-content.component';
 import { CampaignChosenTemplate } from './campaign-chosen-template';
+import { CampaignBreadcrumb } from '../campaign-breadcrumb';
+
 
 describe('Component: CampaignContent', () => {
     let fixture: any;
@@ -29,7 +31,8 @@ describe('Component: CampaignContent', () => {
         TestBed.configureTestingModule({
             declarations: [
               CampaignContent,
-              CampaignChosenTemplate
+              CampaignChosenTemplate,
+              CampaignBreadcrumb
             ],
             providers: [
               {
@@ -46,18 +49,5 @@ describe('Component: CampaignContent', () => {
             fixture.detectChanges();
           });
     }));
-
-    //Tests don't work as the campaign template is undefined in the initialization
-
-    // it('should navigate to correct pages through the service using workflow navigation', () => {
-    //     page.breadCrumbLinks[0].triggerEventHandler('click', null);
-    //     expect(campaignCreationService.stepParameter).toBe('');
-    //     page.breadCrumbLinks[1].triggerEventHandler('click', null);
-    //     expect(campaignCreationService.stepParameter).toBe('template');
-    //     page.breadCrumbLinks[2].triggerEventHandler('click', null);
-    //     expect(campaignCreationService.stepParameter).toBe('schedule');
-    //     page.breadCrumbLinks[3].triggerEventHandler('click', null);
-    //     expect(campaignCreationService.stepParameter).toBe('confirmation');
-    // });
 
 });

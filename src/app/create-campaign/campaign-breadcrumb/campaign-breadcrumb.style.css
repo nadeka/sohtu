@@ -1,3 +1,6 @@
-p {
-  color: #FFFFFF;
+.not-active {
+   pointer-events: none;
+   cursor: default;
+   color: #5f6268;
+   text-decoration: none;
 }

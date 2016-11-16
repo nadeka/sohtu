@@ -1,12 +1,4 @@
-<div class="col-md-6 col-md-offset-3">
-  <ul class="breadcrumb">
-    <li><a (click)="goToStep('')">Settings</a></li>
-    <li><a (click)="goToStep('template')">Template</a></li>
-    <li><a (click)="goToStep('content')">Content</a></li>
-    <li class="active">Schedule</li>
-    <li><a (click)="goToStep('confirmation')">Confirmation</a></li>
-  </ul>
-</div>
+<campaign-breadcrumb (pageChanged)="saveChanges()"></campaign-breadcrumb>
 
 <div class="container col-md-8 col-md-offset-2">
   <button style="float:left; display:inline;" (click)="goToStep('content')" class="navigation-btn">

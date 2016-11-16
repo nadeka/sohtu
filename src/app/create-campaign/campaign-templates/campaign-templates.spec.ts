@@ -12,6 +12,7 @@ import { TemplatesService } from '../../services/templates/templates.service';
 import { MockTemplatesService } from '../../services/templates/mock-templates.service';
 import { HTML2ImageService } from '../../services/html2image/html2image.service';
 import { MockHTML2ImageService } from '../../services/html2image/mock-html2image.service';
+import { CampaignBreadcrumb } from '../campaign-breadcrumb';
 
 describe('Component: CampaignTemplates', () => {
     let fixture: any;
@@ -33,7 +34,8 @@ describe('Component: CampaignTemplates', () => {
         TestBed.configureTestingModule({
             declarations: [
               CampaignTemplates,
-              CampaignTemplatesList
+              CampaignTemplatesList,
+              CampaignBreadcrumb
             ],
             imports: [
 
@@ -61,17 +63,6 @@ describe('Component: CampaignTemplates', () => {
             fixture.detectChanges();
           });
     }));
-
-    it('should navigate to correct pages through the service using workflow navigation', () => {
-        page.breadCrumbLinks[0].triggerEventHandler('click', null);
-        expect(campaignCreationService.stepParameter).toBe('');
-        page.breadCrumbLinks[1].triggerEventHandler('click', null);
-        expect(campaignCreationService.stepParameter).toBe('content');
-        page.breadCrumbLinks[2].triggerEventHandler('click', null);
-        expect(campaignCreationService.stepParameter).toBe('schedule');
-        page.breadCrumbLinks[3].triggerEventHandler('click', null);
-        expect(campaignCreationService.stepParameter).toBe('confirmation');
-    });
 
     it('should save selected template to service when moving to another step', () => {
         const selection = 1;

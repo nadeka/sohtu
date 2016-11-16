@@ -1,5 +1,5 @@
 import { CampaignCreationService} from '../../services/campaign-creation/campaign-creation.service';
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 
 @Component({
 	selector: 'campaign-breadcrumb',
@@ -9,15 +9,18 @@ import { Component } from '@angular/core';
 
 export class CampaignBreadcrumb {
 
+	@Output() pageChanged = new EventEmitter();
+
 	constructor (private campaignCreationService: CampaignCreationService){
 	}
 
 	goToStep(step: string) {
+		this.pageChanged.emit();
 		this.campaignCreationService.goToStep(step);
 	}
 
-	get step() {
-		return this.campaignCreationService.getCurrentStep();
+	isStep(step: string) {
+		return this.campaignCreationService.getCurrentStep() === step;
 	}
 
 }

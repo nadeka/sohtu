@@ -70,4 +70,8 @@ export class CampaignTemplatesList implements OnInit {
         }
         return false;
     }
+
+    saveChanges() {
+      
+    }
 }

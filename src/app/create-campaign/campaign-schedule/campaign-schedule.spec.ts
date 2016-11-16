@@ -11,6 +11,7 @@ import { FormsModule } from '@angular/forms';
 import { DateTimePicker } from './date-time-picker/date-time-picker.component';
 import { DatepickerModule } from 'ng2-bootstrap/ng2-bootstrap';
 import { TimepickerModule } from 'ng2-bootstrap/ng2-bootstrap';
+import { CampaignBreadcrumb } from '../campaign-breadcrumb';
 
 describe('Component: CampaignSchedule', () => {
   let fixture: any;
@@ -32,7 +33,8 @@ describe('Component: CampaignSchedule', () => {
     TestBed.configureTestingModule({
       declarations: [
         CampaignSchedule,
-        DateTimePicker
+        DateTimePicker,
+        CampaignBreadcrumb
       ],
       imports: [
         FormsModule,
@@ -54,17 +56,6 @@ describe('Component: CampaignSchedule', () => {
       fixture.detectChanges();
     });
   }));
-
-  it('should navigate to correct pages through the service using workflow navigation', () => {
-    page.breadCrumbLinks[0].triggerEventHandler('click', null);
-    expect(campaignCreationService.stepParameter).toBe('');
-    page.breadCrumbLinks[1].triggerEventHandler('click', null);
-    expect(campaignCreationService.stepParameter).toBe('template');
-    page.breadCrumbLinks[2].triggerEventHandler('click', null);
-    expect(campaignCreationService.stepParameter).toBe('content');
-    page.breadCrumbLinks[3].triggerEventHandler('click', null);
-    expect(campaignCreationService.stepParameter).toBe('confirmation');
-  });
 
   it('should save campaign schedule to service when moving to another step', () => {
     const testSchedule = new Date(2017, 9, 10, 15, 55, 12, 0);

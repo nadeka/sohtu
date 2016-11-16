@@ -1,9 +1,9 @@
 <div class="col-md-6 col-md-offset-3">
   <ul class="breadcrumb">
-    <li [ngClass]="{active: step==='settings'}"><a (click)="goToStep('')">Settings</a></li>
-    <li [ngClass]="{active: step==='template'}"><a (click)="goToStep('template')">Template</a></li>
-    <li [ngClass]="{active: step==='content'}"><a (click)="goToStep('content')">Content</a></li>
-    <li [ngClass]="{active: step==='schedule'}"><a (click)="goToStep('schedule')">Schedule</a></li>
-    <li [ngClass]="{active: step==='confirmation'}"><a (click)="goToStep('confirmation')">Confirmation</a></li>
+    <li><a [ngClass]="{'not-active': isStep('settings') }" (click)="goToStep('')">Settings</a></li>
+    <li><a [ngClass]="{'not-active': isStep('template') }" (click)="goToStep('template')">Template</a></li>
+    <li><a [ngClass]="{'not-active': isStep('content') }" (click)="goToStep('content')">Content</a></li>
+    <li><a [ngClass]="{'not-active': isStep('schedule') }" (click)="goToStep('schedule')">Schedule</a></li>
+    <li><a [ngClass]="{'not-active': isStep('confirmation') }" (click)="goToStep('confirmation')">Confirmation</a></li>
   </ul>
 </div>

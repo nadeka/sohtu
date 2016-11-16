@@ -9,7 +9,8 @@ export class MockCampaignCreationService {
 
   stepParameter: string;
   campaign: Campaign;
-
+  step: string;
+  
   constructor() {
     this.campaign = new Campaign();
   }
@@ -62,5 +63,12 @@ export class MockCampaignCreationService {
     this.campaign.mailingLists = mailingLists;
   }
 
+  setCurrentStep(step: string) {
+    this.step = step;
+  }
+
+  getCurrentStep(): string {
+    return this.step;
+  }
 
 }
