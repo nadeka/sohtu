@@ -14,7 +14,9 @@ export var eng: { [key: string]: string; } = {
   'CHOOSE_FILE' : 'Choose file',
   'NO_FILE_CHOSEN' : 'No file chosen',
   'FILE_PARSE_ERROR' : 'Could not parse file',
-  'ACCEPTED_FORMATS' : 'Accepted formats: .csv',
+  'ACCEPTED_FILE_FORMATS' : 'Accepted formats: .csv',
+  'ACCEPTED_FILE_CONTENT' : 'The first row of the file should be a header containing ' +
+  'the column names, for example: "First name";"Last name";"Email"',
   'MAILING_LIST_NAME_LABEL' : 'Name',
   'MAILING_LIST_DESCRIPTION_LABEL' : 'Description'
 };

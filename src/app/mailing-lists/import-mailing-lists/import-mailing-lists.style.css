@@ -32,8 +32,10 @@
     color: #42A948;
 }
 
-#acceptedFormats {
+#acceptedFormats, #acceptedContent {
     padding-top: 1em;
     font-size: 11px;
     color: #0074D9;
 }
+
+
