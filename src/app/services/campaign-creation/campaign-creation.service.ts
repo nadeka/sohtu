@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { Campaign } from '../../models/campaign.model';
 import { MailingList } from '../../models/mailing-list.model';
 import { Template } from '../../models/template.model';
+import { ModifiedTemplate } from '../../models/modified-template.model'
 
 @Injectable()
 export class CampaignCreationService {
@@ -51,8 +52,19 @@ export class CampaignCreationService {
     this.campaign.template = template;
   }
 
+  public setModifiedTemplate(modifiedTemplate: ModifiedTemplate) {
+    this.campaign.modifiedTemplate = modifiedTemplate;
+  }
+
   public getTemplate() {
     return this.campaign.template;
+  }
+
+  public getModifiedTemplate() {
+    if(!this.campaign.modifiedTemplate) {
+      return new ModifiedTemplate('');
+    }
+    return this.campaign.modifiedTemplate;
   }
 
   public getCampaign() {

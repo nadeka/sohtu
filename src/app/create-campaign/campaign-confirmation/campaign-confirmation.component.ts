@@ -4,6 +4,8 @@ import { CampaignMailingLists } from '../campaign-settings/campaign-mailing-list
 import { CampaignCreationService} from '../../services/campaign-creation/campaign-creation.service';
 import { Campaign } from '../../models/campaign.model';
 import { CampaignBreadcrumb } from '../campaign-breadcrumb';
+import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
+
 
 @Component({
 	selector: 'campaign-confirmation',
@@ -15,14 +17,17 @@ import { CampaignBreadcrumb } from '../campaign-breadcrumb';
 export class CampaignConfirmation {
 
 	private campaign: Campaign;
+	private campaignContent: SafeHtml;
 
 	constructor (private campaignCreationService: CampaignCreationService,
-								private ref: ChangeDetectorRef){
+								private ref: ChangeDetectorRef,
+								private sanitized: DomSanitizer){
 		this.campaign = campaignCreationService.getCampaign();
 	}
 
 	ngOnInit() {
     console.log('hello `CONFIRMATION` component');
+		this.campaignContent = this.sanitized.bypassSecurityTrustHtml(this.campaign.modifiedTemplate.content);
   }
 
 	ngAfterViewInit() {

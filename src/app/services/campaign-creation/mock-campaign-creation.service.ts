@@ -3,6 +3,7 @@ import { MAILING_LISTS } from '../../mock-data/mock-mailing-lists';
 import { MailingList } from '../../models/mailing-list.model';
 import { Campaign } from '../../models/campaign.model';
 import { Template } from '../../models/template.model';
+import { ModifiedTemplate } from '../../models/modified-template.model';
 
 @Injectable()
 export class MockCampaignCreationService {
@@ -51,8 +52,19 @@ export class MockCampaignCreationService {
     return this.campaign.template;
   }
 
+  getModifiedTemplate() {
+    if(!this.campaign.modifiedTemplate) {
+      return new ModifiedTemplate('');
+    }
+    return this.campaign.modifiedTemplate;
+  }
+
   setTemplate(template: Template) {
     this.campaign.template = template;
+  }
+
+  setModifiedTemplate(modifiedTemplate: ModifiedTemplate) {
+    this.campaign.modifiedTemplate = modifiedTemplate;
   }
 
   getMailingLists() {

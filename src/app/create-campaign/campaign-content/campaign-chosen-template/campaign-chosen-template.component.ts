@@ -1,7 +1,8 @@
 import { Component, OnInit} from '@angular/core';
 import { CampaignCreationService } from '../../../services/campaign-creation/campaign-creation.service';
 import { CampaignTemplate } from '../../../models/campaign-template.model';
-import { DomSanitizer } from '@angular/platform-browser'
+import { ModifiedTemplate } from '../../../models/modified-template.model';
+import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 
 @Component({
   selector: 'campaign-chosen-template',
@@ -10,7 +11,8 @@ import { DomSanitizer } from '@angular/platform-browser'
 })
 
 export class CampaignChosenTemplate {
-  templateContent = '';
+  templateContent : SafeHtml = '';
+  modifiedTemplate : ModifiedTemplate;
 
   constructor(private campaignCreationService: CampaignCreationService,private sanitized: DomSanitizer) {}
 
@@ -24,7 +26,8 @@ export class CampaignChosenTemplate {
   }
 
   printContent() {
-    console.log(document.getElementById('emailContainer'));
+    this.modifiedTemplate = new ModifiedTemplate(document.getElementById('emailContainer').innerHTML);
+    this.campaignCreationService.setModifiedTemplate(this.modifiedTemplate);
   }
 
   // load template from service
