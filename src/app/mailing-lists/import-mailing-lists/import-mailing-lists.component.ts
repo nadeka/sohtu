@@ -42,7 +42,8 @@ export class ImportMailingLists {
     }
 
     loadFile(event): void {
-        let fileList = event.srcElement.files;
+        let target = event.target || event.srcElement;
+        let fileList = target.files;
 
         if (fileList.length > 0) {
             this.file = fileList[0];
