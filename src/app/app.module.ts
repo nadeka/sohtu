@@ -43,6 +43,7 @@ import { CampaignConfirmation } from './create-campaign/campaign-confirmation/ca
 import { NoContent } from './no-content/no-content';
 import { DateTimePicker} from './create-campaign/campaign-schedule/date-time-picker/date-time-picker.component';
 import { ImportMailingLists } from './mailing-lists/import-mailing-lists/import-mailing-lists.component';
+import { CampaignBreadcrumb } from './create-campaign/campaign-breadcrumb';
 
 // Services
 import { MailingListsService } from './services/mailing-lists/mailing-lists.service';
@@ -98,6 +99,7 @@ type StoreType = {
         CampaignTemplatesList,
         CampaignSchedule,
         CampaignConfirmation,
+        CampaignBreadcrumb,
         NoContent,
         DateTimePicker,
         ImportMailingLists

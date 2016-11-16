@@ -4,6 +4,7 @@ import { CampaignMailingLists } from './campaign-mailing-lists';
 import { CampaignCreationService }
     from '../../services/campaign-creation/campaign-creation.service';
 import { LanguageService } from '../../services/language.service';
+// import { CampaignBreadcrumb } from '../campaign-breadcrumb';
 
 @Component({
   selector: 'campaign-settings',
@@ -36,6 +37,7 @@ export class CampaignSettings {
     if (this.subject === undefined) {
       this.subject = '';
     }
+    this.campaignCreationService.setCurrentStep('settings');
   }
 
   ngAfterViewInit() {

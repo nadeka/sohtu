@@ -9,6 +9,7 @@ export class CampaignCreationService {
 
   public campaign: Campaign;
   public baseRoute = '/marketing/create-campaign';
+  private step: string;
 
   constructor (@Inject(Router) public router: Router) {
     this.campaign = new Campaign();
@@ -61,4 +62,13 @@ export class CampaignCreationService {
   public goToStep(step): any {
     this.router.navigate([this.baseRoute + '/' + step]);
   };
+
+  public setCurrentStep(step: string) {
+    this.step = step;
+  }
+
+  public getCurrentStep() {
+    return this.step;
+  }
+
 };
