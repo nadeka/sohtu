@@ -19,7 +19,8 @@ export class ImportMailingLists {
     importButtonLabel = this.language.getWord('IMPORT_BUTTON_LABEL');
     noFileChosen = this.language.getWord('NO_FILE_CHOSEN');
     chooseFile = this.language.getWord('CHOOSE_FILE');
-    acceptedFormats = this.language.getWord('ACCEPTED_FORMATS');
+    acceptedFormats = this.language.getWord('ACCEPTED_FILE_FORMATS');
+    acceptedContent = this.language.getWord('ACCEPTED_FILE_CONTENT');
     fileParseError = this.language.getWord('FILE_PARSE_ERROR');
 
     @Input() mailingListName: string = '';

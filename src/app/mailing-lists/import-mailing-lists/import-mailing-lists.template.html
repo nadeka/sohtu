@@ -3,12 +3,16 @@
     {{ alert?.msg }}
 </alert>
 
-<form #form>
-    <label for="new-mailing-list-name">{{ mailingListNameLabel }} *</label>
+<form #form (ngSubmit)="importMailingList()">
+    <label for="new-mailing-list-name">{{ mailingListNameLabel }}</label>
     <div class="form-group">
         <input required type="text" name="new-mailing-list-name" class="form-control"
                id="new-mailing-list-name" [ngModel]="mailingListName"
                (ngModelChange)=onNameChange($event) #name="ngModel">
+        <div [hidden]="name.valid || name.pristine"
+             class="alert alert-danger">
+            Name is required
+        </div>
     </div>
 
     <label for="new-mailing-list-description">{{ mailingListDescriptionLabel }}</label>
@@ -26,10 +30,10 @@
         </span>
         <span id="filename">{{file ? file.name : noFileChosen}}</span>
         <div id="acceptedFormats">{{ acceptedFormats }}</div>
+        <div id="acceptedContent">{{ acceptedContent }}</div>
     </div>
     <br>
-    <button type="button" class="import-mailing-list-button btn btn-success"
-         (click)="importMailingList()">
+    <button type="submit" class="import-mailing-list-button btn btn-success">
         {{ importButtonLabel }}
     </button>
     <button type="button" class="reset-form-button btn btn-danger" (click)="reset()">
