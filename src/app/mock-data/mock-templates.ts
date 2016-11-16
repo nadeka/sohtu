@@ -3,6 +3,7 @@ import { Template } from '../models/template.model';
 export const TEMPLATES: Template[] = [
     new Template(1, 'Template 1',
         '<!-- Email content starts-->' +
+        '<div style="background-color: #ffffff;">' +
         '<table style="width: 100%;">' +
         '<!-- Header starts -->' +
         '<tr>' +
@@ -53,9 +54,11 @@ export const TEMPLATES: Template[] = [
         '</tr>' +
         '<!-- Footer ends -->' +
         '</table>' +
+        '</div>' +
         '<!-- Email content ends-->', ''),
     new Template(2, 'Template 2',
         '<!-- Email content starts-->' +
+        '<div style="background-color: #ffffff;">' +
         '<table style="width: 100%;">' +
         '<!-- Header starts -->' +
         '<tr>' +
@@ -94,6 +97,7 @@ export const TEMPLATES: Template[] = [
         '</tr>' +
         '<!-- Footer ends -->' +
         '</table>' +
+        '<div>' +
         '<!-- Email content ends-->', ''),
     new Template(3, 'Template 3',
         '<!-- Email content starts-->' +

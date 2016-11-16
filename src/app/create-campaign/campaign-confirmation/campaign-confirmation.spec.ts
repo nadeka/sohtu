@@ -8,6 +8,7 @@ import { CampaignCreationService } from
 import { MockCampaignCreationService } from
 '../../services/campaign-creation/mock-campaign-creation.service';
 import { LanguageService } from '../../services/language.service';
+import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 
 describe('Component: CampaignConfirmation', () => {
     let fixture: any;

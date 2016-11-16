@@ -3,6 +3,7 @@ import { CampaignBasicInfo } from '../campaign-settings/campaign-basic-info';
 import { CampaignMailingLists } from '../campaign-settings/campaign-mailing-lists';
 import { CampaignCreationService} from '../../services/campaign-creation/campaign-creation.service';
 import { Campaign } from '../../models/campaign.model';
+import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 
 @Component({
 	selector: 'campaign-confirmation',
@@ -13,9 +14,11 @@ import { Campaign } from '../../models/campaign.model';
 export class CampaignConfirmation {
 
 	private campaign: Campaign;
+	private campaignContent: SafeHtml;
 
-	constructor (private campaignCreationService: CampaignCreationService){
+	constructor (private campaignCreationService: CampaignCreationService, private sanitized: DomSanitizer){
 		this.campaign = campaignCreationService.getCampaign();
+		this.campaignContent = this.sanitized.bypassSecurityTrustHtml(campaignCreationService.getModifiedTemplate().content);
 	}
 
 	ngOnInit() {
