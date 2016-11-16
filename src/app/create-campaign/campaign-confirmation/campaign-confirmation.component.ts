@@ -18,11 +18,11 @@ export class CampaignConfirmation {
 
 	constructor (private campaignCreationService: CampaignCreationService, private sanitized: DomSanitizer){
 		this.campaign = campaignCreationService.getCampaign();
-		this.campaignContent = this.sanitized.bypassSecurityTrustHtml(campaignCreationService.getModifiedTemplate().content);
 	}
 
 	ngOnInit() {
     console.log('hello `CONFIRMATION` component');
+		this.campaignContent = this.sanitized.bypassSecurityTrustHtml(this.campaign.modifiedTemplate.content);
   }
 
 	goToStep(step: string) {

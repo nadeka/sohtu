@@ -8,7 +8,7 @@ import { CampaignCreationService } from
 import { MockCampaignCreationService } from
 '../../services/campaign-creation/mock-campaign-creation.service';
 import { LanguageService } from '../../services/language.service';
-import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
+import { ModifiedTemplate }  from '../../models/modified-template.model';
 
 describe('Component: CampaignConfirmation', () => {
     let fixture: any;
@@ -19,12 +19,14 @@ describe('Component: CampaignConfirmation', () => {
     class Page {
       breadCrumbLinks: Array<DebugElement>;
       navButtons: Array<DebugElement>;
-      basicInfoContainer : DebugElement;
+      basicInfoContainer: DebugElement;
+      finalContentContainer: DebugElement;
 
       addPageElements() {
           this.navButtons = fixture.debugElement.queryAll(By.css('button'));
           this.breadCrumbLinks = fixture.debugElement.queryAll(By.css('a'));
           this.basicInfoContainer = fixture.debugElement.query(By.css('.basic-information'));
+          this.finalContentContainer = fixture.debugElement.query(By.css('#finalContent'));
       }
     }
 
@@ -44,6 +46,7 @@ describe('Component: CampaignConfirmation', () => {
             fixture = TestBed.createComponent(CampaignConfirmation);
             component = fixture.componentInstance;
             campaignCreationService = fixture.debugElement.injector.get(CampaignCreationService);
+            campaignCreationService.setModifiedTemplate(new ModifiedTemplate('<p>test modified template</p>'));
             campaignCreationService.setName('testname');
             campaignCreationService.setSubject('testsubject');
             page = new Page();
@@ -72,5 +75,9 @@ describe('Component: CampaignConfirmation', () => {
     it('campaign basic info is displayed correctly', () => {
         expect(page.basicInfoContainer.nativeElement.textContent).toContain('testname');
         expect(page.basicInfoContainer.nativeElement.textContent).toContain('testsubject');
+    });
+
+    it('final template should be fetched from campaign creation service and displayed', () => {
+        expect(page.finalContentContainer.nativeElement.textContent).toContain('test modified template');
     });
 });
