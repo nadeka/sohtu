@@ -38,11 +38,11 @@ export class CampaignSchedule {
   }
 
   saveChanges() {
-    if (this.scheduling === 'sendNow') {
-      this.campaignCreationService.setSchedule(new Date());
-    } else {
       this.campaignCreationService.setSchedule(this.schedule);
-    }
+  }
+
+  setCurrentTime() {
+    this.schedule = new Date();
   }
 
 }

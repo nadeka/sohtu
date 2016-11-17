@@ -13,11 +13,10 @@
   <div class="col-md-8 col-md-offset-2">
     <div class="box">
       <h3>Campaign Schedule</h3>
-      <label class="btn btn-primary" [(ngModel)]="scheduling" btnRadio="sendNow" ngDefaultControl>Send Now</label>
-      <label class="btn btn-primary" [(ngModel)]="scheduling" btnRadio="schedule" ngDefaultControl>Schedule</label>
-      <div *ngIf="scheduling=='schedule'">
-        <p *ngIf="scheduling == 'schedule'">Campaign will be sent on {{schedule}}</p>
-        <date-time-picker *ngIf="scheduling == 'schedule'" [(ngModel)]="schedule" ngDefaultControl>Loading...</date-time-picker>
+      <div>
+        <p>Campaign will be sent on {{schedule}}</p>
+        <date-time-picker [(ngModel)]="schedule" ngDefaultControl>Loading...</date-time-picker>
+        <label class="btn btn-primary" (click)="setCurrentTime()" ngDefaultControl>Set current time</label>
       </div>
     </div>
   </div>
