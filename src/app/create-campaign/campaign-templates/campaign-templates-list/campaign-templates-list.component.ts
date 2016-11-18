@@ -24,6 +24,7 @@ export class CampaignTemplatesList implements OnInit {
     @ViewChild('staticModal') public staticModal: ModalDirective;
     private selectedTemplate: number;
     private tempTemplateId: number;
+    private updateTemplate: boolean = true;
 
     constructor(private language: LanguageService,
                 private templatesService: TemplatesService,
@@ -68,8 +69,10 @@ export class CampaignTemplatesList implements OnInit {
         if(!this.campaignCreationService.getModifiedTemplate()) {
           this.notify.emit(this.getSelected());
           this.selectedTemplate = templateId;
+          this.updateTemplate = true;
         }
         else {
+          this.updateTemplate = false;
           this.staticModal.show();
         }
     }
@@ -78,6 +81,12 @@ export class CampaignTemplatesList implements OnInit {
       this.notify.emit(this.getSelected());
       this.selectedTemplate = this.tempTemplateId;
       this.staticModal.hide();
+      this.campaignCreationService.setExistingModifiedTemplate(false);
+      this.updateTemplate = true;
+    }
+
+    getUpdateTemplate(): boolean {
+      return this.updateTemplate;
     }
 
     reselect(templateId: number): void {
@@ -90,9 +99,5 @@ export class CampaignTemplatesList implements OnInit {
             return (templateId === this.selectedTemplate);
         }
         return false;
-    }
-
-    saveChanges() {
-
     }
 }

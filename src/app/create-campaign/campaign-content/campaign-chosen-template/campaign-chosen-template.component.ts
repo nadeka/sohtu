@@ -17,7 +17,12 @@ export class CampaignChosenTemplate {
 
   // for fetching template from the service
   updateTemplate() {
-    this.templateContent = this.sanitized.bypassSecurityTrustHtml(this.campaignCreationService.getTemplate().content);
+    if(this.campaignCreationService.getExistingModifiedTemplate()) {
+      this.templateContent = this.sanitized.bypassSecurityTrustHtml(this.campaignCreationService.getModifiedTemplate().content);
+    }
+    else {
+      this.templateContent = this.sanitized.bypassSecurityTrustHtml(this.campaignCreationService.getTemplate().content);
+    }
   }
 
   getCurrentTemplateContent() {
@@ -27,7 +32,6 @@ export class CampaignChosenTemplate {
   saveContent() {
     this.modifiedTemplate = new ModifiedTemplate(document.getElementById('emailContainer').innerHTML);
     this.campaignCreationService.setModifiedTemplate(this.modifiedTemplate);
-    this.campaignCreationService.setChooseNew(false);
   }
 
   // load template from service

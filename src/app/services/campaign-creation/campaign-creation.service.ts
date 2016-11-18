@@ -11,6 +11,7 @@ export class CampaignCreationService {
   public campaign: Campaign;
   public baseRoute = '/marketing/create-campaign';
   private step: string;
+  private existingModifiedTemplate: boolean = false;
 
   constructor (@Inject(Router) public router: Router) {
     this.campaign = new Campaign();
@@ -54,6 +55,7 @@ export class CampaignCreationService {
 
   public setModifiedTemplate(modifiedTemplate: ModifiedTemplate) {
     this.campaign.modifiedTemplate = modifiedTemplate;
+    this.existingModifiedTemplate = true;
   }
 
   public getTemplate() {
@@ -68,20 +70,20 @@ export class CampaignCreationService {
     return this.campaign;
   }
 
-  public setChooseNew(b: boolean) {
-    this.chooseNew = b;
-  }
-
-  public getChooseNew() {
-    return this.chooseNew;
-  }
-
   public goToStep(step): any {
     this.router.navigate([this.baseRoute + '/' + step]);
   };
 
   public setCurrentStep(step: string) {
     this.step = step;
+  }
+
+  public getExistingModifiedTemplate(): boolean {
+    return this.existingModifiedTemplate;
+  }
+
+  public setExistingModifiedTemplate(existingModifiedTemplate: boolean): void {
+    this.existingModifiedTemplate = existingModifiedTemplate;
   }
 
   public getCurrentStep() {
