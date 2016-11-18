@@ -14,6 +14,7 @@ import { MockTemplatesService } from '../../services/templates/mock-templates.se
 import { HTML2ImageService } from '../../services/html2image/html2image.service';
 import { MockHTML2ImageService } from '../../services/html2image/mock-html2image.service';
 import { CampaignBreadcrumb } from '../campaign-breadcrumb';
+import { LanguageService } from '../../services/language.service';
 
 describe('Component: CampaignTemplates', () => {
     let fixture: any;
@@ -51,7 +52,8 @@ describe('Component: CampaignTemplates', () => {
               {
                   provide: HTML2ImageService,
                   useClass: MockHTML2ImageService
-              }
+              },
+              LanguageService
             ],
         }).compileComponents().then(function(arr) {
             fixture = TestBed.createComponent(CampaignTemplates);

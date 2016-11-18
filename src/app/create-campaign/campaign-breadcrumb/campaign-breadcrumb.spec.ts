@@ -7,6 +7,7 @@ import { CampaignCreationService } from
 import { MockCampaignCreationService } from
 '../../services/campaign-creation/mock-campaign-creation.service';
 import { CampaignBreadcrumb } from '../campaign-breadcrumb';
+import { LanguageService } from '../../services/language.service';
 
 describe('Component: CampaignTemplates', () => {
     let fixture: any;
@@ -35,6 +36,7 @@ describe('Component: CampaignTemplates', () => {
                   provide: CampaignCreationService,
                   useClass: MockCampaignCreationService
               },
+              LanguageService
             ],
         }).compileComponents().then(function(arr) {
             fixture = TestBed.createComponent(CampaignBreadcrumb);

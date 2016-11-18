@@ -12,6 +12,7 @@ import { DateTimePicker } from './date-time-picker/date-time-picker.component';
 import { DatepickerModule } from 'ng2-bootstrap/ng2-bootstrap';
 import { TimepickerModule } from 'ng2-bootstrap/ng2-bootstrap';
 import { CampaignBreadcrumb } from '../campaign-breadcrumb';
+import { LanguageService } from '../../services/language.service';
 
 describe('Component: CampaignSchedule', () => {
   let fixture: any;
@@ -46,6 +47,7 @@ describe('Component: CampaignSchedule', () => {
           provide: CampaignCreationService,
           useClass: MockCampaignCreationService
         },
+        LanguageService
       ],
     }).compileComponents().then(function(arr) {
       fixture = TestBed.createComponent(CampaignSchedule);
