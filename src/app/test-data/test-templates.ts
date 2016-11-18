@@ -53,7 +53,7 @@ export const TEMPLATES: Template[] = [
         '</tr>' +
         '<!-- Footer ends -->' +
         '</table>' +
-        '<!-- Email content ends-->', ''),
+        '<!-- Email content ends-->', '', '', ''),
     new Template(2, 'Template 2',
         '<!-- Email content starts-->' +
         '<table style="width: 100%;">' +
@@ -94,7 +94,7 @@ export const TEMPLATES: Template[] = [
         '</tr>' +
         '<!-- Footer ends -->' +
         '</table>' +
-        '<!-- Email content ends-->', ''),
+        '<!-- Email content ends-->', '', '', ''),
     new Template(3, 'Template 3',
         '<!-- Email content starts-->' +
         '<table style="width: 100%;">' +
@@ -135,7 +135,7 @@ export const TEMPLATES: Template[] = [
         '</tr>' +
         '<!-- Footer ends -->' +
         '</table>' +
-        '<!-- Email content ends-->', ''),
+        '<!-- Email content ends-->', '', '', ''),
     new Template(4, 'Template 4',
         '<!-- Email content starts-->' +
         '<table style="width: 100%;">' +
@@ -176,7 +176,7 @@ export const TEMPLATES: Template[] = [
         '</tr>' +
         '<!-- Footer ends -->' +
         '</table>' +
-        '<!-- Email content ends-->', ''),
+        '<!-- Email content ends-->', '', '', ''),
     new Template(5, 'Template 5',
         '<!-- Email content starts-->' +
         '<table style="width: 100%;">' +
@@ -217,7 +217,7 @@ export const TEMPLATES: Template[] = [
         '</tr>' +
         '<!-- Footer ends -->' +
         '</table>' +
-        '<!-- Email content ends-->', ''),
+        '<!-- Email content ends-->', '', '', ''),
     new Template(6, 'Template 6',
         '<!-- Email content starts-->' +
         '<table style="width: 100%;">' +
@@ -258,7 +258,7 @@ export const TEMPLATES: Template[] = [
         '</tr>' +
         '<!-- Footer ends -->' +
         '</table>' +
-        '<!-- Email content ends-->', ''),
+        '<!-- Email content ends-->', '', '', ''),
     new Template(7, 'Template 7',
         '<!-- Email content starts-->' +
         '<table style="width: 100%;">' +
@@ -299,7 +299,7 @@ export const TEMPLATES: Template[] = [
         '</tr>' +
         '<!-- Footer ends -->' +
         '</table>' +
-        '<!-- Email content ends-->', ''),
+        '<!-- Email content ends-->', '', '', ''),
     new Template(8, 'Template 8',
         '<!-- Email content starts-->' +
         '<table style="width: 100%;">' +
@@ -340,7 +340,7 @@ export const TEMPLATES: Template[] = [
         '</tr>' +
         '<!-- Footer ends -->' +
         '</table>' +
-        '<!-- Email content ends-->', ''),
+        '<!-- Email content ends-->', '', '', ''),
     new Template(9, 'Template 9',
         '<!-- Email content starts-->' +
         '<table style="width: 100%;">' +
@@ -381,5 +381,5 @@ export const TEMPLATES: Template[] = [
         '</tr>' +
         '<!-- Footer ends -->' +
         '</table>' +
-        '<!-- Email content ends-->', '')
+        '<!-- Email content ends-->', '', '', '')
 ];

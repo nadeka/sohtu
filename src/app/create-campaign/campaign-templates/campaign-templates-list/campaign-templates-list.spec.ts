@@ -113,6 +113,6 @@ function validateCampaignTemplate(campaignTemplate: Template) {
     expect(campaignTemplate).toBeDefined();
     expect(campaignTemplate.name).toBeDefined();
     expect(campaignTemplate.id).toBeDefined();
-    expect(campaignTemplate.content).toBeDefined();
-    expect(campaignTemplate.thumbnailImage).toBeDefined();
+    expect(campaignTemplate.html).toBeDefined();
+    expect(campaignTemplate.htmlImage).toBeDefined();
 }

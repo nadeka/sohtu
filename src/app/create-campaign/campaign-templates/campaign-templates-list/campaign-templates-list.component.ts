@@ -18,6 +18,8 @@ export class CampaignTemplatesList implements OnInit {
     // Notification to parent that a template has been chosen
     @Output() notify = new EventEmitter();
 
+    errorMessage: string;
+
     campaignTemplatesHeader = this.language.getWord('CAMPAIGN_TEMPLATES_HEADER');
     changeTemplateQuestion = this.language.getWord('CHANGE_TEMPLATE_QUESTION');
     modifiedContentLostInfo = this.language.getWord('MODIFIED_CONTENT_LOST_INFO');
@@ -43,18 +45,17 @@ export class CampaignTemplatesList implements OnInit {
     }
 
     getCampaignTemplates(): void {
-        this.campaignTemplates = [];
         this.templatesService.getTemplates()
-            .then(templates => {this.campaignTemplates = templates;
-                templates.forEach(template => this.convertToCampaignTemplate(template));
-                });
+            .then(templates => this.campaignTemplates = templates,
+                  error => this.errorMessage = <any>error);
     }
 
-    convertToCampaignTemplate(template: Template): void {
-        this.html2ImageService.toImage(template.content)
-            .then(imageUrl => template.thumbnailImage = imageUrl)
-            .catch(err => console.log(err));
-    }
+    // Images will be created at template creation
+    // convertToCampaignTemplate(template: Template): void {
+    //     this.html2ImageService.toImage(template.content)
+    //         .then(imageUrl => template.thumbnailImage = imageUrl)
+    //         .catch(err => console.log(err));
+    // }
 
     hasSelected(): boolean {
         if (this.selectedTemplate) {
@@ -66,6 +67,7 @@ export class CampaignTemplatesList implements OnInit {
     getSelected(): Template {
         let campaignTemplate = this.campaignTemplates
             .find(template => template.id === this.selectedTemplate);
+
         return campaignTemplate ? campaignTemplate : null;
     }
 

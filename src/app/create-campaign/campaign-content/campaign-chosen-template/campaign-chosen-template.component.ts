@@ -18,10 +18,10 @@ export class CampaignChosenTemplate {
   // for fetching template from the service
   updateTemplate() {
     if(this.campaignCreationService.getExistingModifiedTemplate()) {
-      this.templateContent = this.sanitized.bypassSecurityTrustHtml(this.campaignCreationService.getModifiedTemplate().content);
+      this.templateContent = this.sanitized.bypassSecurityTrustHtml(this.campaignCreationService.getModifiedTemplate().html);
     }
     else {
-      this.templateContent = this.sanitized.bypassSecurityTrustHtml(this.campaignCreationService.getTemplate().content);
+      this.templateContent = this.sanitized.bypassSecurityTrustHtml(this.campaignCreationService.getTemplate().html);
     }
   }
 

@@ -36,7 +36,7 @@ export class CampaignConfirmation {
 
 	ngOnInit() {
     console.log('hello `CONFIRMATION` component');
-		this.campaignContent = this.sanitized.bypassSecurityTrustHtml(this.campaign.modifiedTemplate.content);
+		this.campaignContent = this.sanitized.bypassSecurityTrustHtml(this.campaign.modifiedTemplate.html);
   }
 
 	ngAfterViewInit() {

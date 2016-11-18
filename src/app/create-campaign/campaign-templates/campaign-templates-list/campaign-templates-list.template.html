@@ -4,7 +4,7 @@
 <div class="row campaign">
     <div class="col-md-6 col-md-4" *ngFor="let campaignTemplate of campaignTemplates"
                 (click)="select(campaignTemplate.id)">
-                <img src="{{campaignTemplate.thumbnailImage}}"
+                <img src="{{campaignTemplate.htmlImage}}"
                      [class.active]="isSelected(campaignTemplate.id)"
                      class="campaign-template-thumbnail img-thumbnail">
                 <p class="campaign-template-name">{{campaignTemplate.name}}</p>

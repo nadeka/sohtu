@@ -1,14 +1,18 @@
 export class Template {
     id: number;
     name: string;
-    content: string;
-    thumbnailImage: string;
+    html: string;
+    htmlImage: string;
+    createdAt: string;
+    updatedAt: string;
 
-    constructor(id: number, name: string, content: string, thumbnailImage: string) {
+    constructor(id: number, name: string, html: string,
+                htmlImage: string, createdAt: string, updatedAt: string) {
         this.id = id;
         this.name = name;
-        this.content = content;
-        this.thumbnailImage = thumbnailImage;
+        this.html = html;
+        this.htmlImage = htmlImage;
+        this.createdAt = createdAt;
+        this.updatedAt = updatedAt;
     }
-
 }

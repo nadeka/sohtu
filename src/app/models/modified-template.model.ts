@@ -1,7 +1,7 @@
 export class ModifiedTemplate {
-    content: string;
+    html: string;
 
-    constructor(content: string) {
-        this.content = content;
+    constructor(html: string) {
+        this.html = html;
     }
 }

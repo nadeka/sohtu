@@ -2,7 +2,7 @@ import { NgModule, ApplicationRef } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule }   from '@angular/forms';
 import { RouterModule }   from '@angular/router';
-import { HttpModule } from '@angular/http';
+import { HttpModule, JsonpModule } from '@angular/http';
 import { removeNgStyles, createNewHosts, createInputTransfer } from '@angularclass/hmr';
 
 import { DropdownModule } from 'ng2-bootstrap/ng2-bootstrap';
@@ -70,6 +70,7 @@ type StoreType = {
     imports: [
         BrowserModule,
         HttpModule,
+        JsonpModule,
         RouterModule.forRoot(routes, { useHash: true }),
         FormsModule,
         DropdownModule,
