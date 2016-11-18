@@ -13,6 +13,9 @@ import { CampaignBreadcrumb } from '../campaign-breadcrumb';
 
 export class CampaignContent {
 
+    previousButton = this.language.getWord('PREVIOUS_LABEL');
+    nextButton = this.language.getWord('NEXT_LABEL');
+
     constructor(private language: LanguageService,
                 private campaignCreationService: CampaignCreationService,
                 private campaignChosenTemplate: CampaignChosenTemplate,

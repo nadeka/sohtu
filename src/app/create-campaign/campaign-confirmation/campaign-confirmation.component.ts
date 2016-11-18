@@ -5,7 +5,7 @@ import { CampaignCreationService} from '../../services/campaign-creation/campaig
 import { Campaign } from '../../models/campaign.model';
 import { CampaignBreadcrumb } from '../campaign-breadcrumb';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
-
+import { LanguageService } from '../../services/language.service';
 
 @Component({
 	selector: 'campaign-confirmation',
@@ -19,7 +19,16 @@ export class CampaignConfirmation {
 	private campaign: Campaign;
 	private campaignContent: SafeHtml;
 
-	constructor (private campaignCreationService: CampaignCreationService,
+	previousLabel = this.language.getWord('PREVIOUS_LABEL');
+	confirmLabel = this.language.getWord('CONFIRM_LABEL');
+	campaignOverview = this.language.getWord('CAMPAIGN_OVERVIEW');
+	campaignName = this.language.getWord('CAMPAIGN_NAME_LABEL');
+	campaignSubject = this.language.getWord('CAMPAIGN_SUBJECT_LABEL');
+	mailingLists = this.language.getWord('MAILING_LISTS_HEADER');
+	willBeSent = this.language.getWord('WILL_BE_SENT');
+
+	constructor (	private language: LanguageService,
+								private campaignCreationService: CampaignCreationService,
 								private ref: ChangeDetectorRef,
 								private sanitized: DomSanitizer){
 		this.campaign = campaignCreationService.getCampaign();

@@ -16,14 +16,14 @@
     <div class="modal-dialog modal-sm">
       <div class="modal-content">
         <div class="modal-header">
-          <h4 class="modal-title">Change template?</h4>
+          <h4 class="modal-title">{{changeTemplateQuestion}}</h4>
         </div>
         <div class="modal-body">
-          <p>All your modified content will be lost.
+          <p>{{modifiedContentLostInfo}}
           <br>
-          Are you sure?</p>
-          <button type="button" class="btn btn-warning" (click)="changeTemplate()">Yes, change template</button>
-          <button type="button" class="btn btn-default" (click)="staticModal.hide()">Cancel</button>
+          {{areYouSureQuestion}}</p>
+          <button type="button" class="btn btn-warning" (click)="changeTemplate()">{{yesChangeTemplate}}</button>
+          <button type="button" class="btn btn-default" (click)="staticModal.hide()">{{cancelButtonLabel}}</button>
         </div>
       </div>
     </div>

@@ -2,21 +2,21 @@
 
 <div class="container col-md-8 col-md-offset-2">
   <button style="float:left; display:inline;" (click)="goToStep('content')" class="navigation-btn">
-    Previous
+    {{previousLabel}}
   </button>
   <button style="float:right; display:inline;" (click)="goToStep('confirmation')" class="navigation-btn">
-    Next
+    {{nextLabel}}
   </button>
 </div>
 
 <div class="container">
   <div class="col-md-8 col-md-offset-2">
     <div class="box">
-      <h3>Campaign Schedule</h3>
+      <h3>{{campaignScheduleLabel}}</h3>
       <div>
-        <p>Campaign will be sent on {{schedule}}</p>
+        <p>{{campaignWillBeSentLabel}} {{schedule}}</p>
         <date-time-picker [(ngModel)]="schedule" ngDefaultControl>Loading...</date-time-picker>
-        <label class="btn btn-primary" (click)="setCurrentTime()" ngDefaultControl>Set current time</label>
+        <label class="btn btn-primary" (click)="setCurrentTime()" ngDefaultControl>{{setCurrentTimeButton}}</label>
       </div>
     </div>
   </div>

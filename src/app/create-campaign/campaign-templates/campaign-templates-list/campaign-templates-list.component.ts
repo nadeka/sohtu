@@ -19,6 +19,11 @@ export class CampaignTemplatesList implements OnInit {
     @Output() notify = new EventEmitter();
 
     campaignTemplatesHeader = this.language.getWord('CAMPAIGN_TEMPLATES_HEADER');
+    changeTemplateQuestion = this.language.getWord('CHANGE_TEMPLATE_QUESTION');
+    modifiedContentLostInfo = this.language.getWord('MODIFIED_CONTENT_LOST_INFO');
+    areYouSureQuestion = this.language.getWord('ARE_YOU_SURE_QUESTION');
+    yesChangeTemplate = this.language.getWord('YES_CHANGE_TEMPLATE');
+    cancelButtonLabel = this.language.getWord('CANCEL_BUTTON_LABEL');
 
     public campaignTemplates: Array<Template> = [];
     @ViewChild('staticModal') public staticModal: ModalDirective;

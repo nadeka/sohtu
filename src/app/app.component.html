@@ -12,46 +12,46 @@
     <div id="navbar" class="collapse navbar-collapse">
       <ul class="nav navbar-nav">
         <li router-active>
-          <a [routerLink]=" ['./'] ">Dashboard</a>
+          <a [routerLink]=" ['./'] ">{{dashboardLabel}}</a>
         </li>
         |
         <li router-active>
-          <a [routerLink]=" ['./contacts'] ">Contacts</a>
+          <a [routerLink]=" ['./contacts'] ">{{contactsLabel}}</a>
         </li>
         |
         <li dropdown >
-          <a dropdownToggle  data-toggle="dropdown" href="#">Marketing
+          <a dropdownToggle  data-toggle="dropdown" href="#">{{marketingLabel}}
             <span class="caret"></span>
           </a>
           <ul class="dropdown-menu">
             <li router-active>
-              <a [routerLink]=" ['./marketing'] ">Overview</a>
+              <a [routerLink]=" ['./marketing'] ">{{overviewLabel}}</a>
             </li>
 
             <li router-active>
-              <a [routerLink]=" ['./marketing/campaigns'] ">Campaigns</a>
+              <a [routerLink]=" ['./marketing/campaigns'] ">{{campaignsLabel}}</a>
             </li>
 
             <li router-active>
-              <a [routerLink]=" ['./marketing/create-campaign'] ">Create New Campaign</a>
+              <a [routerLink]=" ['./marketing/create-campaign'] ">{{createNewCampaignLabel}}</a>
             </li>
 
             <li router-active>
-              <a [routerLink]=" ['./marketing/mailing-lists'] ">Mailing lists</a>
+              <a [routerLink]=" ['./marketing/mailing-lists'] ">{{mailingListsLabel}}</a>
             </li>
 
             <li router-active>
-              <a [routerLink]=" ['./marketing/templates'] ">Templates</a>
+              <a [routerLink]=" ['./marketing/templates'] ">{{templatesLabel}}</a>
             </li>
           </ul>
         </li>
         |
         <li router-active>
-          <a [routerLink]=" ['./social-media'] ">Social Media</a>
+          <a [routerLink]=" ['./social-media'] ">{{socialMediaLabel}}</a>
         </li>
         |
         <li router-active>
-          <a [routerLink]=" ['./reports'] ">Reports</a>
+          <a [routerLink]=" ['./reports'] ">{{reportsLabel}}</a>
         </li>
       </ul>
     </div><!--/.nav-collapse -->

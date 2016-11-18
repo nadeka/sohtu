@@ -2,7 +2,7 @@
 
 <div class="container col-md-8 col-md-offset-2">
   <button style="float:right; display:inline;" (click)="goToStep('template')" class="navigation-btn">
-    Next
+    {{nextLabel}}
   </button>
 </div>
 
@@ -11,7 +11,7 @@
     <div class="row">
       <div class="col-md-6 col-md-offset-3">
         <div class="box">
-          <h3>Settings</h3>
+          <h3>{{settingsLabel}}</h3>
           <campaign-basic-info [campaignName]="name" [campaignSubject]="subject" #basicInfo>Loading basic info form...</campaign-basic-info>
           <campaign-mailing-lists #mailingLists>Loading mailing lists...</campaign-mailing-lists>
           <br>

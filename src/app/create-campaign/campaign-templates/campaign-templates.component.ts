@@ -18,6 +18,9 @@ export class CampaignTemplates {
 
     @ViewChild('templates') templatesList: CampaignTemplatesList;
 
+    nextLabel = this.language.getWord('NEXT_LABEL');
+    previousLabel = this.language.getWord('PREVIOUS_LABEL');
+
     constructor(private language: LanguageService,
                 private campaignCreationService: CampaignCreationService,
                 private campaignTemplatesList: CampaignTemplatesList,

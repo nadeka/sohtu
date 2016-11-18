@@ -3,6 +3,7 @@ import { DateTimePicker } from './date-time-picker/date-time-picker.component';
 import { CampaignCreationService } from
         '../../services/campaign-creation/campaign-creation.service';
 import { CampaignBreadcrumb } from '../campaign-breadcrumb';
+import { LanguageService } from '../../services/language.service';
 
 @Component({
   selector: 'campaign-schedule',
@@ -15,7 +16,14 @@ export class CampaignSchedule {
   schedule: Date;
   scheduling: string;
 
-  constructor(private campaignCreationService: CampaignCreationService,
+  previousLabel = this.language.getWord('PREVIOUS_LABEL');
+  nextLabel = this.language.getWord('NEXT_LABEL');
+  campaignScheduleLabel = this.language.getWord('CAMPAIGN_SCHEDULE_LABEL');
+  campaignWillBeSentLabel = this.language.getWord('CAMPAIGN_WILL_BE_SENT_LABEL');
+  setCurrentTimeButton = this.language.getWord('SET_CURRENT_TIME_BUTTON');
+
+  constructor(private language: LanguageService,
+              private campaignCreationService: CampaignCreationService,
               private ref: ChangeDetectorRef) {
     this.scheduling = 'sendNow';
   }

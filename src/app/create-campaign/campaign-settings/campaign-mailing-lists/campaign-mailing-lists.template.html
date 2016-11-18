@@ -1,6 +1,6 @@
 <br>
-<h4>{{ mailingListsHeader }}</h4>
-<div class="btn btn-default choose-btn" (click)="show()">Choose</div>
+<h4>{{mailingListsHeader}}</h4>
+<div class="btn btn-default choose-btn" (click)="show()">{{chooseButtonLabel}}</div>
 
 <div bsModal #lgModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
@@ -9,7 +9,7 @@
                 <button type="button" class="close" (click)="hide()" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
-                <h4 class="modal-title">{{ mailingListsHeader }}</h4>
+                <h4 class="modal-title">{{mailingListsHeader}}</h4>
             </div>
             <div class="modal-body">
                 <tabset>
@@ -35,8 +35,8 @@
                                                            aria-label="...">
                                                 </label>
                                             </th>
-                                            <th>Name</th>
-                                            <th>Member count</th>
+                                            <th>{{nameLabel}}</th>
+                                            <th>{{memberCountLabel}}</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -60,7 +60,7 @@
                             </div>
                         <button type="button" class="btn btn-success btn-lg"
                                 (click)="hide()">
-                            Ok
+                            {{okButtonLabel}}
                         </button>
                     </tab>
                     <tab heading="Import">

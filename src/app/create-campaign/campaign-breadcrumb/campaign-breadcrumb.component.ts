@@ -1,5 +1,6 @@
 import { CampaignCreationService} from '../../services/campaign-creation/campaign-creation.service';
 import { Component, EventEmitter, Output } from '@angular/core';
+import { LanguageService } from '../../services/language.service';
 
 @Component({
 	selector: 'campaign-breadcrumb',
@@ -9,9 +10,16 @@ import { Component, EventEmitter, Output } from '@angular/core';
 
 export class CampaignBreadcrumb {
 
+	settingsLabel = this.language.getWord('SETTINGS_LABEL');
+	templateLabel = this.language.getWord('TEMPLATE_LABEL');
+	contentLabel = this.language.getWord('CONTENT_LABEL');
+	scheduleLabel = this.language.getWord('SCHEDULE_LABEL');
+	confirmationLabel = this.language.getWord('CONFIRMATION_LABEL');
+
 	@Output() pageChanged = new EventEmitter();
 
-	constructor (private campaignCreationService: CampaignCreationService){
+	constructor (	private language: LanguageService,
+								private campaignCreationService: CampaignCreationService){
 	}
 
 	goToStep(step: string) {

@@ -3,10 +3,10 @@
 <div class="container col-md-8 col-md-offset-2">
     <div>
       <button style="float:left; display:inline;" (click)="goToStep('schedule')" class="navigation-btn">
-        Previous
+        {{previousLabel}}
       </button>
       <button style="float:right; display:inline;" class="navigation-btn">
-        Confirm
+        {{confirmLabel}}
       </button>
     </div>
 </div>
@@ -18,24 +18,24 @@
   </div>
   <div class="col-md-6">
     <div class="box">
-  		<h3>Campaign Overview</h3>
+  		<h3>{{campaignOverview}}</h3>
   		<br>
   		<div class="basic-information">
-  			<label for="campaign-name">Campaign name</label>
+  			<label for="campaign-name">{{campaignName}}</label>
         <p id="campaign-name">{{campaign.name}}</p>
   			<br>
   			<br>
-  			<label for="campaign-subject">Campaign subject</label>
+  			<label for="campaign-subject">{{campaignSubject}}</label>
   			<p id="campaign-subject">{{campaign.subject}}</p>
 			<br>
 			<br>
-			<p>Mailing lists</p>
+			<p>{{mailingLists}}</p>
 			<div class="btn btn-primary btn-xs selected-btn"
 				 *ngFor="let mailingList of campaign.mailingLists">
 				{{mailingList.name}}
 			</div>
         <hr>
-  			<label for="campaign-schedule">Will be sent</label>
+  			<label for="campaign-schedule">{{willBeSent}}</label>
   			<p id="campaign-schedule">{{campaign.schedule}}</p>
   		</div>
       <br>

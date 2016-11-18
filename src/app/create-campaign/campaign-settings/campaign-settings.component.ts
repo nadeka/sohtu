@@ -18,6 +18,9 @@ export class CampaignSettings {
   @ViewChild('basicInfo') campaignBasicInfo: CampaignBasicInfo;
   @ViewChild('mailingLists') campaignMailingLists: CampaignMailingLists;
 
+  settingsLabel = this.language.getWord('SETTINGS_LABEL');
+  nextLabel = this.language.getWord('NEXT_LABEL');
+
   name: string;
   subject: string;
 
