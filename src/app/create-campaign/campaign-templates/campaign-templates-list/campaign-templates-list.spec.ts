@@ -3,17 +3,24 @@ import {
     async
 }
 from '@angular/core/testing';
+import { ModalModule } from 'ng2-bootstrap/ng2-bootstrap';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 import { CampaignTemplatesList } from './campaign-templates-list.component.ts';
 import { TemplatesService } from '../../../services/templates/templates.service';
+import { CampaignCreationService } from
+        '../../../services/campaign-creation/campaign-creation.service';
+import { MockCampaignCreationService } from
+        '../../../services/campaign-creation/mock-campaign-creation.service';
 import { HTML2ImageService } from '../../../services/html2image/html2image.service';
 import { Template } from '../../../models/template.model';
+import { ModifiedTemplate } from '../../../models/modified-template.model';
 import { MockTemplatesService }
     from '../../../services/templates/mock-templates.service';
 import { MockHTML2ImageService }
     from '../../../services/html2image/mock-html2image.service';
 import { LanguageService } from '../../../services/language.service';
+
 
 describe('Component: CampaignTemplatesList', () => {
     let fixture: any;
@@ -34,7 +41,7 @@ describe('Component: CampaignTemplatesList', () => {
             declarations: [
                 CampaignTemplatesList
             ],
-            imports: [],
+            imports: [ModalModule],
             providers: [
                 {
                     provide: TemplatesService,
@@ -43,6 +50,10 @@ describe('Component: CampaignTemplatesList', () => {
                 {
                     provide: HTML2ImageService,
                     useClass: MockHTML2ImageService
+                },
+                {
+                    provide: CampaignCreationService,
+                    useClass: MockCampaignCreationService
                 },
                 LanguageService
             ]
@@ -67,8 +78,6 @@ describe('Component: CampaignTemplatesList', () => {
     it('select should set template with given id as selected', () => {
         component.select(1);
         expect(component.selectedTemplate).toBe(1);
-        component.select(2);
-        expect(component.selectedTemplate).toBe(2);
     });
 
     it('hasSelected should return true when a template is selected', () => {

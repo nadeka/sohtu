@@ -1,5 +1,6 @@
 import { TestBed, async} from '@angular/core/testing';
 import { DebugElement } from '@angular/core';
+import { ModalModule } from 'ng2-bootstrap/ng2-bootstrap';
 import { By } from '@angular/platform-browser';
 
 import { CampaignCreationService } from
@@ -37,9 +38,7 @@ describe('Component: CampaignTemplates', () => {
               CampaignTemplatesList,
               CampaignBreadcrumb
             ],
-            imports: [
-
-            ],
+            imports: [ModalModule],
             providers: [
               {
                   provide: CampaignCreationService,
@@ -66,9 +65,10 @@ describe('Component: CampaignTemplates', () => {
 
     it('should save selected template to service when moving to another step', () => {
         const selection = 1;
-        component.campaignTemplates.select(selection);
+        component.templatesList.select(selection);
         fixture.detectChanges();
         page.navButtons[1].triggerEventHandler('click', null);
+        // getTemplat --> getEmptyTemplates
         expect(campaignCreationService.getTemplate().id).toBe(selection);
     });
 

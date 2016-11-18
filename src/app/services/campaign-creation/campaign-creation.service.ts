@@ -57,18 +57,23 @@ export class CampaignCreationService {
   }
 
   public getTemplate() {
-    return this.campaign.template;
+      return this.campaign.template;
   }
 
   public getModifiedTemplate() {
-    if(!this.campaign.modifiedTemplate) {
-      return new ModifiedTemplate('');
-    }
     return this.campaign.modifiedTemplate;
   }
 
   public getCampaign() {
     return this.campaign;
+  }
+
+  public setChooseNew(b: boolean) {
+    this.chooseNew = b;
+  }
+
+  public getChooseNew() {
+    return this.chooseNew;
   }
 
   public goToStep(step): any {

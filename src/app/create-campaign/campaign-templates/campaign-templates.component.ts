@@ -2,6 +2,7 @@ import { Component, ViewChild, ChangeDetectorRef } from '@angular/core';
 import { CampaignTemplatesList } from './campaign-templates-list';
 import { TemplatesService } from '../../services/templates/templates.service';
 import { CampaignTemplate } from '../../models/campaign-template.model';
+import { Template } from '../../models/template.model';
 import { CampaignCreationService} from '../../services/campaign-creation/campaign-creation.service';
 import { LanguageService } from '../../services/language.service';
 import { CampaignBreadcrumb } from '../campaign-breadcrumb';
@@ -15,7 +16,7 @@ import { CampaignBreadcrumb } from '../campaign-breadcrumb';
 
 export class CampaignTemplates {
 
-    @ViewChild('templates') campaignTemplates: CampaignTemplatesList;
+    @ViewChild('templates') templatesList: CampaignTemplatesList;
 
     constructor(private language: LanguageService,
                 private campaignCreationService: CampaignCreationService,
@@ -27,13 +28,12 @@ export class CampaignTemplates {
     }
 
     ngAfterViewInit() {
-        // check if there is a pre-selected template, if so set it as selected
         let selectedTemplate = this.campaignCreationService.getTemplate();
         if(selectedTemplate){
-            this.campaignTemplates.select(selectedTemplate.id);
+             this.templatesList.reselect(selectedTemplate.id);
         }
+
         this.campaignCreationService.setCurrentStep('template');
-        // Change detection needs to be forced because the selections have been added
         this.ref.detectChanges();
     }
 
@@ -43,6 +43,6 @@ export class CampaignTemplates {
     }
 
     saveChanges() {
-        this.campaignCreationService.setTemplate(this.campaignTemplates.getSelected());
+        this.campaignCreationService.setTemplate(this.templatesList.getSelected());
     }
 }

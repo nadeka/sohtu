@@ -13,7 +13,6 @@ import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 export class CampaignChosenTemplate {
   templateContent : SafeHtml = '';
   modifiedTemplate : ModifiedTemplate;
-
   constructor(private campaignCreationService: CampaignCreationService,private sanitized: DomSanitizer) {}
 
   // for fetching template from the service
@@ -25,9 +24,10 @@ export class CampaignChosenTemplate {
     return document.getElementById('emailContainer').outerHTML;
   }
 
-  printContent() {
+  saveContent() {
     this.modifiedTemplate = new ModifiedTemplate(document.getElementById('emailContainer').innerHTML);
     this.campaignCreationService.setModifiedTemplate(this.modifiedTemplate);
+    this.campaignCreationService.setChooseNew(false);
   }
 
   // load template from service

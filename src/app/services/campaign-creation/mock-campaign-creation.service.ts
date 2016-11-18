@@ -11,7 +11,7 @@ export class MockCampaignCreationService {
   stepParameter: string;
   campaign: Campaign;
   step: string;
-  
+
   constructor() {
     this.campaign = new Campaign();
   }
@@ -53,9 +53,6 @@ export class MockCampaignCreationService {
   }
 
   getModifiedTemplate() {
-    if(!this.campaign.modifiedTemplate) {
-      return new ModifiedTemplate('');
-    }
     return this.campaign.modifiedTemplate;
   }
 

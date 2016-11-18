@@ -10,3 +10,21 @@
                 <p class="campaign-template-name">{{campaignTemplate.name}}</p>
     </div>
 </div>
+
+<div class="modal fade" bsModal #staticModal="bs-modal" [config]="{backdrop: 'static'}"
+      tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Change template?</h4>
+        </div>
+        <div class="modal-body">
+          <p>All your modified content will be lost.
+          <br>
+          Are you sure?</p>
+          <button type="button" class="btn btn-warning" (click)="changeTemplate()">Yes, change template</button>
+          <button type="button" class="btn btn-default" (click)="staticModal.hide()">Cancel</button>
+        </div>
+      </div>
+    </div>
+  </div>

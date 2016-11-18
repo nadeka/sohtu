@@ -1,4 +1,4 @@
-import { Component, ChangeDetectorRef } from '@angular/core';
+import { Component, ViewChild, ChangeDetectorRef } from '@angular/core';
 import { CampaignCreationService} from '../../services/campaign-creation/campaign-creation.service';
 import { LanguageService } from '../../services/language.service';
 import { CampaignChosenTemplate } from './campaign-chosen-template';
@@ -18,6 +18,8 @@ export class CampaignContent {
                 private campaignChosenTemplate: CampaignChosenTemplate,
                 private ref: ChangeDetectorRef){}
 
+    @ViewChild('campaignChosenTemplate') chosenTemplate: CampaignChosenTemplate;
+
     ngOnInit() {
         console.log('hello `CampaignContent` component');
     }
@@ -33,6 +35,6 @@ export class CampaignContent {
     }
 
     saveChanges() {
-
+        this.chosenTemplate.saveContent();
     }
 }
