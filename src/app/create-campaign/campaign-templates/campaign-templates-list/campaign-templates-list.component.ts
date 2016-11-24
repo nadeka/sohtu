@@ -76,6 +76,7 @@ export class CampaignTemplatesList implements OnInit {
         if(!this.campaignCreationService.getModifiedTemplate()) {
           this.notify.emit(this.getSelected());
           this.selectedTemplate = templateId;
+          this.campaignCreationService.setTemplate(this.getSelected());
           this.updateTemplate = true;
         }
         else {

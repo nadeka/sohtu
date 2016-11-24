@@ -47,8 +47,13 @@ export class CampaignTemplates {
 
     saveChanges() {
       if(this.templatesList.getUpdateTemplate()) {
-        console.log('asd');
           this.campaignCreationService.setTemplate(this.templatesList.getSelected());
       }
     }
+
+    isDisabled(step: string) {
+  		if(step === 'content') {
+  			return (this.campaignCreationService.getTemplate() === undefined) || (this.campaignCreationService.getTemplate() === null);
+  		}
+  	}
 }

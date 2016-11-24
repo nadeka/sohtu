@@ -53,4 +53,10 @@ export class CampaignSchedule {
     this.schedule = new Date();
   }
 
+  isDisabled(step: string) {
+    if(step === 'content') {
+      return (this.campaignCreationService.getTemplate() === undefined) || (this.campaignCreationService.getTemplate() === null);
+    }
+  }
+
 }

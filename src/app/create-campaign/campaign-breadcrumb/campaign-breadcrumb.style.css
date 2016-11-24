@@ -4,3 +4,9 @@
    color: #5f6268;
    text-decoration: none;
 }
+
+.disabled {
+  pointer-events: none;
+  color: #5f6268;
+  text-decoration: line-through;
+}

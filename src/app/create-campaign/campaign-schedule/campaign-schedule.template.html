@@ -1,7 +1,7 @@
 <campaign-breadcrumb (pageChanged)="saveChanges()"></campaign-breadcrumb>
 
 <div class="container col-md-8 col-md-offset-2">
-  <button style="float:left; display:inline;" (click)="goToStep('content')" class="navigation-btn">
+  <button style="float:left; display:inline;" (click)="goToStep('content')" class="navigation-btn" [disabled]="isDisabled('content')">
     {{previousLabel}}
   </button>
   <button style="float:right; display:inline;" (click)="goToStep('confirmation')" class="navigation-btn">

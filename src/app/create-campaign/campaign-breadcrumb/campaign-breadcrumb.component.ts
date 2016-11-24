@@ -31,4 +31,10 @@ export class CampaignBreadcrumb {
 		return this.campaignCreationService.getCurrentStep() === step;
 	}
 
+	isDisabled(step: string) {
+		if(step === 'content') {
+			return (this.campaignCreationService.getTemplate() === undefined) || (this.campaignCreationService.getTemplate() === null);
+		}
+	}
+
 }

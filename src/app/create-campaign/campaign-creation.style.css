@@ -16,6 +16,10 @@
   box-shadow: 1px 1px 1px #888888;
 }
 
+.navigation-btn:disabled {
+  background: #e5ac00;
+}
+
 h3 {
   text-align: center;
 }
