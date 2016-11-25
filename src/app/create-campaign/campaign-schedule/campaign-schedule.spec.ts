@@ -13,6 +13,7 @@ import { DatepickerModule } from 'ng2-bootstrap/ng2-bootstrap';
 import { TimepickerModule } from 'ng2-bootstrap/ng2-bootstrap';
 import { CampaignBreadcrumb } from '../campaign-breadcrumb';
 import { LanguageService } from '../../services/language.service';
+import { TestEmail } from './test-email/test-email.component';
 
 describe('Component: CampaignSchedule', () => {
   let fixture: any;
@@ -35,7 +36,8 @@ describe('Component: CampaignSchedule', () => {
       declarations: [
         CampaignSchedule,
         DateTimePicker,
-        CampaignBreadcrumb
+        CampaignBreadcrumb,
+        TestEmail
       ],
       imports: [
         FormsModule,
