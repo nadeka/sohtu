@@ -1,5 +1,9 @@
 <br>
 <h4>{{mailingListsHeader}}</h4>
+<div *ngIf!="hasSelected() > 0" class="alert alert-danger">
+  <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+  Atleast one (1) mailing list must be chosen!
+</div>
 <div class="btn btn-default choose-btn" (click)="show()">{{chooseButtonLabel}}</div>
 
 <div bsModal #lgModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">

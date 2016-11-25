@@ -129,7 +129,7 @@ export class CampaignCreationService {
   }
 
   public isReady() {
-    if((this.campaign.name != '') && (this.campaign.subject != '')) {
+    if((this.campaign.name != '') && (this.campaign.subject != '') && (this.campaign.mailingLists.length > 0)) {
       return false;
     }
     return true;

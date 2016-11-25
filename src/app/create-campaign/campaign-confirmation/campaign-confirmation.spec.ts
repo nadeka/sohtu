@@ -12,6 +12,7 @@ import { LanguageService } from '../../services/language.service';
 import { CampaignBreadcrumb } from '../campaign-breadcrumb';
 import { ModifiedTemplate }  from '../../models/modified-template.model';
 import { Router } from '@angular/router';
+import { MailingList } from '../../models/mailing-list.model';
 
 describe('Component: CampaignConfirmation', () => {
     let fixture: any;
@@ -60,6 +61,10 @@ describe('Component: CampaignConfirmation', () => {
             alertsService = fixture.debugElement.injector.get(AlertsService);
             lang = fixture.debugElement.injector.get(LanguageService);
             campaignCreationService = fixture.debugElement.injector.get(CampaignCreationService);
+            campaignCreationService.setMailingLists([{id: 1,
+                name: "testname",
+                description: "testsubject",
+                members: String["asd"]}]);
             campaignCreationService.setModifiedTemplate(new ModifiedTemplate('<p>test modified template</p>'));
             campaignCreationService.setName('testname');
             campaignCreationService.setSubject('testsubject');
@@ -94,6 +99,14 @@ describe('Component: CampaignConfirmation', () => {
         campaignCreationService.setSubject('');
         fixture.detectChanges();
         expect(page.basicInfoContainer.nativeElement.textContent).toContain('must be filled');
+    });
+
+    it('user informed if no mailing list is chosen', () => {
+        component.mailingListIsEmpty = true;
+        let temp: Array<MailingList> = [];
+        campaignCreationService.setMailingLists(temp);
+        fixture.detectChanges();
+        expect(component.mailingListIsEmpty).toBe(true);
     });
 
 });

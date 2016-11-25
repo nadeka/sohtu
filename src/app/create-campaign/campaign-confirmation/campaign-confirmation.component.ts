@@ -20,6 +20,7 @@ export class CampaignConfirmation {
 
 	private campaign: Campaign;
 	private campaignContent: SafeHtml;
+	private mailingListIsEmpty = true;
 
 	previousLabel = this.language.getWord('PREVIOUS_LABEL');
 	confirmLabel = this.language.getWord('CONFIRM_LABEL');
@@ -41,6 +42,10 @@ export class CampaignConfirmation {
 	ngOnInit() {
     console.log('hello `CONFIRMATION` component');
 		this.campaignContent = this.sanitized.bypassSecurityTrustHtml(this.campaign.modifiedTemplate.html);
+
+		if(this.campaign.mailingLists.length > 0) {
+			this.mailingListIsEmpty = false;
+		}
   }
 
 	ngAfterViewInit() {
