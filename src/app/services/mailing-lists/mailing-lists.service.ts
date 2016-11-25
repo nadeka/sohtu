@@ -1,25 +1,50 @@
 import { Injectable } from '@angular/core';
 import { MailingList } from '../../models/mailing-list.model';
-import { MAILING_LISTS } from '../../mock-data/mock-mailing-lists';
-import { Contact } from '../../models/contact.model';
+import { Http, Response, RequestOptions, Headers } from '@angular/http';
+import { Settings } from '../../settings';
 
-// This returns mock data until we get real data
+import 'rxjs/add/operator/toPromise';
+import { Contact } from "../../models/contact.model";
+
 @Injectable()
 export class MailingListsService {
-    id: number = MAILING_LISTS.length + 1;
-    mailingLists: MailingList[] = MAILING_LISTS;
+    private mailingListsURL = Settings.API_BASE_URL() + '/mailing-lists';
+
+    constructor(private http: Http) { }
 
     getMailingLists(): Promise<MailingList[]> {
-        return Promise.resolve(this.mailingLists);
+        return this.http.get(this.mailingListsURL)
+            .toPromise()
+            .then(this.extractData)
+            .catch(this.handleError);
     }
 
-    createMailingList(name: string, description: string, members: Contact[]): MailingList {
-        let mailingList = new MailingList(this.id, name, description, members);
+    createMailingList(name: string, description: string, members: Contact[]): Promise<MailingList> {
+        let headers = new Headers({ 'Content-Type': 'application/json' });
+        let options = new RequestOptions({ headers: headers });
+        let payload = JSON.stringify({ name: name, description: description, members: members.map(m => m.id) });
 
-        this.mailingLists.push(mailingList);
+        return this.http.post(this.mailingListsURL, payload, options)
+            .toPromise()
+            .then(this.extractData)
+            .catch(this.handleError);
+    }
 
-        this.id++;
+    private extractData(res: Response) {
+        return res.json() || { };
+    }
 
-        return mailingList;
+    private handleError(error: Response | any) {
+        // In a real world app, we might use a remote logging infrastructure
+        let errMsg: string;
+        if (error instanceof Response) {
+            const body = error.json() || '';
+            const err = body.error || JSON.stringify(body);
+            errMsg = `${error.status} - ${error.statusText || ''} ${err}`;
+        } else {
+            errMsg = error.message ? error.message : error.toString();
+        }
+        console.error(errMsg);
+        return Promise.reject(errMsg);
     }
 }
