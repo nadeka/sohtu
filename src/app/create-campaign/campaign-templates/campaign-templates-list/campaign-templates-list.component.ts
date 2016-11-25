@@ -51,11 +51,11 @@ export class CampaignTemplatesList implements OnInit {
     }
 
     // Images will be created at template creation
-    // convertToCampaignTemplate(template: Template): void {
-    //     this.html2ImageService.toImage(template.content)
-    //         .then(imageUrl => template.thumbnailImage = imageUrl)
-    //         .catch(err => console.log(err));
-    // }
+     //convertToCampaignTemplate(template: Template): void {
+      //   this.html2ImageService.toImage(template.content)
+        //     .then(imageUrl => template.thumbnailImage = imageUrl)
+          //   .catch(err => console.log(err));
+     //}
 
     hasSelected(): boolean {
         if (this.selectedTemplate) {

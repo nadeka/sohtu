@@ -16,6 +16,8 @@ export class MockCampaignCreationService {
     this.campaign = new Campaign();
   }
 
+  postCampaign() {}
+
   getCampaign() {
     return this.campaign;
   }

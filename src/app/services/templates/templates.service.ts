@@ -7,40 +7,40 @@ import 'rxjs/add/operator/toPromise';
 
 @Injectable()
 export class TemplatesService {
-    private templatesURL = Settings.API_BASE_URL() + '/templates';
+  private templatesURL = Settings.API_BASE_URL() + '/templates';
 
-    constructor (private http: Http) {}
+  constructor(private http: Http) { }
 
-    getTemplates (): Promise<Template[]> {
-        return this.http.get(this.templatesURL)
-            .toPromise()
-            .then(this.extractData)
-            .catch(this.handleError);
+  getTemplates(): Promise<Template[]> {
+    return this.http.get(this.templatesURL)
+      .toPromise()
+      .then(this.extractData)
+      .catch(this.handleError);
+  }
+
+  private extractData(res: Response) {
+    let body = res.json();
+    let templates = [];
+
+    body.forEach(template =>
+      templates.push(new Template(template.id, template.name, template.html,
+        template.htmlImage, template.created_at, template.updated_at))
+    );
+
+    return templates;
+  }
+
+  private handleError(error: Response | any) {
+    // In a real world app, we might use a remote logging infrastructure
+    let errMsg: string;
+    if (error instanceof Response) {
+      const body = error.json() || '';
+      const err = body.error || JSON.stringify(body);
+      errMsg = `${error.status} - ${error.statusText || ''} ${err}`;
+    } else {
+      errMsg = error.message ? error.message : error.toString();
     }
-
-    private extractData(res: Response) {
-        let body = res.json();
-        let templates = [];
-
-        body.templates.forEach(template =>
-            templates.push(new Template(template.id, template.name, template.html,
-                template.html_image, template.created_at, template.updated_at))
-        );
-
-        return templates;
-    }
-
-    private handleError (error: Response | any) {
-        // In a real world app, we might use a remote logging infrastructure
-        let errMsg: string;
-        if (error instanceof Response) {
-            const body = error.json() || '';
-            const err = body.error || JSON.stringify(body);
-            errMsg = `${error.status} - ${error.statusText || ''} ${err}`;
-        } else {
-            errMsg = error.message ? error.message : error.toString();
-        }
-        console.error(errMsg);
-        return Promise.reject(errMsg);
-    }
+    console.error(errMsg);
+    return Promise.reject(errMsg);
+  }
 }

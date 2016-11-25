@@ -3,6 +3,7 @@ import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
 import { CampaignConfirmation } from './campaign-confirmation.component';
+import { AlertsService } from '../../services/alerts/alerts.service';
 import { CampaignCreationService } from
 '../../services/campaign-creation/campaign-creation.service';
 import { MockCampaignCreationService } from
@@ -10,11 +11,13 @@ import { MockCampaignCreationService } from
 import { LanguageService } from '../../services/language.service';
 import { CampaignBreadcrumb } from '../campaign-breadcrumb';
 import { ModifiedTemplate }  from '../../models/modified-template.model';
-
+import { Router } from '@angular/router';
 
 describe('Component: CampaignConfirmation', () => {
     let fixture: any;
     let campaignCreationService: any;
+    let alertsService: any;
+    let lang: any;
     let component: any;
     let page: Page;
 
@@ -43,11 +46,19 @@ describe('Component: CampaignConfirmation', () => {
                   provide: CampaignCreationService,
                   useClass: MockCampaignCreationService
               },
-              LanguageService
+              {
+                provide: Router,
+                useClass: MockRouter
+              },
+              LanguageService,
+              AlertsService,
+
             ],
         }).compileComponents().then(function(arr) {
             fixture = TestBed.createComponent(CampaignConfirmation);
             component = fixture.componentInstance;
+            alertsService = fixture.debugElement.injector.get(AlertsService);
+            lang = fixture.debugElement.injector.get(LanguageService);
             campaignCreationService = fixture.debugElement.injector.get(CampaignCreationService);
             campaignCreationService.setModifiedTemplate(new ModifiedTemplate('<p>test modified template</p>'));
             campaignCreationService.setName('testname');
@@ -72,4 +83,13 @@ describe('Component: CampaignConfirmation', () => {
     it('final template should be fetched from campaign creation service and displayed', () => {
         expect(page.finalContentContainer.nativeElement.textContent).toContain('test modified template');
     });
+
+    it('confirming campaign should set succesful alert message', () => {
+        page.navButtons[1].triggerEventHandler('click', null);
+        expect(alertsService.getCampaignCreatedAlert()).toBe(lang.getWord('CAMPAIGN_CREATED_ALERT'));
+    });
 });
+
+class MockRouter {
+  navigate = jasmine.createSpy('navigate');
+}

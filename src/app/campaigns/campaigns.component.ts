@@ -4,7 +4,9 @@ import { Component } from '@angular/core';
   selector: 'campaigns',
   templateUrl: 'campaigns.template.html'
 })
+
 export class Campaigns {
+
 
   constructor() {
 

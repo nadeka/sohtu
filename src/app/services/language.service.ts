@@ -49,7 +49,8 @@ export var eng: { [key: string]: string; } = {
   'WILL_BE_SENT' : 'Will be sent',
   'CAMPAIGN_WILL_BE_SENT_LABEL': 'Campaign will be sent on ',
   'SET_CURRENT_TIME_BUTTON' : 'Set current time',
-  'CAMPAIGN_OVERVIEW' : 'Campaign Overview'
+  'CAMPAIGN_OVERVIEW' : 'Campaign Overview',
+  'CAMPAIGN_CREATED_ALERT' : 'Campaign created succesfully!'
 };
 
 @Injectable()

@@ -7,7 +7,7 @@ import { CampaignBreadcrumb } from '../campaign-breadcrumb';
 @Component({
     selector: 'campaign-content',
     templateUrl: 'campaign-content.template.html',
-    styleUrls: [ '../campaign-creation.style.css' ],
+    styleUrls: [ '../campaign-creation.style.css', 'campaign-content.style.css' ],
     providers: [CampaignChosenTemplate, LanguageService, CampaignBreadcrumb]
 })
 

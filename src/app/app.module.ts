@@ -44,6 +44,7 @@ import { NoContent } from './no-content/no-content';
 import { DateTimePicker} from './create-campaign/campaign-schedule/date-time-picker/date-time-picker.component';
 import { ImportMailingLists } from './mailing-lists/import-mailing-lists/import-mailing-lists.component';
 import { CampaignBreadcrumb } from './create-campaign/campaign-breadcrumb';
+import { MarketingOverview } from './marketing-overview/marketing-overview.component';
 
 // Services
 import { MailingListsService } from './services/mailing-lists/mailing-lists.service';
@@ -53,6 +54,7 @@ import { CampaignCreationService } from './services/campaign-creation/campaign-c
 import { LanguageService } from './services/language.service';
 import { HTML2ImageService } from './services/html2image/html2image.service';
 import { File2JSONService } from './services/file2json/file2json.service';
+import { AlertsService } from './services/alerts/alerts.service';
 
 // Application wide providers
 const APP_PROVIDERS = [
@@ -103,7 +105,8 @@ type StoreType = {
         CampaignBreadcrumb,
         NoContent,
         DateTimePicker,
-        ImportMailingLists
+        ImportMailingLists,
+        MarketingOverview
     ],
     providers: [ // expose our Services and Providers into Angular's dependency injection
         ENV_PROVIDERS,
@@ -114,7 +117,8 @@ type StoreType = {
         HTML2ImageService,
         File2JSONService,
         CampaignCreationService,
-        LanguageService
+        LanguageService,
+        AlertsService
     ],
     bootstrap: [ App ]
 })

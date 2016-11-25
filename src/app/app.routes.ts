@@ -12,6 +12,7 @@ import { CampaignSchedule } from './create-campaign/campaign-schedule';
 import { CampaignTemplates } from './create-campaign/campaign-templates';
 import { CampaignConfirmation } from './create-campaign/campaign-confirmation';
 import { CampaignContent } from './create-campaign/campaign-content';
+import { MarketingOverview } from './marketing-overview';
 
 import { NoContent } from './no-content';
 
@@ -21,7 +22,7 @@ export const routes: Routes = [
   { path: 'contacts', component: Contacts },
   { path: 'marketing', component: Marketing,
     children: [
-      { path: '', component: Marketing },
+      { path: 'marketing-overview', component: MarketingOverview },
       { path: 'campaigns', component: Campaigns },
       { path: 'mailing-lists', component: MailingLists },
       { path: 'create-campaign',

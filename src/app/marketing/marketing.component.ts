@@ -7,11 +7,12 @@ import { Component } from '@angular/core';
   templateUrl: './marketing.template.html'
 })
 export class Marketing {
+
   constructor() {
 
   }
 
   ngOnInit() {
-    console.log('hello `Marketing` component');
+    console.log('marketing component created');
   }
 }

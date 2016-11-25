@@ -4,10 +4,11 @@ describe('Service: CampaignCreationService', () => {
 
     let campaignCreationService: any;
     let router: any;
+    let http: any
 
     beforeEach(() => {
         this.router = new RouterStub();
-        this.campaignCreationService = new CampaignCreationService(this.router);
+        this.campaignCreationService = new CampaignCreationService(this.router, http);
     });
 
     it('should navigate to correct url', () => {

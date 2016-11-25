@@ -1,11 +1,13 @@
-import { Component, Input, ChangeDetectorRef } from '@angular/core';
+import { Component, Input, ChangeDetectorRef, Inject, Injectable } from '@angular/core';
 import { CampaignBasicInfo } from '../campaign-settings/campaign-basic-info';
 import { CampaignMailingLists } from '../campaign-settings/campaign-mailing-lists';
 import { CampaignCreationService} from '../../services/campaign-creation/campaign-creation.service';
 import { Campaign } from '../../models/campaign.model';
 import { CampaignBreadcrumb } from '../campaign-breadcrumb';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
+import { Router } from '@angular/router';
 import { LanguageService } from '../../services/language.service';
+import { AlertsService } from '../../services/alerts/alerts.service';
 
 @Component({
 	selector: 'campaign-confirmation',
@@ -30,7 +32,9 @@ export class CampaignConfirmation {
 	constructor (	private language: LanguageService,
 								private campaignCreationService: CampaignCreationService,
 								private ref: ChangeDetectorRef,
-								private sanitized: DomSanitizer){
+								private sanitized: DomSanitizer,
+								private alertsService: AlertsService,
+								@Inject(Router) public router: Router){
 		this.campaign = campaignCreationService.getCampaign();
 	}
 
@@ -50,6 +54,15 @@ export class CampaignConfirmation {
 
 	getCampaign() {
 		return this.campaign;
+	}
+
+	postCampaign() {
+		// post the campaign
+		// set the alert for the marketing overview -page
+		// reroute the user
+		this.campaignCreationService.postCampaign();
+		this.alertsService.setCampaignCreatedAlert();
+		this.router.navigate(['/marketing/marketing-overview']);
 	}
 
 }

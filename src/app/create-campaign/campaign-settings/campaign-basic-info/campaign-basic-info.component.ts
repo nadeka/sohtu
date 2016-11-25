@@ -11,12 +11,29 @@ export class CampaignBasicInfo {
   // Variables for static text on the page
   campaignNameLabel = this.language.getWord('CAMPAIGN_NAME_LABEL');
   campaignSubjectLabel = this.language.getWord('CAMPAIGN_SUBJECT_LABEL');
-
+  nameFieldChosen = false;
+  subjectFieldChosen = false;
 
   @Input() campaignName: string;
   @Input() campaignSubject: string;
 
   constructor(private language: LanguageService) {}
+
+  setNameFieldChosen() {
+    this.nameFieldChosen = true;
+  }
+
+  setNameFieldUnChosen() {
+    this.nameFieldChosen = false;
+  }
+
+  setSubjectFieldChosen() {
+    this.subjectFieldChosen = true;
+  }
+
+  setSubjectFieldUnChosen() {
+    this.subjectFieldChosen = false;
+  }
 
   onNameChange(newValue) {
     this.campaignName = newValue;

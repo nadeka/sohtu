@@ -2,11 +2,28 @@
 
 <label for="new-campaign-name">{{ campaignNameLabel }}</label>
 <div class="form-group">
-  <input required type="text" class="form-control" id="new-campaign-name" [ngModel]="campaignName" (ngModelChange)=onNameChange($event)>
+  <input required type="text" class="form-control" id="new-campaign-name" aria-describedby="success-addon1"
+        (click)="setNameFieldChosen()" (blur)="setNameFieldUnChosen()" [ngModel]="campaignName" (ngModelChange)=onNameChange($event)>
+  <div *ngIf="nameFieldChosen">
+    <div *ngIf!="campaignName" class="alert alert-danger">
+      <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+      Campaign name must be filled
+    </div>
+  </div>
+  <span *ngIf="campaignName" id="success-addon1" class="input-group-addon alert alert-succes glyphicon glyphicon-ok-sign" aria-hidden="true"></span>
 </div>
+
 <br>
 
 <label for="new-campaign-subject">{{ campaignSubjectLabel }}</label>
 <div class="form-group">
-  <input required type="text" class="form-control" id="new-campaign-subject" [ngModel]="campaignSubject" (ngModelChange)=onSubjectChange($event)>
+  <input required type="text" class="form-control" id="new-campaign-subject" aria-describedby="success-addon2"
+        (click)="setSubjectFieldChosen()" (blur)="setSubjectFieldUnChosen()" [ngModel]="campaignSubject" (ngModelChange)=onSubjectChange($event)>
+  <div *ngIf="subjectFieldChosen">
+    <div *ngIf!="campaignSubject" class="alert alert-danger">
+      <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+      Campaign subject must be filled
+    </div>
+  </div>
+  <span *ngIf="campaignSubject" id="success-addon2" class="input-group-addon alert alert-succes glyphicon glyphicon-ok-sign"></span>
 </div>
