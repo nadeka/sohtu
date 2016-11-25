@@ -53,7 +53,10 @@ export var eng: { [key: string]: string; } = {
   'CAMPAIGN_WILL_BE_SENT_LABEL': 'Campaign will be sent on ',
   'SET_CURRENT_TIME_BUTTON' : 'Set current time',
   'CAMPAIGN_OVERVIEW' : 'Campaign Overview',
-  'CAMPAIGN_CREATED_ALERT' : 'Campaign created succesfully!'
+  'CAMPAIGN_CREATED_ALERT' : 'Campaign created succesfully!',
+  'ERROR_CAMPAIGN_NAME_MISSING' : 'Campaign name must be filled',
+    'ERROR_CAMPAIGN_SUBJECT_MISSING' : 'Campaign subject must be filled',
+    'ERROR_MAILING_LIST_MISSING' :'Atleast one (1) mailing list must be chosen!',
 };
 
 @Injectable()

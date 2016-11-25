@@ -24,7 +24,8 @@ export class CampaignMailingLists implements OnInit {
     chooseButtonLabel = this.language.getWord('CHOOSE_BUTTON_LABEL');
     okButtonLabel = this.language.getWord('OK_BUTTON_LABEL');
     nameLabel = this.language.getWord('MAILING_LIST_NAME_LABEL');
-    memberCountLabel = this.language.getWord('MEMBER_COUNT_LABEL')
+    memberCountLabel = this.language.getWord('MEMBER_COUNT_LABEL');
+    errorMailingList = this.language.getWord('ERROR_MAILING_LIST_MISSING');
 
     public mailingLists: Array<MailingList> = [];
     private selected: Set<number>;

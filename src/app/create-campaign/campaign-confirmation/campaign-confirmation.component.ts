@@ -29,6 +29,9 @@ export class CampaignConfirmation {
 	campaignSubject = this.language.getWord('CAMPAIGN_SUBJECT_LABEL');
 	mailingLists = this.language.getWord('MAILING_LISTS_HEADER');
 	willBeSent = this.language.getWord('WILL_BE_SENT');
+	errorCampaignName = this.language.getWord('ERROR_CAMPAIGN_NAME_MISSING');
+    errorCampaignSubject = this.language.getWord('ERROR_CAMPAIGN_SUBJECT_MISSING');
+    errorMailingList = this.language.getWord('ERROR_MAILING_LIST_MISSING');
 
 	constructor (	private language: LanguageService,
 								private campaignCreationService: CampaignCreationService,

@@ -2,7 +2,7 @@
 <h4>{{mailingListsHeader}}</h4>
 <div *ngIf!="hasSelected() > 0" class="alert alert-danger">
   <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
-  Atleast one (1) mailing list must be chosen!
+  {{ errorMailingList }}
 </div>
 <div class="btn btn-default choose-btn" (click)="show()">{{chooseButtonLabel}}</div>
 

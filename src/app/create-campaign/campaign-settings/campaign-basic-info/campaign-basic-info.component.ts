@@ -11,6 +11,8 @@ export class CampaignBasicInfo {
   // Variables for static text on the page
   campaignNameLabel = this.language.getWord('CAMPAIGN_NAME_LABEL');
   campaignSubjectLabel = this.language.getWord('CAMPAIGN_SUBJECT_LABEL');
+  errorCampaignName = this.language.getWord('ERROR_CAMPAIGN_NAME_MISSING');
+  errorCampaignSubject = this.language.getWord('ERROR_CAMPAIGN_SUBJECT_MISSING');
   nameFieldChosen = false;
   subjectFieldChosen = false;
 

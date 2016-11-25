@@ -7,7 +7,7 @@
   <div *ngIf="nameFieldChosen">
     <div *ngIf!="campaignName" class="alert alert-danger">
       <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
-      Campaign name must be filled
+      {{ errorCampaignName }}
     </div>
   </div>
   <span *ngIf="campaignName" id="success-addon1" class="input-group-addon alert alert-succes glyphicon glyphicon-ok-sign" aria-hidden="true"></span>
@@ -22,7 +22,7 @@
   <div *ngIf="subjectFieldChosen">
     <div *ngIf!="campaignSubject" class="alert alert-danger">
       <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
-      Campaign subject must be filled
+      {{ errorCampaignSubject }}
     </div>
   </div>
   <span *ngIf="campaignSubject" id="success-addon2" class="input-group-addon alert alert-succes glyphicon glyphicon-ok-sign"></span>
