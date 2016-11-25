@@ -24,7 +24,7 @@ export class TemplatesService {
 
     body.forEach(template =>
       templates.push(new Template(template.id, template.name, template.html,
-        template.htmlImage, template.created_at, template.updated_at))
+        template.htmlImage, template.createdAt, template.updatedAt))
     );
 
     return templates;

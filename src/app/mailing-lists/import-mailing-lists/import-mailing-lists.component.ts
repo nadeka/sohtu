@@ -76,13 +76,14 @@ export class ImportMailingLists {
         } else {
             let contacts = this.contactsService.createContacts(results.data);
 
-            let mailingList = this.mailingListsService
-                .createMailingList(this.mailingListName, this.mailingListDescription, contacts);
+            this.mailingListsService
+                .createMailingList(this.mailingListName, this.mailingListDescription, contacts)
+                .then(mailingList => function() {
+                    this.showSuccessAlert(mailingList.name);
 
-            this.showSuccessAlert(mailingList.name);
-
-            this.mailingListImported.emit(mailingList);
-            this.reset();
+                    this.mailingListImported.emit(mailingList);
+                    this.reset();
+                });
         }
     }
 
