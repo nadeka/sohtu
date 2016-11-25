@@ -84,10 +84,18 @@ describe('Component: CampaignConfirmation', () => {
         expect(page.finalContentContainer.nativeElement.textContent).toContain('test modified template');
     });
 
-    it('confirming campaign should set succesful alert message', () => {
-        page.navButtons[1].triggerEventHandler('click', null);
-        expect(alertsService.getCampaignCreatedAlert()).toBe(lang.getWord('CAMPAIGN_CREATED_ALERT'));
+    //it('confirming campaign should set succesful alert message', () => {
+      //  page.navButtons[1].triggerEventHandler('click', null);
+        //expect(alertsService.getCampaignCreatedAlert()).toBe(lang.getWord('CAMPAIGN_CREATED_ALERT'));
+  //  });
+
+    it('user informed if no campaign name and subject', () => {
+        campaignCreationService.setName('');
+        campaignCreationService.setSubject('');
+        fixture.detectChanges();
+        expect(page.basicInfoContainer.nativeElement.textContent).toContain('must be filled');
     });
+
 });
 
 class MockRouter {

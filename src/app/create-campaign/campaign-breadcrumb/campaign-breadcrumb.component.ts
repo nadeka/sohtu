@@ -35,6 +35,7 @@ export class CampaignBreadcrumb {
 		if(step === 'content') {
 			return (this.campaignCreationService.getTemplate() === undefined) || (this.campaignCreationService.getTemplate() === null);
 		}
+		return false;
 	}
 
 }

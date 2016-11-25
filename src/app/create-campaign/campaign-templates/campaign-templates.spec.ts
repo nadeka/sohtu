@@ -74,4 +74,9 @@ describe('Component: CampaignTemplates', () => {
         expect(campaignCreationService.getTemplate().id).toBe(selection);
     });
 
+    it('when no template is chosen user can not move to content page', () => {
+      campaignCreationService.setCurrentStep('template');
+      page.navButtons[1].triggerEventHandler('click', null);
+      expect(campaignCreationService.getCurrentStep()).toBe('template');
+    });
 });

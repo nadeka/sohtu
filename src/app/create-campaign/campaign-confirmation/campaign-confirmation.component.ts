@@ -60,9 +60,15 @@ export class CampaignConfirmation {
 		// post the campaign
 		// set the alert for the marketing overview -page
 		// reroute the user
-		this.campaignCreationService.postCampaign();
+		this.campaignCreationService.postCampaign()
+								.then(c =>
+									console.log(c));
 		this.alertsService.setCampaignCreatedAlert();
 		this.router.navigate(['/marketing/marketing-overview']);
+	}
+
+	isCampaignReady() {
+		return this.campaignCreationService.isReady();
 	}
 
 }

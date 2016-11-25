@@ -5,7 +5,7 @@
       <button style="float:left; display:inline;" (click)="goToStep('schedule')" class="navigation-btn">
         {{previousLabel}}
       </button>
-      <button style="float:right; display:inline;" (click)="postCampaign()" class="navigation-btn">
+      <button style="float:right; display:inline;" (click)="postCampaign()" class="navigation-btn" [disabled]="isCampaignReady()">
         {{confirmLabel}}
       </button>
     </div>
@@ -23,10 +23,18 @@
   		<div class="basic-information">
   			<label for="campaign-name">{{campaignName}}</label>
         <p id="campaign-name">{{campaign.name}}</p>
+        <div *ngIf!="campaign.name" class="alert alert-danger">
+          <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+          Campaign name must be filled
+        </div>
   			<br>
   			<br>
   			<label for="campaign-subject">{{campaignSubject}}</label>
   			<p id="campaign-subject">{{campaign.subject}}</p>
+        <div *ngIf!="campaign.subject" class="alert alert-danger">
+          <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+          Campaign subject must be filled
+        </div>
 			<br>
 			<br>
 			<p>{{mailingLists}}</p>

@@ -5,8 +5,8 @@ import { MailingList } from '../../models/mailing-list.model';
 import { Template } from '../../models/template.model';
 import { ModifiedTemplate } from '../../models/modified-template.model'
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
-import { Observable } from 'rxjs/Rx';
 import { Settings } from '../../settings';
+import 'rxjs/add/operator/toPromise';
 
 @Injectable()
 export class CampaignCreationService {
@@ -21,17 +21,30 @@ export class CampaignCreationService {
     this.campaign = new Campaign();
   };
 
-  public postCampaign(): void/*Observable<Campaign[]>*/ {
-    this.campaign.template.htmlImage = '';
-    let bodyString = JSON.stringify(this.campaign); // Stringify payload
-    let headers    = new Headers({ 'Content-Type': 'application/json' }); // ... Set content type to JSON
+  public postCampaign(): Promise<Campaign> {
+
+    // POST campaign should be sent in the following form
+    // {
+    // "name":"campaign name",
+    // "subject":"campaign subject",
+    // "mailingLists":[1,2,3],                // this is mailing list id:s
+    // "template":"1"                         // this is the template id
+    // "content":"<h1>"                       // html content of the email
+    // "schedule":"2016-11-24T09:30:50.621Z"  // date
+
+    let bodyString = JSON.stringify({name: this.campaign.name,
+                                     subject: this.campaign.subject,
+                                     mailingLists: this.getMailingListsIds(),
+                                     template: this.campaign.template.id,
+                                     content: this.campaign.modifiedTemplate,
+                                     schedule: this.campaign.schedule}); // Stringify payload
+
+    let headers    = new Headers({ 'Content-Type': 'application/json'}); // ... Set content type to JSON
     let options    = new RequestOptions({ headers: headers }); // Create a request option
-    console.log(bodyString);
-    console.log("---");
-    console.log(this.campaign);
-  //  return this.http.post(this.emailCampaignsURL, this.campaign, options) // ...using post request
-    //                    .map((res:Response) => res.json()) // ...and calling .json() on the response to return data
-      //                  .catch((error:any) => Observable.throw(error.json().error || 'Server error')); //...errors if any
+
+    return this.http.post(this.emailCampaignsURL, bodyString, options) // ...using post request
+                        .toPromise().then((res:Response) => res.json()) // ...and calling .json() on the response to return data
+                        .catch((error:any) => Promise.reject(error.json().error || 'Server error')); //...errors if any
   }
 
   public setSchedule(schedule: Date) {
@@ -49,6 +62,14 @@ export class CampaignCreationService {
   public getMailingLists() {
     return this.campaign.mailingLists;
   };
+
+  public getMailingListsIds() {
+    let temp = []
+    this.campaign.mailingLists.forEach(function(list) {
+      temp.push(list.id);
+    });
+    return temp;
+  }
 
   public setName(name: string) {
     this.campaign.name = name;
@@ -105,6 +126,13 @@ export class CampaignCreationService {
 
   public getCurrentStep() {
     return this.step;
+  }
+
+  public isReady() {
+    if((this.campaign.name != '') && (this.campaign.subject != '')) {
+      return false;
+    }
+    return true;
   }
 
 };

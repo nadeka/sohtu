@@ -16,7 +16,9 @@ export class MockCampaignCreationService {
     this.campaign = new Campaign();
   }
 
-  postCampaign() {}
+  postCampaign() {
+    return "test";
+  }
 
   getCampaign() {
     return this.campaign;
@@ -80,6 +82,13 @@ export class MockCampaignCreationService {
 
   getCurrentStep(): string {
     return this.step;
+  }
+
+  isReady() {
+    if((this.campaign.name != '') && (this.campaign.subject != '')) {
+      return false;
+    }
+    return true;
   }
 
 }
