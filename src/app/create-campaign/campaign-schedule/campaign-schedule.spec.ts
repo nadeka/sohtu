@@ -69,4 +69,10 @@ describe('Component: CampaignSchedule', () => {
     expect(spy).toHaveBeenCalledWith(testSchedule);
   });
 
+  it('when no template is chosen user can not move to content page', () => {
+    campaignCreationService.setCurrentStep('schedule');
+    page.navButtons[0].triggerEventHandler('click', null);
+    expect(campaignCreationService.getCurrentStep()).toBe('schedule');
+  });
+
 });

@@ -65,4 +65,8 @@ export class CampaignConfirmation {
 		this.router.navigate(['/marketing/marketing-overview']);
 	}
 
+	isCampaignReady() {
+		return this.campaignCreationService.isReady();
+	}
+
 }

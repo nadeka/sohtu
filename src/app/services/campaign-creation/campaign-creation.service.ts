@@ -26,9 +26,7 @@ export class CampaignCreationService {
     let bodyString = JSON.stringify(this.campaign); // Stringify payload
     let headers    = new Headers({ 'Content-Type': 'application/json' }); // ... Set content type to JSON
     let options    = new RequestOptions({ headers: headers }); // Create a request option
-    console.log(bodyString);
-    console.log("---");
-    console.log(this.campaign);
+
   //  return this.http.post(this.emailCampaignsURL, this.campaign, options) // ...using post request
     //                    .map((res:Response) => res.json()) // ...and calling .json() on the response to return data
       //                  .catch((error:any) => Observable.throw(error.json().error || 'Server error')); //...errors if any
@@ -105,6 +103,13 @@ export class CampaignCreationService {
 
   public getCurrentStep() {
     return this.step;
+  }
+
+  public isReady() {
+    if((this.campaign.name != '') && (this.campaign.subject != '')) {
+      return false;
+    }
+    return true;
   }
 
 };

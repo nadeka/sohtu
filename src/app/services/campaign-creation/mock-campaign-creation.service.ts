@@ -82,4 +82,11 @@ export class MockCampaignCreationService {
     return this.step;
   }
 
+  isReady() {
+    if((this.campaign.name != '') && (this.campaign.subject != '')) {
+      return false;
+    }
+    return true;
+  }
+
 }
