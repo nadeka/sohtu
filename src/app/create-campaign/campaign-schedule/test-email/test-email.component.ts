@@ -1,5 +1,5 @@
-import { Component} from '@angular/core';
-import { CampaignCreationService} from '../../../services/campaign-creation/campaign-creation.service';
+import { Component } from '@angular/core';
+import { CampaignCreationService } from '../../../services/campaign-creation/campaign-creation.service';
 import { Campaign } from '../../../models/campaign.model';
 import { LanguageService } from '../../../services/language.service';
 

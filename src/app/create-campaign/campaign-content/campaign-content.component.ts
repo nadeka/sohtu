@@ -1,5 +1,5 @@
 import { Component, ViewChild, ChangeDetectorRef } from '@angular/core';
-import { CampaignCreationService} from '../../services/campaign-creation/campaign-creation.service';
+import { CampaignCreationService } from '../../services/campaign-creation/campaign-creation.service';
 import { LanguageService } from '../../services/language.service';
 import { CampaignChosenTemplate } from './campaign-chosen-template';
 import { CampaignBreadcrumb } from '../campaign-breadcrumb';
@@ -13,15 +13,15 @@ import { CampaignBreadcrumb } from '../campaign-breadcrumb';
 
 export class CampaignContent {
 
+    @ViewChild('campaignChosenTemplate') chosenTemplate: CampaignChosenTemplate;
+
     previousButton = this.language.getWord('PREVIOUS_LABEL');
     nextButton = this.language.getWord('NEXT_LABEL');
 
     constructor(private language: LanguageService,
                 private campaignCreationService: CampaignCreationService,
                 private campaignChosenTemplate: CampaignChosenTemplate,
-                private ref: ChangeDetectorRef){}
-
-    @ViewChild('campaignChosenTemplate') chosenTemplate: CampaignChosenTemplate;
+                private ref: ChangeDetectorRef) {}
 
     ngOnInit() {
         console.log('hello `CampaignContent` component');

@@ -1,7 +1,7 @@
 import { Component, Input, ChangeDetectorRef, Inject, Injectable } from '@angular/core';
 import { CampaignBasicInfo } from '../campaign-settings/campaign-basic-info';
 import { CampaignMailingLists } from '../campaign-settings/campaign-mailing-lists';
-import { CampaignCreationService} from '../../services/campaign-creation/campaign-creation.service';
+import { CampaignCreationService } from '../../services/campaign-creation/campaign-creation.service';
 import { Campaign } from '../../models/campaign.model';
 import { CampaignBreadcrumb } from '../campaign-breadcrumb';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
@@ -10,73 +10,71 @@ import { LanguageService } from '../../services/language.service';
 import { AlertsService } from '../../services/alerts/alerts.service';
 
 @Component({
-	selector: 'campaign-confirmation',
-	templateUrl: './campaign-confirmation.template.html',
-	styleUrls: [ 'campaign-confirmation.style.css', '../campaign-creation.style.css' ],
-	providers: [CampaignBreadcrumb]
+    selector: 'campaign-confirmation',
+    templateUrl: './campaign-confirmation.template.html',
+    styleUrls: [ 'campaign-confirmation.style.css', '../campaign-creation.style.css' ],
+    providers: [CampaignBreadcrumb]
 })
 
 export class CampaignConfirmation {
 
-	private campaign: Campaign;
-	private campaignContent: SafeHtml;
-	private mailingListIsEmpty = true;
-
-	previousLabel = this.language.getWord('PREVIOUS_LABEL');
-	confirmLabel = this.language.getWord('CONFIRM_LABEL');
-	campaignOverview = this.language.getWord('CAMPAIGN_OVERVIEW');
-	campaignName = this.language.getWord('CAMPAIGN_NAME_LABEL');
-	campaignSubject = this.language.getWord('CAMPAIGN_SUBJECT_LABEL');
-	mailingLists = this.language.getWord('MAILING_LISTS_HEADER');
-	willBeSent = this.language.getWord('WILL_BE_SENT');
-	errorCampaignName = this.language.getWord('ERROR_CAMPAIGN_NAME_MISSING');
+    previousLabel = this.language.getWord('PREVIOUS_LABEL');
+    confirmLabel = this.language.getWord('CONFIRM_LABEL');
+    campaignOverview = this.language.getWord('CAMPAIGN_OVERVIEW');
+    campaignName = this.language.getWord('CAMPAIGN_NAME_LABEL');
+    campaignSubject = this.language.getWord('CAMPAIGN_SUBJECT_LABEL');
+    mailingLists = this.language.getWord('MAILING_LISTS_HEADER');
+    willBeSent = this.language.getWord('WILL_BE_SENT');
+    errorCampaignName = this.language.getWord('ERROR_CAMPAIGN_NAME_MISSING');
     errorCampaignSubject = this.language.getWord('ERROR_CAMPAIGN_SUBJECT_MISSING');
     errorMailingList = this.language.getWord('ERROR_MAILING_LIST_MISSING');
 
-	constructor (	private language: LanguageService,
-								private campaignCreationService: CampaignCreationService,
-								private ref: ChangeDetectorRef,
-								private sanitized: DomSanitizer,
-								private alertsService: AlertsService,
-								@Inject(Router) public router: Router){
-		this.campaign = campaignCreationService.getCampaign();
-	}
+    private campaign: Campaign;
+    private campaignContent: SafeHtml;
+    private mailingListIsEmpty = true;
 
-	ngOnInit() {
-    console.log('hello `CONFIRMATION` component');
-		this.campaignContent = this.sanitized.bypassSecurityTrustHtml(this.campaign.modifiedTemplate.html);
+    constructor (	private language: LanguageService,
+                  private campaignCreationService: CampaignCreationService,
+                  private ref: ChangeDetectorRef,
+                  private sanitized: DomSanitizer,
+                  private alertsService: AlertsService,
+                  @Inject(Router) public router: Router) {
+      this.campaign = campaignCreationService.getCampaign();
+    }
 
-		if(this.campaign.mailingLists.length > 0) {
-			this.mailingListIsEmpty = false;
-		}
-  }
+    ngOnInit() {
+        this.campaignContent = this.sanitized.bypassSecurityTrustHtml(this.campaign.modifiedTemplate.html);
 
-	ngAfterViewInit() {
-		this.campaignCreationService.setCurrentStep('confirmation');
-		this.ref.detectChanges();
-	}
+        if (this.campaign.mailingLists.length > 0) {
+          this.mailingListIsEmpty = false;
+        }
+    }
 
-	goToStep(step: string) {
-		this.campaignCreationService.goToStep(step);
-	}
+    ngAfterViewInit() {
+        this.campaignCreationService.setCurrentStep('confirmation');
+        this.ref.detectChanges();
+    }
 
-	getCampaign() {
-		return this.campaign;
-	}
+    goToStep(step: string) {
+        this.campaignCreationService.goToStep(step);
+    }
 
-	postCampaign() {
-		// post the campaign
-		// set the alert for the marketing overview -page
-		// reroute the user
-		this.campaignCreationService.postCampaign()
-								.then(c =>
-									console.log(c));
-		this.alertsService.setCampaignCreatedAlert();
-		this.router.navigate(['/marketing/marketing-overview']);
-	}
+    getCampaign() {
+        return this.campaign;
+    }
 
-	isCampaignReady() {
-		return this.campaignCreationService.isReady();
-	}
+    postCampaign() {
+        // post the campaign
+        // set the alert for the marketing overview -page
+        // reroute the user
+        this.campaignCreationService.postCampaign()
+                    .then(c =>
+                      console.log(c));
+        this.alertsService.setCampaignCreatedAlert();
+        this.router.navigate(['/marketing/marketing-overview']);
+    }
 
+    isCampaignReady() {
+        return this.campaignCreationService.isReady();
+    }
 }

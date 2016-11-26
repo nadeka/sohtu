@@ -8,7 +8,7 @@ export class AlertsService {
 
   constructor(private lang: LanguageService) {}
 
-  public setCampaignCreatedAlert():void {
+  public setCampaignCreatedAlert(): void {
     this.campaignCreatedAlert = this.lang.getWord('CAMPAIGN_CREATED_ALERT');
   }
 

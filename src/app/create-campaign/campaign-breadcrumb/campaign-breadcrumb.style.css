@@ -10,3 +10,28 @@
   color: #5f6268;
   text-decoration: line-through;
 }
+
+.breadcrumb {
+  margin-top: 1em;
+  background:#f2f2f2;
+  -webkit-box-shadow: 0 10px 6px -6px #777;
+  -moz-box-shadow: 0 10px 6px -6px #777;
+  box-shadow: 0 10px 6px -6px #777;
+}
+
+.breadcrumb>li+li:before {
+  content: "\2771\00a0";
+}
+
+.breadcrumb li a {
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.breadcrumb li a:hover {
+  color: #000408;
+}
+
+#firstLink {
+  margin-left: 12%;
+}

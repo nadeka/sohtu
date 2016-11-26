@@ -4,7 +4,7 @@ import { TemplatesService } from '../../../services/templates/templates.service'
 import { HTML2ImageService } from '../../../services/html2image/html2image.service';
 import { Template } from '../../../models/template.model';
 import { LanguageService } from '../../../services/language.service';
-import { CampaignCreationService} from '../../../services/campaign-creation/campaign-creation.service';
+import { CampaignCreationService } from '../../../services/campaign-creation/campaign-creation.service';
 import { ModalDirective, ModalModule } from 'ng2-bootstrap/ng2-bootstrap';
 
 @Component({
@@ -51,11 +51,11 @@ export class CampaignTemplatesList implements OnInit {
     }
 
     // Images will be created at template creation
-     //convertToCampaignTemplate(template: Template): void {
+     // convertToCampaignTemplate(template: Template): void {
       //   this.html2ImageService.toImage(template.content)
         //     .then(imageUrl => template.thumbnailImage = imageUrl)
           //   .catch(err => console.log(err));
-     //}
+     // }
 
     hasSelected(): boolean {
         if (this.selectedTemplate) {
@@ -73,13 +73,12 @@ export class CampaignTemplatesList implements OnInit {
 
     select(templateId: number): void {
         this.tempTemplateId = templateId;
-        if(!this.campaignCreationService.getModifiedTemplate()) {
+        if (!this.campaignCreationService.getModifiedTemplate()) {
           this.notify.emit(this.getSelected());
           this.selectedTemplate = templateId;
           this.campaignCreationService.setTemplate(this.getSelected());
           this.updateTemplate = true;
-        }
-        else {
+        } else {
           this.updateTemplate = false;
           this.staticModal.show();
         }

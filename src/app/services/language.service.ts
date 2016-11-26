@@ -55,8 +55,8 @@ export var eng: { [key: string]: string; } = {
   'CAMPAIGN_OVERVIEW' : 'Campaign Overview',
   'CAMPAIGN_CREATED_ALERT' : 'Campaign created succesfully!',
   'ERROR_CAMPAIGN_NAME_MISSING' : 'Campaign name must be filled',
-    'ERROR_CAMPAIGN_SUBJECT_MISSING' : 'Campaign subject must be filled',
-    'ERROR_MAILING_LIST_MISSING' :'Atleast one (1) mailing list must be chosen!',
+  'ERROR_CAMPAIGN_SUBJECT_MISSING' : 'Campaign subject must be filled',
+  'ERROR_MAILING_LIST_MISSING' : 'Atleast one (1) mailing list must be chosen!',
 };
 
 @Injectable()

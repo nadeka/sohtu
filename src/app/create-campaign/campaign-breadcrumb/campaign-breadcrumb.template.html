@@ -1,6 +1,6 @@
 <div class="col-md-6 col-md-offset-3">
   <ul class="breadcrumb">
-    <li><a [ngClass]="{'not-active': isStep('settings') }" (click)="goToStep('')">{{settingsLabel}}</a></li>
+    <li id="firstLink"><a [ngClass]="{'not-active': isStep('settings') }" (click)="goToStep('')">{{settingsLabel}}</a></li>
     <li><a [ngClass]="{'not-active': isStep('template') }" (click)="goToStep('template')">{{templateLabel}}</a></li>
     <li><a [ngClass]="{'not-active': isStep('content'), 'disabled': isDisabled('content') }" (click)="goToStep('content')">{{contentLabel}}</a></li>
     <li><a [ngClass]="{'not-active': isStep('schedule') }" (click)="goToStep('schedule')">{{scheduleLabel}}</a></li>

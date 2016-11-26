@@ -104,8 +104,6 @@ describe('Component: CampaignMailingLists', () => {
         component.mailingLists
             .forEach(mailingList => expect(component.isSelected(mailingList.id)).toBe(false));
     });
-    
-    //
     // UI tests
     // it('pressing select all button should select all', () => {
     //     // click button and evaluate

@@ -1,4 +1,4 @@
-import { TestBed, async} from '@angular/core/testing';
+import { TestBed, async } from '@angular/core/testing';
 import { DebugElement } from '@angular/core';
 import { ModalModule } from 'ng2-bootstrap/ng2-bootstrap';
 import { By } from '@angular/platform-browser';

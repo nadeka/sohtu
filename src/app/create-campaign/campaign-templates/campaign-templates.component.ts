@@ -3,7 +3,7 @@ import { CampaignTemplatesList } from './campaign-templates-list';
 import { TemplatesService } from '../../services/templates/templates.service';
 import { CampaignTemplate } from '../../models/campaign-template.model';
 import { Template } from '../../models/template.model';
-import { CampaignCreationService} from '../../services/campaign-creation/campaign-creation.service';
+import { CampaignCreationService } from '../../services/campaign-creation/campaign-creation.service';
 import { LanguageService } from '../../services/language.service';
 import { CampaignBreadcrumb } from '../campaign-breadcrumb';
 
@@ -24,15 +24,14 @@ export class CampaignTemplates {
     constructor(private language: LanguageService,
                 private campaignCreationService: CampaignCreationService,
                 private campaignTemplatesList: CampaignTemplatesList,
-                private templatesService: TemplatesService, private ref: ChangeDetectorRef){}
+                private templatesService: TemplatesService, private ref: ChangeDetectorRef) {}
 
     ngOnInit() {
-        console.log('hello `CampaignTemplates` component');
     }
 
     ngAfterViewInit() {
         let selectedTemplate = this.campaignCreationService.getTemplate();
-        if(selectedTemplate){
+        if (selectedTemplate) {
              this.templatesList.reselect(selectedTemplate.id);
         }
 
@@ -46,14 +45,14 @@ export class CampaignTemplates {
     }
 
     saveChanges() {
-      if(this.templatesList.getUpdateTemplate()) {
+      if (this.templatesList.getUpdateTemplate()) {
           this.campaignCreationService.setTemplate(this.templatesList.getSelected());
       }
     }
 
     isDisabled(step: string) {
-  		if(step === 'content') {
-  			return (this.campaignCreationService.getTemplate() === undefined) || (this.campaignCreationService.getTemplate() === null);
-  		}
+        if (step === 'content') {
+          return (this.campaignCreationService.getTemplate() === undefined) || (this.campaignCreationService.getTemplate() === null);
+        }
   	}
 }

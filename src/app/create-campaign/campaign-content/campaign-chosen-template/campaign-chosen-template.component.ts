@@ -1,4 +1,4 @@
-import { Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CampaignCreationService } from '../../../services/campaign-creation/campaign-creation.service';
 import { CampaignTemplate } from '../../../models/campaign-template.model';
 import { ModifiedTemplate } from '../../../models/modified-template.model';
@@ -11,16 +11,15 @@ import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 })
 
 export class CampaignChosenTemplate {
-  templateContent : SafeHtml = '';
-  modifiedTemplate : ModifiedTemplate;
-  constructor(private campaignCreationService: CampaignCreationService,private sanitized: DomSanitizer) {}
+  templateContent: SafeHtml = '';
+  modifiedTemplate: ModifiedTemplate;
+  constructor(private campaignCreationService: CampaignCreationService, private sanitized: DomSanitizer) {}
 
   // for fetching template from the service
   updateTemplate() {
-    if(this.campaignCreationService.getExistingModifiedTemplate()) {
+    if (this.campaignCreationService.getExistingModifiedTemplate()) {
       this.templateContent = this.sanitized.bypassSecurityTrustHtml(this.campaignCreationService.getModifiedTemplate().html);
-    }
-    else {
+    } else {
       this.templateContent = this.sanitized.bypassSecurityTrustHtml(this.campaignCreationService.getTemplate().html);
     }
   }

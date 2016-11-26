@@ -62,9 +62,9 @@ describe('Component: CampaignConfirmation', () => {
             lang = fixture.debugElement.injector.get(LanguageService);
             campaignCreationService = fixture.debugElement.injector.get(CampaignCreationService);
             campaignCreationService.setMailingLists([{id: 1,
-                name: "testname",
-                description: "testsubject",
-                members: String["asd"]}]);
+                name: 'testname',
+                description: 'testsubject',
+                members: String['asd']}]);
             campaignCreationService.setModifiedTemplate(new ModifiedTemplate('<p>test modified template</p>'));
             campaignCreationService.setName('testname');
             campaignCreationService.setSubject('testsubject');
@@ -89,9 +89,9 @@ describe('Component: CampaignConfirmation', () => {
         expect(page.finalContentContainer.nativeElement.textContent).toContain('test modified template');
     });
 
-    //it('confirming campaign should set succesful alert message', () => {
+    // it('confirming campaign should set succesful alert message', () => {
       //  page.navButtons[1].triggerEventHandler('click', null);
-        //expect(alertsService.getCampaignCreatedAlert()).toBe(lang.getWord('CAMPAIGN_CREATED_ALERT'));
+        // expect(alertsService.getCampaignCreatedAlert()).toBe(lang.getWord('CAMPAIGN_CREATED_ALERT'));
   //  });
 
     it('user informed if no campaign name and subject', () => {

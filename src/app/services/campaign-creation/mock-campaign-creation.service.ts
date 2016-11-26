@@ -17,7 +17,7 @@ export class MockCampaignCreationService {
   }
 
   postCampaign() {
-    return "test";
+    return 'test';
   }
 
   getCampaign() {
@@ -85,7 +85,7 @@ export class MockCampaignCreationService {
   }
 
   isReady() {
-    if((this.campaign.name != '') && (this.campaign.subject != '')) {
+    if ((this.campaign.name !== '') && (this.campaign.subject !== '')) {
       return false;
     }
     return true;

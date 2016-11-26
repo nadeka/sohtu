@@ -4,7 +4,7 @@ describe('Service: CampaignCreationService', () => {
 
     let campaignCreationService: any;
     let router: any;
-    let http: any
+    let http: any;
 
     beforeEach(() => {
         this.router = new RouterStub();
