@@ -74,16 +74,20 @@ export class ImportMailingLists {
             // For some reason, the view freezes without this
             this.mailingListImported.emit();
         } else {
-            let contacts = this.contactsService.createContacts(results.data);
+            let self = this;
 
-            this.mailingListsService
-                .createMailingList(this.mailingListName, this.mailingListDescription, contacts)
-                .then(mailingList => function() {
-                    this.showSuccessAlert(mailingList.name);
+            this.contactsService.createContacts(results.data)
+                .then(function(contacts) {
+                    self.mailingListsService
+                        .createMailingList(self.mailingListName, self.mailingListDescription, contacts)
+                        .then(function(mailingList) {
+                            self.showSuccessAlert(mailingList.name);
 
-                    this.mailingListImported.emit(mailingList);
-                    this.reset();
-                });
+                            self.mailingListImported.emit(mailingList);
+                            self.reset();
+                        });
+                })
+                .catch(err => console.log(err));
         }
     }
 

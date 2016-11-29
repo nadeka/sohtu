@@ -11,7 +11,7 @@ before_install:
 script:
 - npm run test
 after_success:
-- npm run build
+- npm run build:prod
 deploy:
   provider: s3
   access_key_id:
