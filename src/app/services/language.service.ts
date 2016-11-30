@@ -27,6 +27,7 @@ export var eng: { [key: string]: string; } = {
   'DESELECT_ALL_BUTTON_LABEL' : 'Deselect all',
   'CHOOSE_BUTTON_LABEL' : 'Choose',
   'OK_BUTTON_LABEL' : 'Ok',
+  'RESET_BUTTON_LABEL' : 'Reset',
   'MAILING_LISTS_HEADER' : 'Mailing lists',
   'CAMPAIGN_TEMPLATES_HEADER' : 'Campaign Template',
   'IMPORT_BUTTON_LABEL' : 'Import',
@@ -57,6 +58,8 @@ export var eng: { [key: string]: string; } = {
   'ERROR_CAMPAIGN_NAME_MISSING' : 'Campaign name must be filled',
   'ERROR_CAMPAIGN_SUBJECT_MISSING' : 'Campaign subject must be filled',
   'ERROR_MAILING_LIST_MISSING' : 'Atleast one (1) mailing list must be chosen!',
+  'ERROR_MAILING_LIST_NAME_MISSING' : 'Name is required',
+  'ERROR_MAILING_LIST_NAME_TAKEN' : 'Name is already taken'
 };
 
 @Injectable()

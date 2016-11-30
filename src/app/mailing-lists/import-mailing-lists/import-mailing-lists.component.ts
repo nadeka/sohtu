@@ -17,11 +17,14 @@ export class ImportMailingLists {
     mailingListNameLabel = this.language.getWord('MAILING_LIST_NAME_LABEL');
     mailingListDescriptionLabel = this.language.getWord('MAILING_LIST_DESCRIPTION_LABEL');
     importButtonLabel = this.language.getWord('IMPORT_BUTTON_LABEL');
+    resetButtonLabel = this.language.getWord('RESET_BUTTON_LABEL');
     noFileChosen = this.language.getWord('NO_FILE_CHOSEN');
     chooseFile = this.language.getWord('CHOOSE_FILE');
     acceptedFormats = this.language.getWord('ACCEPTED_FILE_FORMATS');
     acceptedContent = this.language.getWord('ACCEPTED_FILE_CONTENT');
     fileParseError = this.language.getWord('FILE_PARSE_ERROR');
+    nameMissingError = this.language.getWord('ERROR_MAILING_LIST_NAME_MISSING');
+    nameTakenError = this.language.getWord('ERROR_MAILING_LIST_NAME_TAKEN');
 
     @Input() mailingListName: string = '';
     @Input() mailingListDescription: string = '';
