@@ -1,16 +1,18 @@
 import { ContactsService } from './contacts.service';
 import { TestBed, async, getTestBed } from '@angular/core/testing';
-import { MockBackend } from '@angular/http/testing';
-import { BaseRequestOptions, Http, XHRBackend, HttpModule }
+import { MockBackend, MockConnection } from '@angular/http/testing';
+import {
+    BaseRequestOptions, Http, XHRBackend, HttpModule, ResponseOptions, Response
+}
     from '@angular/http';
-import { IMPORTED_CONTACTS } from '../../test-data/test-contacts';
+
+import { IMPORTED_CONTACTS, RESPONSE_CONTACTS } from '../../test-data/test-contacts';
 
 describe('Service: ContactsService', () => {
     let contactsService: ContactsService;
     let mockBackend: MockBackend;
 
     beforeEach(async(() => {
-        // We will soon need MockBackend etc
         TestBed.configureTestingModule({
             providers: [
                 ContactsService,
@@ -34,22 +36,42 @@ describe('Service: ContactsService', () => {
         });
     }));
 
+    function setupConnections(backend: MockBackend, options: any) {
+        backend.connections.subscribe((connection: MockConnection) => {
+            const responseOptions = new ResponseOptions(options);
+            const response = new Response(responseOptions);
+
+            connection.mockRespond(response);
+        });
+    }
+
     it('should return 4 contacts', async(() => {
+        setupConnections(mockBackend, {
+            body: RESPONSE_CONTACTS,
+            status: 200
+        });
+
         contactsService.getContacts()
-            .then(contacts => expect(contacts.length).toBe(4));
+            .then(contacts => expect(contacts.length).toBe(2));
     }));
 
-    it('should create contact', async(() => {
-        contactsService.createContact(IMPORTED_CONTACTS[0]);
+    it('should create contact and return it', async(() => {
+        contactsService.createContact(IMPORTED_CONTACTS[0])
+            .then(function(contact) {
+                expect(contact.firstName).toBe('Johanna');
 
-        contactsService.getContacts()
-            .then(contacts => expect(contacts.length).toBe(5));
+                contactsService.getContacts()
+                    .then(contacts => expect(contacts.length).toBe(3));
+            });
     }));
 
-    it('should create many contacts', async(() => {
-        contactsService.createContacts(IMPORTED_CONTACTS);
+    it('should create many contacts and return them', async(() => {
+        contactsService.createContacts(IMPORTED_CONTACTS)
+            .then(function(contacts) {
+                expect(contacts.length).toBe(2);
 
-        contactsService.getContacts()
-            .then(contacts => expect(contacts.length).toBe(6));
+                contactsService.getContacts()
+                    .then(contacts => expect(contacts.length).toBe(6));
+            });
     }));
 });

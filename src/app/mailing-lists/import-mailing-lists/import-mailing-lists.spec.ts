@@ -22,6 +22,7 @@ import { File2JSONService } from '../../services/file2json/file2json.service';
 import { MockFile2JSONService } from '../../services/file2json/mock-file2json.service';
 import { MailingListsService } from '../../services/mailing-lists/mailing-lists.service';
 import { ContactsService } from '../../services/contacts/contacts.service';
+import { IMPORTED_CONTACTS } from '../../test-data/test-contacts';
 
 describe('Component: ImportMailingLists', () => {
     let fixture: any;
@@ -101,84 +102,65 @@ describe('Component: ImportMailingLists', () => {
         expect(component.alerts.length).toBe(1);
     });
 
-    // it('should create contacts before creating mailing list', async(() => {
-    //     contactsService.getContacts().then(contacts => function() {
-    //         expect(contacts.length).toBe(4);
-    //     });
-    //
-    //     mailingListsService.getMailingLists().then(lists => function() {
-    //         expect(lists.length).toBe(3);
-    //     });
-    //
-    //     component.mailingListName = 'some people';
-    //
-    //     let results = {
-    //         errors: [],
-    //         data: [
-    //             {
-    //                 'Email': 'kimmo.vähä-saari@gmail.com',
-    //                 'First name': 'Kimmo',
-    //                 'Last name': 'Vähä-Saari'
-    //             },
-    //             {
-    //                 'Email': 'liisa.hänninen@gmail.com',
-    //                 'First name': 'Liisa',
-    //                 'Last name': 'Hänninen'
-    //             }
-    //         ]
-    //     };
-    //
-    //     component.onImportDone(results);
-    //
-    //     contactsService.getContacts().then(contacts => function() {
-    //         expect(contacts.length).toBe(6);
-    //         expect(contacts[4].email).toBe('kimmo.vähä-saari@gmail.com');
-    //         expect(contacts[5].email).toBe('liisa.hänninen@gmail.com');
-    //     });
-    //
-    //     mailingListsService.getMailingLists().then(lists => function() {
-    //         expect(lists.length).toBe(4);
-    //         expect(lists[3].name).toBe('some people');
-    //     });
-    // }));
-
-
-    it('should not create contacts and mailing list if errors exist', async(() => {
-        contactsService.getContacts().then(contacts => function() {
+    it('should not create contacts and mailing list if errors exist in imported contacts', async(() => {
+        contactsService.getContacts().then(function(contacts) {
             expect(contacts.length).toBe(4);
-        });
 
-        mailingListsService.getMailingLists().then(lists => function() {
-            expect(lists.length).toBe(3);
+            mailingListsService.getMailingLists().then(function(lists) {
+                expect(lists.length).toBe(3);
+            });
         });
 
         component.mailingListName = 'some people';
+        component.mailingListDescription = 'asdasd';
 
         let results = {
             errors: ['Error!'],
-            data: [
-                {
-                    'Email': 'kimmo.vähä-saari@gmail.com',
-                    'First name': 'Kimmo',
-                    'Last name': 'Vähä-Saari'
-                },
-                {
-                    'Email': 'liisa.hänninen@gmail.com',
-                    'First name': 'Liisa',
-                    'Last name': 'Hänninen'
-                }
-            ]
+            data: IMPORTED_CONTACTS
         };
 
-        component.onImportDone(results);
+        component.onImportDone(results)
+            .then(function () {
+                contactsService.getContacts().then(function(contacts) {
+                    expect(contacts.length).toBe(4);
 
-        contactsService.getContacts().then(contacts => function() {
+                    mailingListsService.getMailingLists().then(function(lists) {
+                        expect(lists.length).toBe(3);
+                    });
+                });
+            });
+    }));
+
+    it('should create contacts before creating mailing list', async(() => {
+        contactsService.getContacts().then(function(contacts) {
             expect(contacts.length).toBe(4);
+
+            mailingListsService.getMailingLists().then(function(lists) {
+                expect(lists.length).toBe(3);
+            });
         });
 
-        mailingListsService.getMailingLists().then(lists => function() {
-            expect(lists.length).toBe(3);
-        });
+        component.mailingListName = 'some people';
+        component.mailingListDescription = 'asdasd';
+
+        let results = {
+            errors: [],
+            data: IMPORTED_CONTACTS
+        };
+
+        component.onImportDone(results)
+            .then(function () {
+                contactsService.getContacts().then(function(contacts) {
+                    expect(contacts.length).toBe(6);
+                    expect(contacts[4].firstName).toBe('Johanna');
+                    expect(contacts[5].firstName).toBe('Uolevi');
+
+                    mailingListsService.getMailingLists().then(function(lists) {
+                        expect(lists.length).toBe(4);
+                        expect(lists[3].name).toBe('some people');
+                    });
+                });
+            });
     }));
 
     it('should change mailing list name', () => {

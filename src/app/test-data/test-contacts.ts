@@ -26,3 +26,25 @@ export const IMPORTED_CONTACTS = [
         'Gender': 'Male'
     }
 ];
+
+export const RESPONSE_CONTACTS = [
+    {
+        id: 1,
+        firstName: 'Johanna',
+        lastName: 'Mäkelä',
+        email: 'johanna.mäkelä@gmail.com',
+        telephone: '040 647 2134',
+        gender: 'Female',
+        createdAt: new Date().toDateString(),
+        updatedAt: new Date().toDateString()
+    }, {
+        id: 2,
+        firstName: 'Uolevi',
+        lastName: 'Ålund',
+        email: 'uolevi.ålund@cs.helsinki.fi',
+        telephone: '050123456',
+        gender: 'Male',
+        createdAt: new Date().toDateString(),
+        updatedAt: new Date().toDateString()
+    }
+];
