@@ -19,23 +19,26 @@ export class MockContactsService {
         return this;
     }
 
-    createContacts(contacts): Contact[] {
+    createContacts(contacts): Promise<Contact[]> {
         let createdContacts = [];
 
-        contacts
-            .forEach(contact => createdContacts.push(this.createContact(contact)));
+        contacts.forEach(contact => createdContacts.push(this.createContact(contact)));
 
-        return createdContacts;
+        return Promise.all(createdContacts);
     }
 
-    createContact(contact): Contact {
+    createContact(contact): Promise<Contact> {
         let firstNameRegex = /^first name|firstname|etunimi/g;
         let lastNameRegex = /^last name|lastname|sukunimi/g;
         let emailRegex = /^email|sähköposti$/g;
+        let telephoneRegex = /^telephone|phone|tel|puhelin|puhelinnumero/g;
+        let genderRegex = /^gender|sukupuoli/g;
 
         let firstName = '';
         let lastName = '';
         let email = '';
+        let telephone = '';
+        let gender = '';
 
         for (let key in contact) {
             let lowerCaseKey = key.toLowerCase();
@@ -46,18 +49,18 @@ export class MockContactsService {
                 lastName = contact[key];
             } else if (emailRegex.test(lowerCaseKey)) {
                 email = contact[key];
+            } else if (telephoneRegex.test(lowerCaseKey)) {
+                telephone = contact[key];
+            } else if (genderRegex.test(lowerCaseKey)) {
+                gender = contact[key];
             }
         }
 
-        let existingContact = this.contacts.find(c => c.email === email);
+        let createdContact = new Contact(this.id, firstName, lastName, email, telephone,
+            gender, new Date().toDateString(), new Date().toDateString());
 
-        if (existingContact) {
-            return existingContact;
-        }
-
-        let createdContact = new Contact(this.id, firstName, lastName, email);
         this.contacts.push(createdContact);
         this.id++;
-        return createdContact;
+        return Promise.resolve(createdContact);
     }
 }

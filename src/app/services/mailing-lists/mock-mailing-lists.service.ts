@@ -21,14 +21,15 @@ export class MockMailingListsService {
         return this;
     }
 
-    createMailingList(name: string, description: string, members: Contact[]): MailingList {
-        let mailingList = new MailingList(this.id, name, description, members);
+    createMailingList(name: string, description: string, members: Contact[]): Promise<MailingList> {
+        let mailingList = new MailingList(this.id, name, description, members,
+            new Date().toDateString(), new Date().toDateString());
 
         this.mailingLists.push(mailingList);
 
         this.id++;
 
-        return mailingList;
+        return Promise.resolve(mailingList);
     }
 
     setMailingListNames(names: Array<string>) {

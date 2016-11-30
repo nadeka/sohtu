@@ -383,3 +383,21 @@ export const TEMPLATES: Template[] = [
         '</table>' +
         '<!-- Email content ends-->', '', '', '')
 ];
+
+export const RESPONSE_TEMPLATES = [
+    {
+        id: 1,
+        name: 'test template',
+        html: '',
+        htmlImage: '',
+        createdAt: new Date().toDateString(),
+        updatedAt: new Date().toDateString()
+    }, {
+        id: 2,
+        name: 'test template 2',
+        html: '',
+        htmlImage: '',
+        createdAt: new Date().toDateString(),
+        updatedAt: new Date().toDateString()
+    }
+];

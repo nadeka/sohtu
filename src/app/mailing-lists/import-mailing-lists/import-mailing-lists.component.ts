@@ -67,16 +67,17 @@ export class ImportMailingLists {
         });
     }
 
-    onImportDone(results): void {
+    onImportDone(results): Promise<any> {
         if (results.errors.length > 0) {
             this.showErrorAlert();
 
             // For some reason, the view freezes without this
             this.mailingListImported.emit();
+            return Promise.resolve();
         } else {
             let self = this;
 
-            this.contactsService.createContacts(results.data)
+            return this.contactsService.createContacts(results.data)
                 .then(function(contacts) {
                     self.mailingListsService
                         .createMailingList(self.mailingListName, self.mailingListDescription, contacts)
