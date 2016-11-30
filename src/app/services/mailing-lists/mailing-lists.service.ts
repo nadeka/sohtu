@@ -9,8 +9,10 @@ import { Contact } from '../../models/contact.model';
 @Injectable()
 export class MailingListsService {
     private mailingListsURL = Settings.API_BASE_URL() + '/mailing-lists';
+    private mailingListNames;
 
-    constructor(private http: Http) { }
+    constructor(private http: Http) {}
+
 
     getMailingLists(): Promise<MailingList[]> {
         return this.http.get(this.mailingListsURL)
@@ -53,5 +55,13 @@ export class MailingListsService {
         }
         console.error(errMsg);
         return Promise.reject(errMsg);
+    }
+
+    setMailingListNames(names: Array<string>) {
+      this.mailingListNames = names;
+    }
+
+    getMailingListNames(): Array<string> {
+      return this.mailingListNames;
     }
 }

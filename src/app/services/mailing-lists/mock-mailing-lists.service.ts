@@ -9,6 +9,7 @@ import { Contact } from '../../models/contact.model';
 export class MockMailingListsService {
     id: number = MAILING_LISTS.length + 1;
     mailingLists: MailingList[] = MAILING_LISTS;
+    private mailingListNames;
 
     getMailingLists() {
         return this;
@@ -28,5 +29,13 @@ export class MockMailingListsService {
         this.id++;
 
         return mailingList;
+    }
+
+    setMailingListNames(names: Array<string>) {
+      this.mailingListNames = names;
+    }
+
+    getMailingListNames(): Array<string> {
+      return this.mailingListNames;
     }
 }

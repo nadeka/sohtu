@@ -13,6 +13,10 @@
              class="alert alert-danger">
             Name is required
         </div>
+        <div *ngIf="nameAlreadyExists()" class="alert alert-danger">
+          <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+            Name already exists
+        </div>
     </div>
 
     <label for="new-mailing-list-description">{{ mailingListDescriptionLabel }}</label>
@@ -33,7 +37,7 @@
         <div id="acceptedContent">{{ acceptedContent }}</div>
     </div>
     <br>
-    <button type="submit" class="import-mailing-list-button btn btn-success">
+    <button type="submit" class="import-mailing-list-button btn btn-success" [disabled]="nameAlreadyExists()">
         {{ importButtonLabel }}
     </button>
     <button type="button" class="reset-form-button btn btn-danger" (click)="reset()">

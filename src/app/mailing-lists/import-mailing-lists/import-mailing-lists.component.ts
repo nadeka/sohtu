@@ -112,6 +112,17 @@ export class ImportMailingLists {
                     this.file != null && this.file.type === 'text/csv';
     }
 
+    nameAlreadyExists() {
+        // if-statement needed because of async issue
+        // first get the mailing list is empty
+        // otherwise error will occure
+        if(!(this.mailingListsService.getMailingListNames())) {
+          return false;
+        }
+        let re = /\s+/g;
+        return (this.mailingListsService.getMailingListNames().indexOf(this.mailingListName.toLowerCase().trim().replace(re, ' ')) > -1);
+    }
+
     reset() {
         this.form.nativeElement.reset();
         this.file = null;

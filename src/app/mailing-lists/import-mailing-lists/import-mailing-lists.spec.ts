@@ -28,6 +28,17 @@ describe('Component: ImportMailingLists', () => {
     let component: any;
     let mailingListsService: any;
     let contactsService: any;
+    let page: Page;
+
+    class Page {
+      buttons: Array<DebugElement>;
+      container: DebugElement;
+
+      addPageElements() {
+        this.buttons = fixture.debugElement.queryAll(By.css('button'));
+        this.container = fixture.debugElement.query(By.css('form'));
+      }
+    }
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
@@ -62,7 +73,9 @@ describe('Component: ImportMailingLists', () => {
 
             contactsService = fixture.debugElement.injector.get(ContactsService);
             mailingListsService = fixture.debugElement.injector.get(MailingListsService);
-
+            mailingListsService.setMailingListNames(['List 1']);
+            page = new Page();
+            page.addPageElements();
             // Detect changes to wire up the `fixture.nativeElement` as necessary:
             fixture.detectChanges();
         });
@@ -190,4 +203,15 @@ describe('Component: ImportMailingLists', () => {
         expect(component.mailingListDescription).toBe('');
         expect(component.file).toBe(null);
     });
+
+  /*  it('given a list name that already exist, error should be shown', () => {
+
+        let input: HTMLInputElement;
+        this.input = fixture.debugElement.query(By.css('input')).nativeElement;
+        this.input.value = 'List 1';
+
+        this.input.dispatchEvent(new Event('input'));
+        fixture.detectChanges();
+        expect(page.container.nativeElement.textContent).toContain('already exists');
+    });*/
 });

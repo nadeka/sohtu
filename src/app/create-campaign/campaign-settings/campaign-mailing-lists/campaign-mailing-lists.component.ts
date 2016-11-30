@@ -52,10 +52,17 @@ export class CampaignMailingLists implements OnInit {
 
     getMailingLists(): void {
         this.mailingLists = [];
+        let mailingListNames = [];
 
         this.mailingListsService.getMailingLists()
-            .then(mailingLists =>
-                this.mailingLists = mailingLists);
+            .then(mailingLists => {
+                this.mailingLists = mailingLists;
+                let re = /\s+/g;
+                this.mailingLists.forEach(list => {
+                  mailingListNames.push(list.name.toLowerCase().replace(re, ' '));
+                });
+                this.mailingListsService.setMailingListNames(mailingListNames);
+              });
     }
 
     hasSelected(): boolean {
