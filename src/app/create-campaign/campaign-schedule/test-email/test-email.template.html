@@ -4,4 +4,7 @@
     <p id="test-email-name">{{ testMailName }}</p>
     <br>
     <label>{{ sendTo }}</label>
+    <div class="form-group">
+        <input required type="email" class="form-control" id="test-email-address" (ngModelChange)=onAddressChange($event)>
+    </div>
 </div>
