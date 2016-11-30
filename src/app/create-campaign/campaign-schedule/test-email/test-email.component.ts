@@ -36,4 +36,8 @@ export class TestEmail {
         return this.testEmailAddress;
     }
 
+    templateExists() {
+      return ((this.campaignCreationService.getTemplate() === undefined));
+    }
+
 }
