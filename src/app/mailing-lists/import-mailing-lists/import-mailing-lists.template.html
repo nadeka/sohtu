@@ -38,7 +38,7 @@
         <div id="acceptedContent">{{ acceptedContent }}</div>
     </div>
     <br>
-    <button type="submit" class="import-mailing-list-button btn btn-success" [disabled]="nameAlreadyExists()">
+    <button type="submit" class="import-mailing-list-button btn btn-success" [disabled]="!name.valid || nameAlreadyExists()">
         {{ importButtonLabel }}
     </button>
     <button type="button" class="reset-form-button btn btn-danger" (click)="reset()">
