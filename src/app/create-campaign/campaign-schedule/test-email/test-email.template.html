@@ -9,7 +9,7 @@
     </div>
     <div *ngIf="templateExists()" class="alert alert-danger">
       <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
-        A template must be chosen
+        {{templateMustBeChosenMessage}}
     </div>
-    <button class="btn btn-success" [disabled]="templateExists()">Send test mail</button>
+    <button class="btn btn-success" [disabled]="templateExists()">{{sendTestMailButton}}</button>
 </div>

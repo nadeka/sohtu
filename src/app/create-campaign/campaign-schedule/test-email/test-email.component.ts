@@ -14,6 +14,8 @@ export class TestEmail {
     campaignNameLabe = this.languageServ.getWord('CAMPAIGN_NAME_LABEL');
     testMailSubjLabel = this.languageServ.getWord('EMAIL_SUBJECT_LABEL');
     sendTo = this.languageServ.getWord('EMAIL_SEND_TO');
+    templateMustBeChosenMessage = this.languageServ.getWord('ERROR_TEMPLATE_MUST_BE_CHOSEN');
+    sendTestMailButton = this.languageServ.getWord('SEND_TEST_EMAIL');
     testMailName: String;
     @Input() testEmailAddress: string;
 

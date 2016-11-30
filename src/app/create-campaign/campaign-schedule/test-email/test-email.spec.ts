@@ -12,6 +12,7 @@ describe('Component: test-email', () => {
     let component: any;
     let campaignCreationService: any;
     let page: Page;
+    let lang: Any;
 
     class Page {
       container: DebugElement;
@@ -39,6 +40,7 @@ describe('Component: test-email', () => {
         fixture = TestBed.createComponent(TestEmail);
         component = fixture.componentInstance;
         campaignCreationService = TestBed.get(CampaignCreationService);
+        lang = fixture.debugElement.injector.get(LanguageService);
         page = new Page();
         page.addPageElements();
         fixture.detectChanges();
@@ -47,6 +49,6 @@ describe('Component: test-email', () => {
 
 
     it('should show error message when no template chosen', () => {
-        expect(page.container.nativeElement.textContent).toContain('A template must be chosen');
+        expect(page.container.nativeElement.textContent).toContain(lang.getWord('ERROR_TEMPLATE_MUST_BE_CHOSEN'));
     });
 });
