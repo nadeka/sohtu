@@ -21,13 +21,6 @@ export class MailingListsService {
             .catch(this.handleError);
     }
 
-    listNameExists(name: string): boolean {
-        // go through the mailing lists and get their names
-        // maybe a method in backend that only sends the names?
-        // Save the names when mailingLists are fetched the first time?
-      return false;
-    }
-
     createMailingList(name: string, description: string, members: Contact[]): Promise<MailingList> {
         let headers = new Headers({ 'Content-Type': 'application/json' });
         let options = new RequestOptions({ headers: headers });

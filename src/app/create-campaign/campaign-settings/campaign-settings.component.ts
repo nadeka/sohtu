@@ -10,7 +10,7 @@ import { CampaignBreadcrumb } from '../campaign-breadcrumb';
   selector: 'campaign-settings',
   templateUrl: 'campaign-settings.template.html',
   styleUrls: [ '../campaign-creation.style.css', 'campaign-settings.style.css' ],
-  providers: [ CampaignMailingLists, CampaignBasicInfo, LanguageService, CampaignBreadcrumb]
+  providers: [ CampaignMailingLists, CampaignBasicInfo, LanguageService, CampaignBreadcrumb ]
 })
 
 export class CampaignSettings {

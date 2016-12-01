@@ -15,7 +15,7 @@ export class CampaignCreationService {
   public baseRoute = '/marketing/create-campaign';
   private step: string;
   private existingModifiedTemplate: boolean = false;
-  private emailCampaignsURL = Settings.API_BASE_URL() + '/email_campaigns';
+  private emailCampaignsURL = Settings.API_BASE_URL() + '/email-campaigns';
 
   constructor (@Inject(Router) public router: Router, private http: Http) {
     this.campaign = new Campaign();
