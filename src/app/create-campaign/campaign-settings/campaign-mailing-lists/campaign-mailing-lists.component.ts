@@ -3,6 +3,7 @@ import { ImportMailingLists }
     from '../../../mailing-lists/import-mailing-lists/import-mailing-lists.component';
 import { MailingListsService } from '../../../services/mailing-lists/mailing-lists.service';
 import { LanguageService } from '../../../services/language.service';
+import { CampaignCreationService } from '../../../services/campaign-creation/campaign-creation.service';
 import { MailingList } from '../../../models/mailing-list.model';
 import { ModalDirective } from 'ng2-bootstrap/ng2-bootstrap';
 
@@ -34,7 +35,8 @@ export class CampaignMailingLists implements OnInit {
     private importMailingLists: ImportMailingLists;
 
     constructor(private language: LanguageService,
-                private mailingListsService: MailingListsService) {
+                private mailingListsService: MailingListsService,
+                private campaignCreationService: CampaignCreationService) {
                   this.selected = new Set();
                 }
 
@@ -66,6 +68,14 @@ export class CampaignMailingLists implements OnInit {
     }
 
     hasSelected(): boolean {
+        if(this.selected.size === 0) {
+          if(!this.campaignCreationService.getMailingLists()) {
+            return true;
+          }
+          else if (this.campaignCreationService.getMailingLists().length > 0) {
+            return true;
+          }
+        }
         return this.selected.size !== 0;
     }
 

@@ -16,6 +16,8 @@ import { MailingList } from '../../../models/mailing-list.model';
 import { MockMailingListsService }
     from '../../../services/mailing-lists/mock-mailing-lists.service';
 import { LanguageService } from '../../../services/language.service';
+import { CampaignCreationService } from '../../../services/campaign-creation/campaign-creation.service';
+import { MockCampaignCreationService } from '../../../services/campaign-creation/mock-campaign-creation.service';
 
 describe('Component: CampaignMailingLists', () => {
     let fixture: any;
@@ -51,6 +53,10 @@ describe('Component: CampaignMailingLists', () => {
                     provide: MailingListsService,
                     useClass: MockMailingListsService
                 },
+                {
+                    provide: CampaignCreationService,
+                    useClass: MockCampaignCreationService
+                },
                 LanguageService
             ],
             schemas: [CUSTOM_ELEMENTS_SCHEMA]
@@ -78,7 +84,6 @@ describe('Component: CampaignMailingLists', () => {
     });
 
     it('hasSelected should return true when some mailing lists are selected', () => {
-        expect(component.hasSelected()).toBe(false);
         component.select(component.mailingLists[0]);
         expect(component.hasSelected()).toBe(true);
     });
