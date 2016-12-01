@@ -1,8 +1,9 @@
 import {
-    TestBed,
-    async
+  ComponentFixture,
+  TestBed,
+  async, fakeAsync
 }
-    from '@angular/core/testing';
+  from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -25,7 +26,7 @@ import { ContactsService } from '../../services/contacts/contacts.service';
 import { IMPORTED_CONTACTS } from '../../test-data/test-contacts';
 
 describe('Component: ImportMailingLists', () => {
-    let fixture: any;
+    let fixture: ComponentFixture<ImportMailingLists>;
     let component: any;
     let mailingListsService: any;
     let contactsService: any;
@@ -33,11 +34,13 @@ describe('Component: ImportMailingLists', () => {
 
     class Page {
       buttons: Array<DebugElement>;
-      container: DebugElement;
+      container: HTMLElement;
+      input: HTMLInputElement;
 
       addPageElements() {
         this.buttons = fixture.debugElement.queryAll(By.css('button'));
-        this.container = fixture.debugElement.query(By.css('form'));
+        this.container = fixture.debugElement.queryAll(By.css('div'))[0].nativeElement;
+        this.input = fixture.debugElement.query(By.css('#new-mailing-list-name')).nativeElement;
       }
     }
 
@@ -68,7 +71,7 @@ describe('Component: ImportMailingLists', () => {
                 LanguageService
             ],
             schemas: [CUSTOM_ELEMENTS_SCHEMA]
-        }).compileComponents().then(function(arr) {
+        }).compileComponents().then(() => {
             fixture = TestBed.createComponent(ImportMailingLists);
             component = fixture.componentInstance;
 
@@ -76,9 +79,10 @@ describe('Component: ImportMailingLists', () => {
             mailingListsService = fixture.debugElement.injector.get(MailingListsService);
             mailingListsService.setMailingListNames(['List 1']);
             page = new Page();
-            page.addPageElements();
+          page.addPageElements();
             // Detect changes to wire up the `fixture.nativeElement` as necessary:
             fixture.detectChanges();
+
         });
     }));
 
@@ -186,14 +190,11 @@ describe('Component: ImportMailingLists', () => {
         expect(component.file).toBe(null);
     });
 
-  /*  it('given a list name that already exist, error should be shown', () => {
 
-        let input: HTMLInputElement;
-        this.input = fixture.debugElement.query(By.css('input')).nativeElement;
-        this.input.value = 'List 1';
-
-        this.input.dispatchEvent(new Event('input'));
-        fixture.detectChanges();
-        expect(page.container.nativeElement.textContent).toContain('already exists');
-    });*/
+    // UI test
+    it('user inputting a name should change it', fakeAsync(() => {
+        page.input.value = 'List 1';
+        page.input.dispatchEvent(new Event('input'));
+        expect(component.mailingListName).toBe('List 1');
+    }));
 });
