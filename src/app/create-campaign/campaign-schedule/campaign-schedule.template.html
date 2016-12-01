@@ -4,7 +4,7 @@
   <button style="float:left; display:inline;" (click)="goToStep('content')" class="navigation-btn" [disabled]="isDisabled('content')">
     {{previousLabel}}
   </button>
-  <button style="float:right; display:inline;" (click)="goToStep('confirmation')" class="navigation-btn">
+  <button style="float:right; display:inline;" (click)="goToStep('confirmation')" class="navigation-btn" [disabled]="isDisabled('confirmation')">
     {{nextLabel}}
   </button>
 </div>

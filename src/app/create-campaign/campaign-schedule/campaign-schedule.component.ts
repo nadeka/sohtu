@@ -57,7 +57,7 @@ export class CampaignSchedule {
   }
 
   isDisabled(step: string) {
-    if (step === 'content') {
+    if (step === 'content' || step === 'confirmation') {
       return (this.campaignCreationService.getTemplate() === undefined) || (this.campaignCreationService.getTemplate() === null);
     }
   }

@@ -4,6 +4,6 @@
     <li><a [ngClass]="{'not-active': isStep('template') }" (click)="goToStep('template')">{{templateLabel}}</a></li>
     <li><a [ngClass]="{'not-active': isStep('content'), 'disabled': isDisabled('content') }" (click)="goToStep('content')">{{contentLabel}}</a></li>
     <li><a [ngClass]="{'not-active': isStep('schedule') }" (click)="goToStep('schedule')">{{scheduleLabel}}</a></li>
-    <li><a [ngClass]="{'not-active': isStep('confirmation') }" (click)="goToStep('confirmation')">{{confirmationLabel}}</a></li>
+    <li><a [ngClass]="{'not-active': isStep('confirmation'), 'disabled': isDisabled('confirmation') }" (click)="goToStep('confirmation')">{{confirmationLabel}}</a></li>
   </ul>
 </div>
