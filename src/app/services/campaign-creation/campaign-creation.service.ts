@@ -34,14 +34,16 @@ export class CampaignCreationService {
     // "template":"1"                         // this is the template id
     // "content":"<h1>"                       // html content of the email
     // "schedule":"2016-11-24T09:30:50.621Z"  // date
+    // "status:"pending"                      //Only campaigns with status 'pending' are sent
     // }
 
     let bodyString = JSON.stringify({name: this.campaign.name,
                                      subject: this.campaign.subject,
                                      mailingLists: this.getMailingListsIds(),
                                      template: this.campaign.template.id,
-                                     content: this.campaign.modifiedTemplate,
-                                     schedule: this.campaign.schedule}); // Stringify payload
+                                     content: this.campaign.modifiedTemplate.html,
+                                     schedule: this.campaign.schedule,
+                                     status: 'pending'}); // Stringify payload
 
     let headers    = new Headers({ 'Content-Type': 'application/json'}); // ... Set content type to JSON
     let options    = new RequestOptions({ headers: headers }); // Create a request option
@@ -64,16 +66,15 @@ export class CampaignCreationService {
     let testEmailAddresses = ''/*get the emails for test mail*/;
 
     let bodyString = JSON.stringify({
-      name: this.campaign.name,
       subject: this.campaign.subject,
-      mailingLists: testEmailAddresses,
-      content: this.campaign.modifiedTemplate,
+      emailAddresses: testEmailAddresses,
+      content: this.campaign.modifiedTemplate.html,
     });
 
     let headers    = new Headers({ 'Content-Type': 'application/json'}); // ... Set content type to JSON
     let options    = new RequestOptions({ headers: headers }); // Create a request option
 
-    return this.http.post(this.emailCampaignsURL, bodyString, options) // ...using post request
+    return this.http.post(this.emailCampaignsURL + '/test', bodyString, options) // ...using post request
       .toPromise().then((res: Response) => res.json()) // ...and calling .json() on the response to return data
       .catch((error: any) => Promise.reject(error.json().error || 'Server error')); // ...errors if any
   }
