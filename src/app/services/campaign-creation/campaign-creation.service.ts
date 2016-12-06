@@ -41,7 +41,7 @@ export class CampaignCreationService {
                                      subject: this.campaign.subject,
                                      mailingLists: this.getMailingListsIds(),
                                      template: this.campaign.template.id,
-                                     content: this.campaign.modifiedTemplate.html,
+                                     content: this.campaign.modifiedTemplate.html.replace(/\"/,'\''),
                                      schedule: this.campaign.schedule,
                                      status: 'pending'}); // Stringify payload
 
