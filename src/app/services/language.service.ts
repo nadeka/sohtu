@@ -57,6 +57,8 @@ export var eng: { [key: string]: string; } = {
   'CAMPAIGN_CREATED_ALERT' : 'Campaign created succesfully!',
   'ERROR_CAMPAIGN_NAME_MISSING' : 'Campaign name must be filled',
   'ERROR_CAMPAIGN_SUBJECT_MISSING' : 'Campaign subject must be filled',
+  'ERROR_CAMPAIGN_NAME_MISSING_OR_SHORT' : 'Campaign name must be filled and be over 2 characters long',
+  'ERROR_CAMPAIGN_SUBJECT_MISSING_OR_SHORT' : 'Campaign subject must be filled and be over 2 characters long',
   'ERROR_MAILING_LIST_MISSING' : 'Atleast one (1) mailing list must be chosen!',
   'ERROR_MAILING_LIST_NAME_MISSING_OR_SHORT' : 'Name is required or the name is too short (min 3 characters)',
   'ERROR_MAILING_LIST_NAME_TAKEN' : 'Name is already taken',

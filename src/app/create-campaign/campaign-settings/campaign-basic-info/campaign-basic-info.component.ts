@@ -11,31 +11,14 @@ export class CampaignBasicInfo {
   // Variables for static text on the page
   campaignNameLabel = this.language.getWord('CAMPAIGN_NAME_LABEL');
   campaignSubjectLabel = this.language.getWord('CAMPAIGN_SUBJECT_LABEL');
-  errorCampaignName = this.language.getWord('ERROR_CAMPAIGN_NAME_MISSING');
-  errorCampaignSubject = this.language.getWord('ERROR_CAMPAIGN_SUBJECT_MISSING');
-  nameFieldChosen = false;
-  subjectFieldChosen = false;
+  errorCampaignName = this.language.getWord('ERROR_CAMPAIGN_NAME_MISSING_OR_SHORT');
+  errorCampaignSubject = this.language.getWord('ERROR_CAMPAIGN_SUBJECT_MISSING_OR_SHORT');
+
 
   @Input() campaignName: string;
   @Input() campaignSubject: string;
 
   constructor(private language: LanguageService) {}
-
-  setNameFieldChosen() {
-    this.nameFieldChosen = true;
-  }
-
-  setNameFieldUnChosen() {
-    this.nameFieldChosen = false;
-  }
-
-  setSubjectFieldChosen() {
-    this.subjectFieldChosen = true;
-  }
-
-  setSubjectFieldUnChosen() {
-    this.subjectFieldChosen = false;
-  }
 
   onNameChange(newValue) {
     this.campaignName = newValue;
@@ -43,6 +26,13 @@ export class CampaignBasicInfo {
 
   onSubjectChange(newValue) {
     this.campaignSubject = newValue;
+  }
+
+  isValid(input: string): boolean {
+    if (!input) {
+      return false;
+    }
+    return input.trim().length > 2;
   }
 
   public getName(): string {

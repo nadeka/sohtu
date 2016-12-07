@@ -3,14 +3,12 @@
 <label for="new-campaign-name">{{ campaignNameLabel }}</label>
 <div class="form-group">
   <input required type="text" class="form-control" id="new-campaign-name" aria-describedby="success-addon1"
-        (click)="setNameFieldChosen()" (blur)="setNameFieldUnChosen()" [ngModel]="campaignName" (ngModelChange)=onNameChange($event)>
-  <div *ngIf="nameFieldChosen">
-    <div *ngIf!="campaignName" class="alert alert-danger">
+        [ngModel]="campaignName" (ngModelChange)=onNameChange($event)>
+    <div *ngIf!="isValid(campaignName)" class="alert alert-danger">
       <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
       {{ errorCampaignName }}
     </div>
-  </div>
-  <span *ngIf="campaignName" id="success-addon1" class="input-group-addon alert alert-succes glyphicon glyphicon-ok-sign" aria-hidden="true"></span>
+  <span *ngIf="isValid(campaignName)" id="success-addon1" class="input-group-addon alert alert-success glyphicon glyphicon-ok-sign" aria-hidden="true"></span>
 </div>
 
 <br>
@@ -18,12 +16,10 @@
 <label for="new-campaign-subject">{{ campaignSubjectLabel }}</label>
 <div class="form-group">
   <input required type="text" class="form-control" id="new-campaign-subject" aria-describedby="success-addon2"
-        (click)="setSubjectFieldChosen()" (blur)="setSubjectFieldUnChosen()" [ngModel]="campaignSubject" (ngModelChange)=onSubjectChange($event)>
-  <div *ngIf="subjectFieldChosen">
-    <div *ngIf!="campaignSubject" class="alert alert-danger">
+         [ngModel]="campaignSubject" (ngModelChange)=onSubjectChange($event)>
+    <div *ngIf!="isValid(campaignSubject)" class="alert alert-danger">
       <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
       {{ errorCampaignSubject }}
     </div>
-  </div>
-  <span *ngIf="campaignSubject" id="success-addon2" class="input-group-addon alert alert-succes glyphicon glyphicon-ok-sign"></span>
+  <span *ngIf="isValid(campaignSubject)" id="success-addon2" class="input-group-addon alert alert-success glyphicon glyphicon-ok-sign"></span>
 </div>
