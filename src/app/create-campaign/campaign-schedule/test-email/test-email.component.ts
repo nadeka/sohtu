@@ -16,17 +16,17 @@ export class TestEmail {
     sendTo = this.languageServ.getWord('EMAIL_SEND_TO');
     templateMustBeChosenMessage = this.languageServ.getWord('ERROR_TEMPLATE_MUST_BE_CHOSEN');
     sendTestMailButton = this.languageServ.getWord('SEND_TEST_EMAIL');
-    testMailName: String;
+    errorCampaignSubject = this.languageServ.getWord('ERROR_CAMPAIGN_SUBJECT_MISSING');
+    testMailSubject: String;
     @Input() testEmailAddress: string;
 
     constructor(private campaignCreationService: CampaignCreationService,
                 private languageServ: LanguageService) {
-        this.testMailName = campaignCreationService.getCampaign().name;
 
     }
     ngOnInit() {
-        if (this.testMailName != null) {
-            this.testMailName = this.testMailName + " -test mail";
+        if (this.campaignCreationService.getSubject() !== ""  && this.campaignCreationService.getSubject() !== undefined) {
+            this.testMailSubject = this.campaignCreationService.getSubject() + " -test mail";
         }
     }
 
@@ -40,6 +40,10 @@ export class TestEmail {
 
     templateExists() {
       return ((this.campaignCreationService.getTemplate() === undefined));
+    }
+
+    subjectExists() {
+    return ((this.campaignCreationService.getSubject() === "" || this.campaignCreationService.getSubject() === undefined));
     }
 
 }
