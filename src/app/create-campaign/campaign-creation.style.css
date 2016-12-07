@@ -17,7 +17,8 @@
 }
 
 .navigation-btn:disabled {
-  background: #e5ac00;
+  background: #a5a5a5;
+  box-shadow: 0 0 0 0;
 }
 
 h3 {
