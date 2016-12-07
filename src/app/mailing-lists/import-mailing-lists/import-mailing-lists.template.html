@@ -9,10 +9,10 @@
         <input required type="text" name="new-mailing-list-name" class="form-control"
                id="new-mailing-list-name" [ngModel]="mailingListName"
                (ngModelChange)=onNameChange($event) #name="ngModel">
-        <div [hidden]="name.valid || name.pristine"
+        <div [hidden]="nameIsValid()"
              class="alert alert-danger">
             <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
-            {{ nameMissingError }}
+            {{ nameMissingOrShortError }}
         </div>
         <div *ngIf="nameAlreadyExists()" class="alert alert-danger">
           <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>

@@ -23,7 +23,7 @@ export class ImportMailingLists {
     acceptedFormats = this.language.getWord('ACCEPTED_FILE_FORMATS');
     acceptedContent = this.language.getWord('ACCEPTED_FILE_CONTENT');
     fileParseError = this.language.getWord('FILE_PARSE_ERROR');
-    nameMissingError = this.language.getWord('ERROR_MAILING_LIST_NAME_MISSING');
+    nameMissingOrShortError = this.language.getWord('ERROR_MAILING_LIST_NAME_MISSING_OR_SHORT');
     nameTakenError = this.language.getWord('ERROR_MAILING_LIST_NAME_TAKEN');
 
     @Input() mailingListName: string = '';
@@ -111,8 +111,12 @@ export class ImportMailingLists {
         this.mailingListDescription = newValue;
     }
 
+    nameIsValid() {
+        return this.mailingListName.trim().length > 2;
+    }
+
     isValid() {
-        return this.mailingListName.length > 0 &&
+        return this.mailingListName.length > 2 &&
                     this.file != null && this.file.type === 'text/csv';
     }
 
@@ -123,6 +127,7 @@ export class ImportMailingLists {
         if(!(this.mailingListsService.getMailingListNames())) {
           return false;
         }
+        // regex for cheking whitespaces
         let re = /\s+/g;
         return (this.mailingListsService.getMailingListNames().indexOf(this.mailingListName.toLowerCase().trim().replace(re, ' ')) > -1);
     }
