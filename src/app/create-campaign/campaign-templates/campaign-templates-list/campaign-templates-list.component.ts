@@ -31,7 +31,7 @@ export class CampaignTemplatesList implements OnInit {
     @ViewChild('staticModal') public staticModal: ModalDirective;
     private selectedTemplate: number;
     private tempTemplateId: number;
-    private updateTemplate: boolean = true;
+    private updateTemplate: boolean = false;
 
     constructor(private language: LanguageService,
                 private templatesService: TemplatesService,
