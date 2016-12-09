@@ -6,13 +6,14 @@ import { CampaignCreationService } from '../../../services/campaign-creation/cam
 import { MockCampaignCreationService } from '../../../services/campaign-creation/mock-campaign-creation.service';
 import { LanguageService } from '../../../services/language.service';
 import { TestEmail } from './test-email.component';
+import { Template } from '../../../models/template.model';
 
 describe('Component: test-email', () => {
     let fixture: any;
     let component: any;
     let campaignCreationService: any;
     let page: Page;
-    let lang: Any;
+    let lang: any;
 
     class Page {
       container: DebugElement;
@@ -39,7 +40,7 @@ describe('Component: test-email', () => {
       }).compileComponents().then(function(arr) {
         fixture = TestBed.createComponent(TestEmail);
         component = fixture.componentInstance;
-        campaignCreationService = TestBed.get(CampaignCreationService);
+        campaignCreationService = fixture.debugElement.injector.get(CampaignCreationService);
         lang = fixture.debugElement.injector.get(LanguageService);
         page = new Page();
         page.addPageElements();
@@ -51,4 +52,23 @@ describe('Component: test-email', () => {
     it('should show error message when no template chosen', () => {
         expect(page.container.nativeElement.textContent).toContain(lang.getWord('ERROR_TEMPLATE_MUST_BE_CHOSEN'));
     });
+
+    it('should show error message when email subject has not been given', () => {
+        expect(page.container.nativeElement.textContent).toContain(lang.getWord('ERROR_CAMPAIGN_SUBJECT_MISSING'));
+    });
+
+    it('should set test email subject to ´chosenSubject -test mail´', () => {
+        campaignCreationService.setSubject('subject');
+        component.ngOnInit();
+        fixture.detectChanges();
+        expect(page.container.nativeElement.textContent).toContain('subject -test mail');
+    });
+
+    it('send test email button should be disabled when no template chosen', () => {
+        campaignCreationService.setTemplate(undefined);
+        component.ngOnInit();
+        fixture.detectChanges();
+        expect(component.validTemplateAndSubject()).toBe(false);
+    });
+
 });

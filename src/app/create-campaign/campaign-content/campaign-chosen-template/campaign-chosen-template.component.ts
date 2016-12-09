@@ -1,4 +1,4 @@
-import {Component, OnInit, SecurityContext} from '@angular/core';
+import { Component, OnInit, SecurityContext } from '@angular/core';
 import { CampaignCreationService } from '../../../services/campaign-creation/campaign-creation.service';
 import { ModifiedTemplate } from '../../../models/modified-template.model';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
@@ -61,4 +61,3 @@ export class CampaignChosenTemplate {
     });
   }
 }
-

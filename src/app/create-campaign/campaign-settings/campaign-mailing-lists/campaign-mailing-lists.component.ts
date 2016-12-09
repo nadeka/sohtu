@@ -68,11 +68,10 @@ export class CampaignMailingLists implements OnInit {
     }
 
     hasSelected(): boolean {
-        if(this.selected.size === 0) {
-          if(!this.campaignCreationService.getMailingLists()) {
+        if (this.selected.size === 0) {
+          if (!this.campaignCreationService.getMailingLists()) {
             return true;
-          }
-          else if (this.campaignCreationService.getMailingLists().length > 0) {
+          } else if (this.campaignCreationService.getMailingLists().length > 0) {
             return true;
           }
         }

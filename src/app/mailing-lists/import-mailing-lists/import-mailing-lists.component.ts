@@ -124,7 +124,7 @@ export class ImportMailingLists {
         // if-statement needed because of async issue
         // first get the mailing list is empty
         // otherwise error will occure
-        if(!(this.mailingListsService.getMailingListNames())) {
+        if (!(this.mailingListsService.getMailingListNames())) {
           return false;
         }
         // regex for cheking whitespaces

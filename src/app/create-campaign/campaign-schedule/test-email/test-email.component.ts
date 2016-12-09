@@ -25,8 +25,8 @@ export class TestEmail {
 
     }
     ngOnInit() {
-        if (this.campaignCreationService.getSubject() !== ""  && this.campaignCreationService.getSubject() !== undefined) {
-            this.testMailSubject = this.campaignCreationService.getSubject() + " -test mail";
+        if (this.campaignCreationService.getSubject() !== ''  && this.campaignCreationService.getSubject() !== undefined) {
+            this.testMailSubject = this.campaignCreationService.getSubject() + ' -test mail';
         }
     }
 
@@ -39,11 +39,15 @@ export class TestEmail {
     }
 
     templateExists() {
-      return ((this.campaignCreationService.getTemplate() === undefined));
+      return !(this.campaignCreationService.getTemplate() === undefined);
     }
 
     subjectExists() {
-    return ((this.campaignCreationService.getSubject() === "" || this.campaignCreationService.getSubject() === undefined));
+    return !(this.campaignCreationService.getSubject() === '' || this.campaignCreationService.getSubject() === undefined);
+    }
+
+    validTemplateAndSubject(): boolean {
+      return (this.subjectExists() && this.templateExists());
     }
 
 }
