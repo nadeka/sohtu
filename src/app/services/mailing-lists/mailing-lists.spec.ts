@@ -1,6 +1,6 @@
 import { MailingListsService } from './mailing-lists.service';
 import { TestBed, async, getTestBed } from '@angular/core/testing';
-import {MockBackend, MockConnection} from '@angular/http/testing';
+import { MockBackend, MockConnection } from '@angular/http/testing';
 import {
     BaseRequestOptions, Http, XHRBackend, HttpModule, ResponseOptions, Response
 }

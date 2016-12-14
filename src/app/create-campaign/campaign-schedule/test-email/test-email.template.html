@@ -1,7 +1,7 @@
 <br>
 <div class="test-email-info">
     <label for="test-email-subject">{{ testMailSubjLabel }}</label>
-  <div *ngIf="subjectExists()" class="alert alert-danger">
+  <div *ngIf="!subjectExists()" class="alert alert-danger">
     <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
     {{ errorCampaignSubject }}
   </div>
@@ -11,9 +11,9 @@
     <div class="form-group">
         <input required type="email" class="form-control" id="test-email-address" (ngModelChange)=onAddressChange($event) multiple>
     </div>
-    <div *ngIf="templateExists()" class="alert alert-danger">
+    <div *ngIf="!templateExists()" class="alert alert-danger">
       <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
         {{templateMustBeChosenMessage}}
     </div>
-    <button class="btn btn-success" [disabled]="templateExists()">{{sendTestMailButton}}</button>
+    <button class="btn btn-success" [disabled]="!validTemplateAndSubject()">{{sendTestMailButton}}</button>
 </div>

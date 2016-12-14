@@ -54,5 +54,5 @@ export class CampaignTemplates {
         if (step === 'content') {
           return (this.campaignCreationService.getTemplate() === undefined) || (this.campaignCreationService.getTemplate() === null);
         }
-  	}
+    }
 }

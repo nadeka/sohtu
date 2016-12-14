@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, SecurityContext } from '@angular/core';
 import { CampaignCreationService } from '../../../services/campaign-creation/campaign-creation.service';
-import { CampaignTemplate } from '../../../models/campaign-template.model';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 
 @Component({
@@ -17,14 +16,15 @@ export class CampaignChosenTemplate {
   // for fetching template from the service
   updateTemplate() {
     if (this.campaignCreationService.getExistingModifiedTemplate()) {
-      this.templateContent = this.sanitized.bypassSecurityTrustHtml(this.campaignCreationService.getContent());
+      this.templateContent = this.sanitized.bypassSecurityTrustHtml(this.campaignCreationService.getContent().trim());
     } else {
       this.templateContent = this.sanitized.bypassSecurityTrustHtml(this.campaignCreationService.getTemplate().html);
+      console.log(this.templateContent);
     }
   }
 
-  getCurrentTemplateContent() {
-    return document.getElementById('emailContainer').outerHTML;
+  getCurrentTemplateContent(): string {
+    return document.getElementById('emailContainer').innerHTML;
   }
 
   saveContent() {
@@ -45,16 +45,16 @@ export class CampaignChosenTemplate {
 
   // for loading tinyMCE
   loadTinymce() {
+    // have to remove "old" editors. Needed for navigating back and forth the pages and having
+    // tinyMce load again
+    tinymce.remove();
     tinymce.init({
-      selector: 'div.tinymce',
-      theme: 'inlite',
-      insert_toolbar: '',
-      selection_toolbar: 'bold italic | quicklink | h1 h2 | alignleft aligncenter alignright alignjustify',
+      selector: 'div.editable',
       inline: true,
-      paste_data_images: true,
-      content_css: [
-
-      ]
+      menubar: false,
+      plugins: ['link'],
+      target_list: false,
+      toolbar: 'bold italic | alignleft aligncenter alignright alignjustify | link'
     });
   }
 }
