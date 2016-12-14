@@ -33,7 +33,7 @@ export class CampaignSchedule {
 
   ngOnInit() {
     this.schedule = this.campaignCreationService.getSchedule();
-    if (this.schedule === undefined) {
+    if (this.schedule === null || this.schedule === undefined) {
       this.schedule = new Date();
     }
   }

@@ -5,10 +5,12 @@ describe('Service: CampaignCreationService', () => {
     let campaignCreationService: any;
     let router: any;
     let http: any;
+    let localStorage: any;
 
     beforeEach(() => {
         this.router = new RouterStub();
-        this.campaignCreationService = new CampaignCreationService(this.router, http);
+        this.localStorage = new LocalStorageStub();
+        this.campaignCreationService = new CampaignCreationService(this.router, http, this.localStorage);
     });
 
     it('should navigate to correct url', () => {
@@ -24,4 +26,10 @@ describe('Service: CampaignCreationService', () => {
 class RouterStub {
   url: any;
   navigate(url: any) { this.url = url; }
+}
+
+class LocalStorageStub {
+  retrieve(key: string) {
+    return null;
+  }
 }

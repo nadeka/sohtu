@@ -14,9 +14,10 @@ export class CampaignBasicInfo {
   errorCampaignName = this.language.getWord('ERROR_CAMPAIGN_NAME_MISSING_OR_SHORT');
   errorCampaignSubject = this.language.getWord('ERROR_CAMPAIGN_SUBJECT_MISSING_OR_SHORT');
 
-
-  @Input() campaignName: string;
-  @Input() campaignSubject: string;
+  @Input()
+  campaignName: string;
+  @Input()
+  campaignSubject: string;
 
   constructor(private language: LanguageService) {}
 

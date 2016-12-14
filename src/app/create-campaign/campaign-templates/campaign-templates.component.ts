@@ -24,10 +24,8 @@ export class CampaignTemplates {
     constructor(private language: LanguageService,
                 private campaignCreationService: CampaignCreationService,
                 private campaignTemplatesList: CampaignTemplatesList,
-                private templatesService: TemplatesService, private ref: ChangeDetectorRef) {}
-
-    ngOnInit() {
-    }
+                private templatesService: TemplatesService,
+                private ref: ChangeDetectorRef) {}
 
     ngAfterViewInit() {
         let selectedTemplate = this.campaignCreationService.getTemplate();
@@ -46,8 +44,10 @@ export class CampaignTemplates {
 
     saveChanges() {
       if (this.templatesList.getUpdateTemplate()) {
+          let template = this.templatesList.getSelected();
           this.campaignCreationService.setTemplate(this.templatesList.getSelected());
       }
+
     }
 
     isDisabled(step: string) {

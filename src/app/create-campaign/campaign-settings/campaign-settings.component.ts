@@ -6,6 +6,7 @@ import { CampaignCreationService }
 import { LanguageService } from '../../services/language.service';
 import { CampaignBreadcrumb } from '../campaign-breadcrumb';
 
+
 @Component({
   selector: 'campaign-settings',
   templateUrl: 'campaign-settings.template.html',
@@ -48,6 +49,7 @@ export class CampaignSettings {
     if (selectedMailingLists) {
       this.campaignMailingLists.selectMany(this.campaignCreationService.getMailingLists());
     }
+
     // Change detection needs to be forced because the selections have been added
     this.campaignCreationService.setCurrentStep('settings');
     this.ref.detectChanges();
@@ -59,9 +61,12 @@ export class CampaignSettings {
   }
 
   saveChanges() {
-    this.campaignCreationService.setName(this.campaignBasicInfo.getName());
-    this.campaignCreationService.setSubject(this.campaignBasicInfo.getSubject());
-    this.campaignCreationService.setMailingLists(this.campaignMailingLists.getSelected());
+    let campaignName = this.campaignBasicInfo.getName();
+    this.campaignCreationService.setName(campaignName);
+    let campaignSubject = this.campaignBasicInfo.getSubject();
+    this.campaignCreationService.setSubject(campaignSubject);
+    let campaignMailingLists = this.campaignMailingLists.getSelected();
+    this.campaignCreationService.setMailingLists(campaignMailingLists);
   }
 
 }

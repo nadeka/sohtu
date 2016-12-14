@@ -22,6 +22,8 @@ import { AlertModule } from 'ng2-bootstrap/ng2-bootstrap';
 import { File2JSONService } from '../../services/file2json/file2json.service';
 import { MockFile2JSONService } from '../../services/file2json/mock-file2json.service';
 import { CampaignBreadcrumb } from '../campaign-breadcrumb';
+import { LocalStorageService } from 'ng2-webstorage';
+import { MockLocalStorageService } from '../../services/mock-local-storage.service';
 
 describe('Component: CampaignSettings', () => {
   let fixture: any;
@@ -74,6 +76,10 @@ describe('Component: CampaignSettings', () => {
         {
           provide: File2JSONService,
           useClass: MockFile2JSONService
+        },
+        {
+          provide: LocalStorageService,
+          useClass: MockLocalStorageService
         }
       ],
         schemas: [CUSTOM_ELEMENTS_SCHEMA]

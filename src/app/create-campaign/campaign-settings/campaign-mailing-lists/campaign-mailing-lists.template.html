@@ -1,7 +1,7 @@
 <br>
 <h4>{{mailingListsHeader}}</h4>
 
-<div *ngIf!="hasSelected() > 0" class="alert alert-danger">
+<div *ngIf!="hasSelected()" class="alert alert-danger">
   <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
   {{ errorMailingList }}
 </div>

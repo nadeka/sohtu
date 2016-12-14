@@ -56,6 +56,7 @@ import { LanguageService } from './services/language.service';
 import { HTML2ImageService } from './services/html2image/html2image.service';
 import { File2JSONService } from './services/file2json/file2json.service';
 import { AlertsService } from './services/alerts/alerts.service';
+import { Ng2Webstorage } from 'ng2-webstorage';
 
 // Application wide providers
 const APP_PROVIDERS = [
@@ -82,7 +83,8 @@ type StoreType = {
         ButtonsModule,
         ModalModule,
         TabsModule,
-        AlertModule
+        AlertModule,
+        Ng2Webstorage
     ],
     declarations: [
         App,

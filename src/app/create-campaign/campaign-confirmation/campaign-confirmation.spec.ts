@@ -10,7 +10,6 @@ import { MockCampaignCreationService } from
 '../../services/campaign-creation/mock-campaign-creation.service';
 import { LanguageService } from '../../services/language.service';
 import { CampaignBreadcrumb } from '../campaign-breadcrumb';
-import { ModifiedTemplate }  from '../../models/modified-template.model';
 import { Router } from '@angular/router';
 import { MailingList } from '../../models/mailing-list.model';
 
@@ -53,7 +52,6 @@ describe('Component: CampaignConfirmation', () => {
               },
               LanguageService,
               AlertsService,
-
             ],
         }).compileComponents().then(function(arr) {
             fixture = TestBed.createComponent(CampaignConfirmation);
@@ -65,7 +63,7 @@ describe('Component: CampaignConfirmation', () => {
                 name: 'testname',
                 description: 'testsubject',
                 members: String['asd']}]);
-            campaignCreationService.setModifiedTemplate(new ModifiedTemplate('<p>test modified template</p>'));
+            campaignCreationService.setContent('<p>test modified template</p>');
             campaignCreationService.setName('testname');
             campaignCreationService.setSubject('testsubject');
             page = new Page();

@@ -1,6 +1,4 @@
 import { Component, Input, ChangeDetectorRef, Inject, Injectable } from '@angular/core';
-import { CampaignBasicInfo } from '../campaign-settings/campaign-basic-info';
-import { CampaignMailingLists } from '../campaign-settings/campaign-mailing-lists';
 import { CampaignCreationService } from '../../services/campaign-creation/campaign-creation.service';
 import { Campaign } from '../../models/campaign.model';
 import { CampaignBreadcrumb } from '../campaign-breadcrumb';
@@ -43,8 +41,7 @@ export class CampaignConfirmation {
     }
 
     ngOnInit() {
-        this.campaignContent = this.sanitized.bypassSecurityTrustHtml(this.campaign.modifiedTemplate.html);
-
+        this.campaignContent = this.sanitized.bypassSecurityTrustHtml(this.campaign.content);
         if (this.campaign.mailingLists.length > 0) {
           this.mailingListIsEmpty = false;
         }
@@ -68,10 +65,14 @@ export class CampaignConfirmation {
         // set the alert for the marketing overview -page
         // reroute the user
         this.campaignCreationService.postCampaign()
-                    .then(c =>
-                      console.log(c));
+                    .then(c => {
+                      if (c.status == 200) {
+                        this.campaignCreationService.clearCampaign();
+                      }
+                    });
         this.alertsService.setCampaignCreatedAlert();
         this.router.navigate(['/marketing/marketing-overview']);
+
     }
 
     isCampaignReady() {
