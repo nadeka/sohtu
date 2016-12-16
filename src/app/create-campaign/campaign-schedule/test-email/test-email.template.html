@@ -9,7 +9,12 @@
     <br>
     <label>{{ sendTo }}</label>
     <div class="form-group">
-        <input required type="email" class="form-control" id="test-email-address" (ngModelChange)=onAddressChange($event) multiple>
+      <input required type="email" class="form-control" id="test-email-address" [ngModel]="testEmailAddress" (ngModelChange)=onAddressChange($event) multiple>
+      <div *ngIf!="isValid(testEmailAddress)" class="alert alert-danger">
+        <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+        {{ errorAddress }}
+      </div>
+      <span *ngIf="isValid(testEmailAddress)" id="success-addon2" class="input-group-addon alert alert-success glyphicon glyphicon-ok-sign"></span>
     </div>
     <div *ngIf="!templateExists()" class="alert alert-danger">
       <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>

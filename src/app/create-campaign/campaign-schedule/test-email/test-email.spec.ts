@@ -7,6 +7,7 @@ import { MockCampaignCreationService } from '../../../services/campaign-creation
 import { LanguageService } from '../../../services/language.service';
 import { TestEmail } from './test-email.component';
 import { Template } from '../../../models/template.model';
+import { FormsModule }   from '@angular/forms';
 
 describe('Component: test-email', () => {
     let fixture: any;
@@ -29,6 +30,7 @@ describe('Component: test-email', () => {
           TestEmail
         ],
         imports: [
+            FormsModule
         ],
         providers: [
           {
@@ -66,6 +68,13 @@ describe('Component: test-email', () => {
 
     it('send test email button should be disabled when no template chosen', () => {
         campaignCreationService.setTemplate(undefined);
+        component.ngOnInit();
+        fixture.detectChanges();
+        expect(component.validTemplateAndSubject()).toBe(false);
+    });
+
+    it('send test email button should be disabled when no subject chosen', () => {
+        campaignCreationService.setSubject(undefined);
         component.ngOnInit();
         fixture.detectChanges();
         expect(component.validTemplateAndSubject()).toBe(false);

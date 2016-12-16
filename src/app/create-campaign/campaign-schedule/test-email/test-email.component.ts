@@ -2,7 +2,7 @@ import { Component, Input } from '@angular/core';
 import { CampaignCreationService } from '../../../services/campaign-creation/campaign-creation.service';
 import { Campaign } from '../../../models/campaign.model';
 import { LanguageService } from '../../../services/language.service';
-
+import {forEach} from "@angular/router/src/utils/collection";
 
 @Component({
     selector: 'test-email',
@@ -17,7 +17,8 @@ export class TestEmail {
     templateMustBeChosenMessage = this.languageServ.getWord('ERROR_TEMPLATE_MUST_BE_CHOSEN');
     sendTestMailButton = this.languageServ.getWord('SEND_TEST_EMAIL');
     errorCampaignSubject = this.languageServ.getWord('ERROR_CAMPAIGN_SUBJECT_MISSING');
-    testMailSubject: String;
+    errorAddress = this.languageServ.getWord('ERROR_TEST_EMAIL_ADDRESS_MISSING');
+    testMailSubject: string;
     @Input() testEmailAddress: string;
 
     constructor(private campaignCreationService: CampaignCreationService,
@@ -38,6 +39,10 @@ export class TestEmail {
         return this.testEmailAddress;
     }
 
+    public getTestMailSubject(): string {
+        return this.testMailSubject;
+    }
+
     templateExists() {
       return !(this.campaignCreationService.getTemplate() === undefined);
     }
@@ -47,7 +52,16 @@ export class TestEmail {
     }
 
     validTemplateAndSubject(): boolean {
-      return (this.subjectExists() && this.templateExists());
+      return (this.subjectExists() && this.templateExists() && this.isValid(this.testEmailAddress));
+    }
+
+    isValid(input: string): boolean {
+        var EMAIL_REGEXP =  /^[\W]*([\w+\-.%]+@[\w\-.]+\.[A-Za-z]{2,4}[\W]*,{1}[\W]*)*([\w+\-.%]+@[\w\-.]+\.[A-Za-z]{2,4})[\W]*$/;
+
+        if (!EMAIL_REGEXP.test(input)) {
+            return false;
+        }
+        return true;
     }
 
 }
