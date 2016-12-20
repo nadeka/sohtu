@@ -119,20 +119,13 @@ describe('Component: ImportMailingLists', () => {
         component.mailingListDescription = 'asdasd';
 
         let results = {
-            errors: ['Error!'],
+            errors: [{ message: 'Error!' }],
             data: IMPORTED_CONTACTS
         };
 
-        component.onImportDone(results)
-            .then(function () {
-                contactsService.getContacts().then(function(contacts) {
-                    expect(contacts.length).toBe(4);
-
-                    mailingListsService.getMailingLists().then(function(lists) {
-                        expect(lists.length).toBe(3);
-                    });
-                });
-            });
+        expect(function() {
+            component.onImportDone(results)
+        }).toThrowError('Error occurred while parsing file: ' + results.errors[0].message);
     }));
 
     it('should create contacts before creating mailing list', async(() => {

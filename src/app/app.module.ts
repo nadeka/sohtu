@@ -1,8 +1,8 @@
-import { NgModule, ApplicationRef } from '@angular/core';
+import { NgModule, ApplicationRef, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule }   from '@angular/forms';
 import { RouterModule }   from '@angular/router';
-import { HttpModule, JsonpModule } from '@angular/http';
+import { HttpModule, JsonpModule, XHRBackend } from '@angular/http';
 import { removeNgStyles, createNewHosts, createInputTransfer } from '@angularclass/hmr';
 
 import { DropdownModule } from 'ng2-bootstrap/ng2-bootstrap';
@@ -21,6 +21,9 @@ import { AppState, InternalStateType } from './app.service';
 
 // Main component
 import { App } from './app.component';
+
+// Custom error handler
+import { CustomErrorHandler } from './error-handler/custom-error-handler';
 
 // Other components
 import { Dashboard } from './dashboard/dashboard.component';
@@ -53,10 +56,13 @@ import { TemplatesService } from './services/templates/templates.service';
 import { ContactsService } from './services/contacts/contacts.service';
 import { CampaignCreationService } from './services/campaign-creation/campaign-creation.service';
 import { LanguageService } from './services/language.service';
+import { LoggerService } from './services/logger/logger.service';
 import { HTML2ImageService } from './services/html2image/html2image.service';
 import { File2JSONService } from './services/file2json/file2json.service';
 import { AlertsService } from './services/alerts/alerts.service';
+
 import { Ng2Webstorage } from 'ng2-webstorage';
+import { CustomXHRBackend } from "./xhr-backend/custom-xhr-backend";
 
 // Application wide providers
 const APP_PROVIDERS = [
@@ -122,7 +128,10 @@ type StoreType = {
         File2JSONService,
         CampaignCreationService,
         LanguageService,
-        AlertsService
+        AlertsService,
+        LoggerService,
+        { provide: ErrorHandler, useClass: CustomErrorHandler },
+        { provide: XHRBackend, useClass: CustomXHRBackend }
     ],
     bootstrap: [ App ]
 })

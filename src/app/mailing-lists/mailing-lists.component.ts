@@ -18,7 +18,10 @@ export class MailingLists {
   }
 
   getMailingLists(): void {
-    this.mailingListsService.getMailingLists().then(mailingLists =>
-                              this.mailingLists = mailingLists);
+    this.mailingListsService.getMailingLists()
+        .then(mailingLists => this.mailingLists = mailingLists)
+        .catch(function(err) {
+          throw new Error('mailing-lists.component: Error occurred while fetching mailing lists');
+        });
   }
 }

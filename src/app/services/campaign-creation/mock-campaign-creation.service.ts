@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { MAILING_LISTS } from '../../mock-data/mock-mailing-lists';
 import { MailingList } from '../../models/mailing-list.model';
 import { Campaign } from '../../models/campaign.model';
 import { Template } from '../../models/template.model';

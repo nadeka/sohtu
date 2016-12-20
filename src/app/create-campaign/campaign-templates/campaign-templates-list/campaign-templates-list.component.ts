@@ -18,8 +18,6 @@ export class CampaignTemplatesList implements OnInit {
     // Notification to parent that a template has been chosen
     @Output() notify = new EventEmitter();
 
-    errorMessage: string;
-
     campaignTemplatesHeader = this.language.getWord('CAMPAIGN_TEMPLATES_HEADER');
     changeTemplateQuestion = this.language.getWord('CHANGE_TEMPLATE_QUESTION');
     modifiedContentLostInfo = this.language.getWord('MODIFIED_CONTENT_LOST_INFO');
@@ -46,11 +44,10 @@ export class CampaignTemplatesList implements OnInit {
 
     getCampaignTemplates(): void {
         this.templatesService.getTemplates()
-            .then(templates => this.campaignTemplates = templates,
-                  error => this.errorMessage = <any>error);
+            .then(templates => this.campaignTemplates = templates);
     }
 
-    // Images will be created at template creation
+    // Thumbnail image of template will be created after the template has been created
      // convertToCampaignTemplate(template: Template): void {
       //   this.html2ImageService.toImage(template.content)
         //     .then(imageUrl => template.thumbnailImage = imageUrl)

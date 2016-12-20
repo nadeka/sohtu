@@ -16,6 +16,7 @@ export class CampaignCreationService {
   private step: string;
   private existingModifiedTemplate: boolean = false;
   private emailCampaignsURL = Settings.API_BASE_URL() + '/email-campaigns';
+  private testEmailCampaignsURL = this.emailCampaignsURL + '/test';
 
   constructor (@Inject(Router) public router: Router,
                 private http: Http,
@@ -46,10 +47,14 @@ export class CampaignCreationService {
     // "schedule":"2016-11-24T09:30:50.621Z"  // date
     // "status:"pending"                      //Only campaigns with status 'pending' are sent
     // }
+
     let mailingLists = [];
     this.campaign.mailingLists.forEach(mailingList => {
         mailingLists.push(mailingList.id);
     });
+
+    let self = this;
+
     let bodyString = JSON.stringify({name: this.campaign.name,
                                      subject: this.campaign.subject,
                                      mailingLists: mailingLists,
@@ -62,8 +67,12 @@ export class CampaignCreationService {
     let options    = new RequestOptions({ headers: headers }); // Create a request option
 
     return this.http.post(this.emailCampaignsURL, bodyString, options) // ...using post request
-                        .toPromise().then((res: Response) => res) // ...returning response
-                        .catch((error: any) => Promise.reject(error.json().error || 'Server error')); // ...errors if any
+        .toPromise()
+        .then((res: Response) => res.json()) // ...and calling .json() on the response to return data
+        .catch(function(err) {
+          throw new Error('CampaignCreationService: Error posting payload '
+              + bodyString + ' to URL ' + self.emailCampaignsURL);
+        });
   }
 
   // This method posts a test campaign to backend
@@ -74,6 +83,8 @@ export class CampaignCreationService {
     // "mailingLists":[1,2,3],                // this is mailing list id:s
     // "content":"<h1>"                       // html content of the email
     // }
+
+    let self = this;
 
     let testEmailAddresses = ''/*get the emails for test mail*/;
 
@@ -86,9 +97,13 @@ export class CampaignCreationService {
     let headers    = new Headers({ 'Content-Type': 'application/json'}); // ... Set content type to JSON
     let options    = new RequestOptions({ headers: headers }); // Create a request option
 
-    return this.http.post(this.emailCampaignsURL + '/test', bodyString, options) // ...using post request
-      .toPromise().then((res: Response) => res) // Returning response
-      .catch((error: any) => Promise.reject(error.json().error || 'Server error')); // ...errors if any
+    return this.http.post(this.testEmailCampaignsURL, bodyString, options) // ...using post request
+        .toPromise()
+        .then((res: Response) => res.json()) // ...and calling .json() on the response to return data
+        .catch(function(err) {
+          throw new Error('CampaignCreationService: Error posting payload '
+              + bodyString + ' to URL ' + self.testEmailCampaignsURL);
+        });
   }
 
   // Getters and setters

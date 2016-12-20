@@ -14,7 +14,6 @@ import { MockCampaignCreationService } from
         '../../../services/campaign-creation/mock-campaign-creation.service';
 import { HTML2ImageService } from '../../../services/html2image/html2image.service';
 import { Template } from '../../../models/template.model';
-import { ModifiedTemplate } from '../../../models/modified-template.model';
 import { MockTemplatesService }
     from '../../../services/templates/mock-templates.service';
 import { MockHTML2ImageService }

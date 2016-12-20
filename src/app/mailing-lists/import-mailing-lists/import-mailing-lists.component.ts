@@ -76,7 +76,8 @@ export class ImportMailingLists {
 
             // For some reason, the view freezes without this
             this.mailingListImported.emit();
-            return Promise.resolve();
+
+            throw new Error('Error occurred while parsing file: ' + results.errors[0].message);
         } else {
             let self = this;
 
@@ -91,7 +92,11 @@ export class ImportMailingLists {
                             self.reset();
                         });
                 })
-                .catch(err => console.log(err));
+                .catch(function(err) {
+                    throw new Error('import-mailing-lists.component: ' +
+                        'Error occurred while creating following contacts: '
+                        + JSON.stringify(results.data));
+                });
         }
     }
 

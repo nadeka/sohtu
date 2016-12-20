@@ -13,10 +13,14 @@ export class ContactsService {
     constructor(private http: Http) { }
 
     getContacts(): Promise<Contact[]> {
+        let self = this;
+
         return this.http.get(this.contactsURL)
             .toPromise()
             .then(this.extractManyContacts)
-            .catch(this.handleError);
+            .catch(function(err) {
+                throw new Error('ContactsService: Error fetching contacts from URL ' + self.contactsURL);
+            });
     }
 
     createContacts(contacts): Promise<Contact[]> {
@@ -28,6 +32,8 @@ export class ContactsService {
     }
 
     createContact(contact): Promise<Contact> {
+        let self = this;
+
         // Test a few possible CSV column names. (Find a better solution?)
         let firstNameRegex = /^first name|firstname|etunimi/g;
         let lastNameRegex = /^last name|lastname|sukunimi/g;
@@ -66,17 +72,22 @@ export class ContactsService {
 
         let headers = new Headers({ 'Content-Type': 'application/json' });
         let options = new RequestOptions({ headers: headers });
+
         let payload = JSON.stringify({
             firstName: firstName,
             lastName: lastName,
             email: email,
             telephone: telephone,
-            gender: gender });
+            gender: gender
+        });
 
         return this.http.post(this.contactsURL, payload, options)
             .toPromise()
             .then(this.extractOneContact)
-            .catch(this.handleError);
+            .catch(function(err) {
+                throw new Error('ContactsService: Error posting payload '
+                    + payload + ' to URL ' + self.contactsURL);
+            });
     }
 
     private extractOneContact(res: Response) {
@@ -99,19 +110,5 @@ export class ContactsService {
         }
 
         return [];
-    }
-
-    private handleError(error: Response | any) {
-        // In a real world app, we might use a remote logging infrastructure
-        let errMsg: string;
-        if (error instanceof Response) {
-            const body = error.json() || '';
-            const err = body.error || JSON.stringify(body);
-            errMsg = `${error.status} - ${error.statusText || ''} ${err}`;
-        } else {
-            errMsg = error.message ? error.message : error.toString();
-        }
-        console.error(errMsg);
-        return Promise.reject(errMsg);
     }
 }

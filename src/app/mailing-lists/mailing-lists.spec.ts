@@ -34,7 +34,7 @@ describe('Component: MailingLists', () => {
             fixture.detectChanges();
         });
     }));
-    //
+
     // it('should have 3 valid mailing lists in the beginning', () => {
     //     expect(component.mailingLists.length).toBe(3);
     //     component.mailingLists
