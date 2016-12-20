@@ -1,13 +1,15 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Inject } from '@angular/core';
 import { CampaignCreationService } from '../../../services/campaign-creation/campaign-creation.service';
 import { Campaign } from '../../../models/campaign.model';
 import { LanguageService } from '../../../services/language.service';
+import { AlertsService } from '../../../services/alerts/alerts.service';
 import {forEach} from "@angular/router/src/utils/collection";
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'test-email',
     templateUrl: './test-email.template.html',
-    providers: [ LanguageService ]
+    providers: [LanguageService]
 })
 
 export class TestEmail {
@@ -22,11 +24,14 @@ export class TestEmail {
     @Input() testEmailAddress: string;
 
     constructor(private campaignCreationService: CampaignCreationService,
-                private languageServ: LanguageService) {
+                private languageServ: LanguageService,
+                private alertsService: AlertsService,
+                @Inject(Router) public router: Router) {
 
     }
     ngOnInit() {
-        if (this.campaignCreationService.getSubject() !== ''  && this.campaignCreationService.getSubject() !== undefined) {
+
+        if (this.campaignCreationService.getSubject() !== ''  && this.campaignCreationService.getSubject() !== undefined && this.campaignCreationService.getSubject() !== null) {
             this.testMailSubject = this.campaignCreationService.getSubject() + ' -test mail';
         }
     }
@@ -44,15 +49,15 @@ export class TestEmail {
     }
 
     templateExists() {
-      return !(this.campaignCreationService.getTemplate() === undefined);
+        return !(this.campaignCreationService.getTemplate() === undefined);
     }
 
     subjectExists() {
-    return !(this.campaignCreationService.getSubject() === '' || this.campaignCreationService.getSubject() === undefined);
+        return !(this.campaignCreationService.getSubject() === '' || this.campaignCreationService.getSubject() === undefined || this.campaignCreationService.getSubject() === null);
     }
 
     validTemplateAndSubject(): boolean {
-      return (this.subjectExists() && this.templateExists() && this.isValid(this.testEmailAddress));
+        return (this.subjectExists() && this.templateExists() && this.isValid(this.testEmailAddress));
     }
 
     isValid(input: string): boolean {
@@ -62,6 +67,18 @@ export class TestEmail {
             return false;
         }
         return true;
+    }
+
+    postTestCampaign() {
+        // post the campaign
+        // set the alert for the campaign confirmation -page
+        // reroute the user
+
+        this.campaignCreationService.postTestCampaign(this.testMailSubject, this.testEmailAddress);
+
+        this.alertsService.setTestEmailSentAlert();
+        this.router.navigate(['/marketing/create-campaign/confirmation']);
+
     }
 
 }

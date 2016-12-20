@@ -2,55 +2,56 @@
 
 <div class="container col-md-8 col-md-offset-2">
     <div>
-      <button style="float:left; display:inline;" (click)="goToStep('schedule')" class="navigation-btn">
-        {{previousLabel}}
-      </button>
-      <button style="float:right; display:inline;" (click)="postCampaign()" class="navigation-btn" [disabled]="isCampaignReady()">
-        {{confirmLabel}}
-      </button>
+        <button style="float:left; display:inline;" (click)="goToStep('schedule')" class="navigation-btn">
+            {{previousLabel}}
+        </button>
+        <button style="float:right; display:inline;" (click)="postCampaign()" class="navigation-btn" [disabled]="isCampaignReady()">
+            {{confirmLabel}}
+        </button>
     </div>
 </div>
 
 
 <div class="container">
-  <div class="col-md-6">
-    <div id="finalContent" class="box" [innerHTML]="campaignContent"></div>
-  </div>
-  <div class="col-md-6">
-    <div class="box">
-  		<h3>{{campaignOverview}}</h3>
-  		<br>
-  		<div class="basic-information">
-  			<label for="campaign-name">{{campaignName}}</label>
-        <p id="campaign-name">{{campaign.name}}</p>
-        <div *ngIf!="campaign.name" class="alert alert-danger">
-          <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
-            {{ errorCampaignName }}
+    <div class="col-md-6">
+        <div id="finalContent" class="box" [innerHTML]="campaignContent"></div>
+    </div>
+    <div class="col-md-6">
+        <div class="box">
+            <h3>{{campaignOverview}}</h3>
+            <br>
+            <div class="alert alert-success" *ngFor="let alert of testEmailSentAlerts">{{alert.msg}}</div>
+            <div class="basic-information">
+                <label for="campaign-name">{{campaignName}}</label>
+                <p id="campaign-name">{{campaign.name}}</p>
+                <div *ngIf!="campaign.name" class="alert alert-danger">
+                    <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                    {{ errorCampaignName }}
+                </div>
+                <br>
+                <br>
+                <label for="campaign-subject">{{campaignSubject}}</label>
+                <p id="campaign-subject">{{campaign.subject}}</p>
+                <div *ngIf!="campaign.subject" class="alert alert-danger">
+                    <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                    {{ errorCampaignSubject }}
+                </div>
+                <br>
+                <br>
+                <p>{{mailingLists}}</p>
+                <div *ngIf="mailingListIsEmpty" class="alert alert-danger">
+                    <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                    {{ errorMailingList }}
+                </div>
+                <div class="btn btn-primary btn-xs selected-btn"
+                     *ngFor="let mailingList of campaign.mailingLists">
+                    {{mailingList.name}}
+                </div>
+                <hr>
+                <label for="campaign-schedule">{{willBeSent}}</label>
+                <p id="campaign-schedule">{{campaign.schedule}}</p>
+            </div>
+            <br>
         </div>
-  			<br>
-  			<br>
-  			<label for="campaign-subject">{{campaignSubject}}</label>
-  			<p id="campaign-subject">{{campaign.subject}}</p>
-        <div *ngIf!="campaign.subject" class="alert alert-danger">
-          <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
-            {{ errorCampaignSubject }}
-        </div>
-			<br>
-			<br>
-			<p>{{mailingLists}}</p>
-      <div *ngIf="mailingListIsEmpty" class="alert alert-danger">
-        <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
-        {{ errorMailingList }}
-      </div>
-			<div class="btn btn-primary btn-xs selected-btn"
-				 *ngFor="let mailingList of campaign.mailingLists">
-				{{mailingList.name}}
-			</div>
-        <hr>
-  			<label for="campaign-schedule">{{willBeSent}}</label>
-  			<p id="campaign-schedule">{{campaign.schedule}}</p>
-  		</div>
-      <br>
-  	</div>
-  </div>
+    </div>
 </div>

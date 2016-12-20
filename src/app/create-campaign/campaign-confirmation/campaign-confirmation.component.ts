@@ -31,19 +31,30 @@ export class CampaignConfirmation {
     private campaignContent: SafeHtml;
     private mailingListIsEmpty = true;
 
+    private testEmailSentAlerts = [];
+
     constructor (	private language: LanguageService,
-                  private campaignCreationService: CampaignCreationService,
-                  private ref: ChangeDetectorRef,
-                  private sanitized: DomSanitizer,
-                  private alertsService: AlertsService,
-                  @Inject(Router) public router: Router) {
-      this.campaign = campaignCreationService.getCampaign();
+                     private campaignCreationService: CampaignCreationService,
+                     private ref: ChangeDetectorRef,
+                     private sanitized: DomSanitizer,
+                     private alertsService: AlertsService,
+                     @Inject(Router) public router: Router) {
+        this.campaign = campaignCreationService.getCampaign();
     }
 
     ngOnInit() {
+        console.log('marketing-overview componen created');
+        let alert: string = this.alertsService.getTestEmailSentAlert();
+        if(alert != '') {
+            this.testEmailSentAlerts = [{
+                type:'success',
+                msg: alert,
+                closable: true
+            }];
+        }
         this.campaignContent = this.sanitized.bypassSecurityTrustHtml(this.campaign.content);
         if (this.campaign.mailingLists.length > 0) {
-          this.mailingListIsEmpty = false;
+            this.mailingListIsEmpty = false;
         }
     }
 
@@ -65,11 +76,11 @@ export class CampaignConfirmation {
         // set the alert for the marketing overview -page
         // reroute the user
         this.campaignCreationService.postCampaign()
-                    .then(c => {
-                      if (c.status == 200) {
-                        this.campaignCreationService.clearCampaign();
-                      }
-                    });
+            .then(c => {
+                if (c.status == 200) {
+                    this.campaignCreationService.clearCampaign();
+                }
+            });
         this.alertsService.setCampaignCreatedAlert();
         this.router.navigate(['/marketing/marketing-overview']);
 

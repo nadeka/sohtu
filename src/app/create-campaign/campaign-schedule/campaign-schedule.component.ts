@@ -2,9 +2,10 @@ import { Component, ChangeDetectorRef } from '@angular/core';
 import { DateTimePicker } from './date-time-picker/date-time-picker.component';
 import { TestEmail } from './test-email/test-email.component';
 import { CampaignCreationService } from
-        '../../services/campaign-creation/campaign-creation.service';
+    '../../services/campaign-creation/campaign-creation.service';
 import { CampaignBreadcrumb } from '../campaign-breadcrumb';
 import { LanguageService } from '../../services/language.service';
+import { AlertsService } from '../../services/alerts/alerts.service';
 
 @Component({
   selector: 'campaign-schedule',
@@ -49,7 +50,7 @@ export class CampaignSchedule {
   }
 
   saveChanges() {
-      this.campaignCreationService.setSchedule(this.schedule);
+    this.campaignCreationService.setSchedule(this.schedule);
   }
 
   setCurrentTime() {
