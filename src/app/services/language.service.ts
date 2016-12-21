@@ -63,7 +63,7 @@ export var eng: { [key: string]: string; } = {
   'ERROR_MAILING_LIST_NAME_MISSING_OR_SHORT' : 'Name is required or the name is too short (min 3 characters)',
   'ERROR_MAILING_LIST_NAME_TAKEN' : 'Name is already taken',
   'ERROR_TEMPLATE_MUST_BE_CHOSEN' : 'A template must be chosen',
-  'ERROR_TEST_EMAIL_ADDRESS_MISSING' : 'Email address(es) must be given in the right form',
+  'ERROR_TEST_EMAIL_ADDRESS_MISSING' : 'Email address must be given in the right form',
   'SEND_TEST_EMAIL' : 'Send test email',
   'TEST_EMAIL_SENT_ALERT' : 'Test email sent succesfully!'
 

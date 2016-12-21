@@ -124,7 +124,7 @@ describe('Component: ImportMailingLists', () => {
         };
 
         expect(function() {
-            component.onImportDone(results)
+            component.onImportDone(results);
         }).toThrowError('Error occurred while parsing file: ' + results.errors[0].message);
     }));
 

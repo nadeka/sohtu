@@ -19,7 +19,8 @@ export class CampaignCreationService {
 
   constructor (@Inject(Router) public router: Router,
                private http: Http,
-               private storage:LocalStorageService) {
+               private storage: LocalStorageService) {
+
     this.campaign = new Campaign();
     this.campaign.name = this.storage.retrieve('campaign-name');
     this.campaign.subject = this.storage.retrieve('campaign-subject');
@@ -50,6 +51,7 @@ export class CampaignCreationService {
     this.campaign.mailingLists.forEach(mailingList => {
       mailingLists.push(mailingList.id);
     });
+
     let bodyString = JSON.stringify({name: this.campaign.name,
       subject: this.campaign.subject,
       mailingLists: mailingLists,
@@ -75,7 +77,7 @@ export class CampaignCreationService {
     // "content":"<h1>"                       // html content of the email
     // }
 
-    let testEmailAddresses = testAddress;/*get the emails for test mail*/
+    let testEmailAddresses = testAddress; /*get the emails for test mail*/
     let testEmailCampaignSubject = testEmailSubject;
 
     let bodyString = JSON.stringify({

@@ -45,9 +45,9 @@ export class CampaignConfirmation {
     ngOnInit() {
         console.log('marketing-overview componen created');
         let alert: string = this.alertsService.getTestEmailSentAlert();
-        if(alert != '') {
+        if (alert !== '') {
             this.testEmailSentAlerts = [{
-                type:'success',
+                type: 'success',
                 msg: alert,
                 closable: true
             }];
@@ -77,7 +77,7 @@ export class CampaignConfirmation {
         // reroute the user
         this.campaignCreationService.postCampaign()
             .then(c => {
-                if (c.status == 200) {
+                if (c.status === 200) {
                     this.campaignCreationService.clearCampaign();
                 }
             });

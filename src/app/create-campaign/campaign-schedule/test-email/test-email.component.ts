@@ -3,8 +3,9 @@ import { CampaignCreationService } from '../../../services/campaign-creation/cam
 import { Campaign } from '../../../models/campaign.model';
 import { LanguageService } from '../../../services/language.service';
 import { AlertsService } from '../../../services/alerts/alerts.service';
-import {forEach} from "@angular/router/src/utils/collection";
+import { forEach } from '@angular/router/src/utils/collection';
 import { Router } from '@angular/router';
+import {CampaignSchedule} from "../campaign-schedule.component";
 
 @Component({
     selector: 'test-email',
@@ -61,7 +62,7 @@ export class TestEmail {
     }
 
     isValid(input: string): boolean {
-        var EMAIL_REGEXP =  /^[\W]*([\w+\-.%]+@[\w\-.]+\.[A-Za-z]{2,4}[\W]*,{1}[\W]*)*([\w+\-.%]+@[\w\-.]+\.[A-Za-z]{2,4})[\W]*$/;
+        let EMAIL_REGEXP =  /^[\W]*([\w+\-.%]+@[\w\-.]+\.[A-Za-z]{2,4}[\W]*,{1}[\W]*)*([\w+\-.%]+@[\w\-.]+\.[A-Za-z]{2,4})[\W]*$/;
 
         if (!EMAIL_REGEXP.test(input)) {
             return false;
